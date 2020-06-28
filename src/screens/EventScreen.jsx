@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
-const EventScreen = () => {
+const EventScreen = ({navigation}) => {
     return(
         <Text>Event Screen</Text>
+
     );
 };
 
