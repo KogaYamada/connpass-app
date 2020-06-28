@@ -1,15 +1,25 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {FlatList, StyleSheet, HorizontalScrollView} from 'react-native';
+import EventComponent from '../../components/EventComponent';
+import { ScrollView } from 'react-native-gesture-handler';
+
 
 const EventScreen = ({navigation}) => {
     return(
-        <Text>Event Screen</Text>
+        <>
+        <ScrollView>
+        <EventComponent />
+        <EventComponent />
+        <EventComponent />
+        </ScrollView>
+        </>
 
+        
     );
 };
 
 const styles = StyleSheet.create({
-
+    
 });
 
 export default EventScreen;

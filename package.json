@@ -10,6 +10,7 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
     "expo": "~38.0.1",
+    "expo-cli": "^3.21.13",
     "expo-status-bar": "^1.0.0",
     "firebase": "^7.15.5",
     "react": "~16.11.0",
