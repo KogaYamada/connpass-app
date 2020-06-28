@@ -1,14 +1,16 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const My_Page = () => {
+const MyPage = () => {
     return(
         <View>
-            <Text>My_Page</Text>
+            <Text>MyPage</Text>
         </View>
     );
 };
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
 
-export default My_Page;
+});
+
+export default MyPage;
