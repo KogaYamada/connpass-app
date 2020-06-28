@@ -6,9 +6,9 @@ const My_Page = () => {
         <View>
             <Text>My_Page</Text>
         </View>
-    )
-}
+    );
+};
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({})
 
 export default My_Page;
