@@ -1,17 +1,19 @@
 import React from 'react';
-import {View, StyleSheet, Text,FlatList } from 'react-native';
+import {View, StyleSheet, Text,FlatList, Image } from 'react-native';
 
 const EventComponent = () => {
     return(
-        
-    
-        
-        
         <View style={styles.frame}>
             <Text style={styles.mainText}>参加イベント</Text>
             <View style={styles.border}></View>
-        <View style={styles.innerFrame}>
-            <View style={styles.image} />
+                <View style={styles.innerFrame}>
+                    <View style={styles.image}>
+                    <Image
+                    style={{width: 298, height: 150}}
+                    source={{uri: "https:picsum.photos/200/300"}}
+                    />
+                    </View>
+
             <View style={styles.textWrap}>
                 <View style={styles.wrapContainer}>
                     <Text style={styles.leftContainer}>{'３月\n9日'}</Text>
@@ -25,9 +27,9 @@ const EventComponent = () => {
                         <Text style={styles.subText}>タイトルタイトルタイトルタイトル</Text>
                         <Text style={styles.organizer}>開催者名</Text>
                         <Text style={styles.organizerName}>開催場所</Text>
+                    </View>
                 </View>
             </View>
-        </View>
         </View>
     
     );
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     image: {
-        height: 140,
+        height: 150,
         width: 298,
         borderBottomColor: '#d1cfd6',
         borderBottomWidth: 2
