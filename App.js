@@ -8,6 +8,9 @@ import MyPageScreen from './src/screens/MyPage/MyPageScreen';
 import ProfileSettingsScreen from './src/screens/MyPage/ProfileSettingsScreen';
 import SettingsScreen from './src/screens/MyPage/SettingsScreen';
 import NotificationScreen from './src/screens/MyPage/NotificationScreen';
+import MessageListScreen from './src/screens/MessageListScreen';
+import MessageDetailScreen from './src/screens/MessageDetailScreen';
+import EventScreen from './src/screens/EventScreen';
 
 const navigator = createStackNavigator(
   {
@@ -17,9 +20,12 @@ const navigator = createStackNavigator(
     ProfileSettings: ProfileSettingsScreen,
     Settings: SettingsScreen,
     Notification: NotificationScreen,
+    MessageList: MessageListScreen,
+    MessageDetail: MessageDetailScreen,
+    Event: EventScreen,
   },
   {
-    initialRouteName: 'MyPage',
+    initialRouteName: 'Signin',
     defaultNavigationOptions: {
       title: 'Connpass App',
     },
