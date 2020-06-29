@@ -8,8 +8,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import { CheckBox, Button } from 'react-native-elements';
-import SignupSpacer from '../components/SignupSpacer';
+import { CheckBox, Button, Input } from 'react-native-elements';
+import SpacerTwenty from '../components/SpacerTwenty';
 import useInput from '../hooks/useInput';
 
 const SignupScreen = () => {
@@ -22,13 +22,16 @@ const SignupScreen = () => {
 
   // render
   return (
-    <ScrollView>
-      <SafeAreaView>
-        <Image source={require('../../assets/connpass_logo_1.png')} />
+    <SafeAreaView>
+      <ScrollView>
+        <Image
+          style={{ marginLeft: 70 }}
+          source={require('../../assets/connpass_logo_1.png')}
+        />
         <View style={styles.title}>
           <Text style={styles.titleText}>新規会員登録</Text>
         </View>
-        <SignupSpacer>
+        <SpacerTwenty>
           <Text style={{ textAlign: 'center' }}>
             このサービスを始めるための
           </Text>
@@ -37,8 +40,8 @@ const SignupScreen = () => {
           </Text>
           <View style={styles.inputArea}>
             <Text style={styles.label}>ユーザー名</Text>
-            <TextInput
-              style={styles.input}
+            <Input
+              inputStyle={styles.input}
               autoCapitalize="none"
               autoCorrect={false}
               {...username}
@@ -47,11 +50,13 @@ const SignupScreen = () => {
           <Text style={styles.message}>
             半角英数字・次の記号(-_)で30文字以内
           </Text>
-          <Text>※サイト内IDとしても利用します</Text>
+          <Text style={{ marginHorizontal: 10 }}>
+            ※サイト内IDとしても利用します
+          </Text>
           <View style={styles.inputArea}>
             <Text style={styles.label}>メールアドレス</Text>
-            <TextInput
-              style={styles.input}
+            <Input
+              inputStyle={styles.input}
               autoCapitalize="none"
               autoCorrect={false}
               {...email}
@@ -60,9 +65,9 @@ const SignupScreen = () => {
           <Text style={styles.message}>半角英数字</Text>
           <View style={styles.inputArea}>
             <Text style={styles.label}>パスワード</Text>
-            <TextInput
+            <Input
               secureTextEntry
-              style={styles.input}
+              inputStyle={styles.input}
               autoCapitalize="none"
               autoCorrect={false}
               {...password}
@@ -71,9 +76,9 @@ const SignupScreen = () => {
           <Text style={styles.message}>半角英数字で6文字以上</Text>
           <View style={styles.inputArea}>
             <Text style={styles.label}>パスワード(確認)</Text>
-            <TextInput
+            <Input
               secureTextEntry
-              style={styles.input}
+              inputStyle={styles.input}
               autoCapitalize="none"
               autoCorrect={false}
               {...passwordConfirm}
@@ -93,9 +98,9 @@ const SignupScreen = () => {
               buttonStyle={{ backgroundColor: '#f03c3c' }}
             />
           </View>
-        </SignupSpacer>
-      </SafeAreaView>
-    </ScrollView>
+        </SpacerTwenty>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -116,21 +121,21 @@ const styles = StyleSheet.create({
   },
   message: {
     color: 'blue',
+    marginHorizontal: 10,
   },
   label: {
     fontSize: 16,
     paddingTop: 5,
-    paddingLeft: 10,
-  },
-  inputArea: {
-    height: 60,
-    backgroundColor: '#DFDFDF',
-    borderBottomColor: 'grey',
-    borderBottomWidth: 2,
+    marginHorizontal: 10,
+    backgroundColor: '#DCDCDC',
   },
   input: {
-    height: 40,
-    marginHorizontal: 8,
+    borderTopEndRadius: 2,
+    borderTopStartRadius: 2,
+    backgroundColor: '#DCDCDC',
+    borderBottomColor: '#707070',
+    borderBottomWidth: 2,
+    paddingHorizontal: 3,
   },
 });
 
