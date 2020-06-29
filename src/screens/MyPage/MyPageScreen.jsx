@@ -1,8 +1,21 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import React, { useState, useCallback } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  ScrollView,
+  RefreshControl,
+} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { Avatar, ListItem, Icon } from 'react-native-elements';
+
+function wait(timeout) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+}
 
 const MyPageScreen = ({ navigation }) => {
   // メニューのリスト
@@ -11,23 +24,36 @@ const MyPageScreen = ({ navigation }) => {
       title: 'プロフィール設定',
       icon: 'user-cog',
       type: 'font-awesome-5',
-      navigation: 'ProfileSettings',
+      root: 'ProfileSettings',
     },
     {
       title: '通知設定',
       icon: 'md-notifications',
       type: 'ionicon',
+      root: 'Notification',
     },
     {
-      title: '設定',
+      title: 'その他の設定',
       icon: 'md-settings',
       type: 'ionicon',
-      navigation: 'Settings',
+      root: 'Settings',
     },
   ];
 
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+
+    wait(1000).then(() => setRefreshing(false));
+  }, [refreshing]);
+
   return (
-    <View>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <View style={styles.avatarView}>
         <Avatar
           rounded
@@ -39,7 +65,7 @@ const MyPageScreen = ({ navigation }) => {
       </View>
       <View>
         {list.map((item, i) => (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate(item.root)}>
             <ListItem
               key={i}
               title={item.title}
@@ -52,9 +78,6 @@ const MyPageScreen = ({ navigation }) => {
                   />
                 );
               }}
-              onPress={() => {
-                navigation.navigate(item.navigation);
-              }}
               bottomDivider
               chevron
             />
@@ -64,7 +87,7 @@ const MyPageScreen = ({ navigation }) => {
       <View style={styles.logOutView}>
         <Button title="ログアウト" color="red" style={styles.logOut} />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -78,10 +101,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   logOutView: {
-    marginTop: 40,
-  },
-  logOut: {
-    fontWeight: '500',
+    marginTop: 30,
   },
 });
 
