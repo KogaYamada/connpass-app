@@ -1,62 +1,33 @@
 import React from 'react';
-import { View, Text, ScrollView, TextInput, StyleSheet } from 'react-native';
-import { Card, Icon } from 'react-native-elements';
-import useInput from '../hooks/useInput';
+import { View, StyleSheet } from 'react-native';
+import { SearchBar } from 'react-native-elements';
+import { SwipeListView } from 'react-native-swipe-list-view';
 import MessageItem from '../components/MessageItem';
+import useInput from '../hooks/useInput';
+
+//test data
+import testData from '../testMessage';
 
 const MessageListScreen = () => {
-  const term = useInput('');
+  const search = useInput('');
+
   return (
-    <>
-      <View style={{ borderColor: 'black', borderWidth: 1 }}>
-        <View style={styles.search}>
-          <Icon
-            type="font-awesome"
-            name="search"
-            size={20}
-            style={{ marginLeft: 10, marginTop: 1 }}
-            color="grey"
-          />
-          <TextInput style={styles.TextInput} placeholder=" 送信者名で検索" />
-        </View>
-      </View>
-      <ScrollView>
-        <Card containerStyle={{ margin: 0, padding: 0 }}>
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-        </Card>
-      </ScrollView>
-    </>
+    <View style={styles.container}>
+      <SearchBar placeholder="送信者名で検索" platform="ios" {...search} />
+      <SwipeListView
+        disableRightSwipe
+        keyExtractor={(testData) => testData.key}
+        data={testData}
+        {...MessageItem}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  search: {
-    backgroundColor: '#E0E0E0',
-    borderColor: 'grey',
-    borderWidth: 1,
-    borderRadius: 10,
-    margin: 15,
-    height: 25,
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  TextInput: {
-    lineHeight: 25,
-    fontSize: 20,
-    paddingLeft: 1,
-    width: 300,
+  container: {
+    backgroundColor: 'white',
+    flex: 1,
   },
 });
 
