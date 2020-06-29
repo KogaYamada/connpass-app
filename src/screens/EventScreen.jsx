@@ -14,7 +14,7 @@ const EventScreen = ({navigation}) => {
     
     
     return(
-        <View>
+        <ScrollView>
                 <Text style={styles.mainText}>参加イベント</Text>
                 <View style={styles.border__1}></View>
                 <ScrollView 
@@ -47,7 +47,23 @@ const EventScreen = ({navigation}) => {
                 <EventComponent />
                 </ScrollView>
 
-        </View>
+                <Text style={styles.mainText}>準備イベント</Text>
+                <View style={styles.border__3}></View>
+                <ScrollView
+                    horizontal 
+                    showsHorizontalScrollIndicator={true}
+                >
+                <EventComponent />
+                <EventComponent />
+                <EventComponent />
+                <EventComponent />
+                <EventComponent />
+                <EventComponent />
+                <EventComponent />
+                <EventComponent />
+                </ScrollView>
+
+        </ScrollView>
 
         
     );
@@ -65,17 +81,23 @@ const styles = StyleSheet.create({
     },
     border__1: {
         borderBottomColor: '#A82402',
-        borderBottomWidth: 2,
+        borderBottomWidth: 4,
         marginBottom: 10,
         width: '60%'
         
     },
     border__2: {
         borderBottomColor: '#ff9900',
-        borderBottomWidth: 2,
+        borderBottomWidth: 4,
         marginBottom: 10,
         width: '60%'
     
+    },
+    border__3: {
+        borderBottomColor: '#ffbbbb',
+        borderBottomWidth: 4,
+        marginBottom: 10,
+        width: '60%'
     }
     
 });

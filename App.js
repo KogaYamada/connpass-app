@@ -5,15 +5,17 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import SignupScreen from './src/screens/SignupScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import EventScreen from './src/screens/EventScreen';
+import EventSearch from './src/screens/EventSearch';
 
 const navigator = createStackNavigator(
   {
     Signup: SignupScreen,
     Signin: SigninScreen,
     Event: EventScreen,
+    Search: TabsAdvancedExample,
   },
   {
-    initialRouteName: 'Event',
+    initialRouteName: 'Search',
     defaultNavigationOptions: {
       title: 'Connpass App',
     },

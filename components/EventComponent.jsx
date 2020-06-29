@@ -40,9 +40,6 @@ const styles = StyleSheet.create({
         height:310,
         width:320,
         borderRadius: 10,
-    
-        
-        
     },
     innerFrame: {
         borderColor: '#d1cfd6',
