@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const NotificationScreen = () => {
   return (
@@ -9,6 +9,6 @@ const NotificationScreen = () => {
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
 
 export default NotificationScreen
