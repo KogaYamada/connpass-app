@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   logOutView: {
-    marginTop: 30,
+    marginTop: 20,
   },
 });
 
