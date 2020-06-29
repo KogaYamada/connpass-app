@@ -11,7 +11,11 @@ import NotificationScreen from './src/screens/MyPage/NotificationScreen';
 import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
+<<<<<<< HEAD
 import EventFormScreen from './src/screens/EventFormScreen';
+=======
+import EventFormSearch from './src/screens/EventFormScreen';
+>>>>>>> サーチスクリーンの作成
 
 const navigator = createStackNavigator(
   {
@@ -24,10 +28,14 @@ const navigator = createStackNavigator(
     MessageList: MessageListScreen,
     MessageDetail: MessageDetailScreen,
     Event: EventScreen,
+<<<<<<< HEAD
     Search: EventFormScreen,
+=======
+    Search: EventFormSearch,
+>>>>>>> サーチスクリーンの作成
   },
   {
-    initialRouteName: 'MyPage',
+    initialRouteName: 'Search',
     defaultNavigationOptions: {
       title: 'Connpass App',
     },

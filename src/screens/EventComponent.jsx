@@ -37,9 +37,15 @@ const EventComponent = () => {
 const styles = StyleSheet.create({
     
     frame: {
+<<<<<<< HEAD:src/screens/EventComponent.jsx
         height:300,
         width:600,
         borderRadius: 5,
+=======
+        height:310,
+        width:320,
+        borderRadius: 10,
+>>>>>>> サーチスクリーンの作成:components/EventComponent.jsx
     },
     innerFrame: {
         borderColor: '#d1cfd6',
