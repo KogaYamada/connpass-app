@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Avatar, ListItem, Icon } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
+import NameSetting from '../../components/MyPage/NameSetting.component';
 
 const ProfileSettings = () => {
   return (
-    <View>
+    <ScrollView>
       <View style={styles.avatarView}>
         <TouchableOpacity style={{padding: 4}}>
           <Avatar
@@ -17,7 +18,8 @@ const ProfileSettings = () => {
           />
         </TouchableOpacity>
       </View>
-    </View>
+      <NameSetting />
+    </ScrollView>
   );
 };
 
