@@ -11,18 +11,19 @@ const MyPageScreen = ({ navigation }) => {
       title: 'プロフィール設定',
       icon: 'user-cog',
       type: 'font-awesome-5',
-      navigation: 'ProfileSettings',
+      root: 'ProfileSettings',
     },
     {
       title: '通知設定',
       icon: 'md-notifications',
       type: 'ionicon',
+      root: 'Notification',
     },
     {
-      title: '設定',
+      title: 'その他の設定',
       icon: 'md-settings',
       type: 'ionicon',
-      navigation: 'Settings',
+      root: 'Settings',
     },
   ];
 
@@ -39,7 +40,7 @@ const MyPageScreen = ({ navigation }) => {
       </View>
       <View>
         {list.map((item, i) => (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate(item.root)}>
             <ListItem
               key={i}
               title={item.title}
@@ -51,9 +52,6 @@ const MyPageScreen = ({ navigation }) => {
                     style={{ width: 50 }}
                   />
                 );
-              }}
-              onPress={() => {
-                navigation.navigate(item.navigation);
               }}
               bottomDivider
               chevron
@@ -78,10 +76,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   logOutView: {
-    marginTop: 40,
-  },
-  logOut: {
-    fontWeight: '500',
+    marginTop: 30,
   },
 });
 

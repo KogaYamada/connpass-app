@@ -6,9 +6,9 @@ const NotificationScreen = () => {
     <View>
       <Text>Notification Screen</Text>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({});
 
-export default NotificationScreen
+export default NotificationScreen;
