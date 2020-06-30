@@ -12,10 +12,14 @@ import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import EventFormScreen from './src/screens/EventFormScreen';
 =======
 import EventFormSearch from './src/screens/EventFormScreen';
 >>>>>>> サーチスクリーンの作成
+=======
+import EventFormScreen from './src/screens/EventFormScreen';
+>>>>>>> ファイルの修正
 
 const navigator = createStackNavigator(
   {
@@ -29,10 +33,14 @@ const navigator = createStackNavigator(
     MessageDetail: MessageDetailScreen,
     Event: EventScreen,
 <<<<<<< HEAD
+<<<<<<< HEAD
     Search: EventFormScreen,
 =======
     Search: EventFormSearch,
 >>>>>>> サーチスクリーンの作成
+=======
+    Search: EventFormScreen,
+>>>>>>> ファイルの修正
   },
   {
     initialRouteName: 'Search',

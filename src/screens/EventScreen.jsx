@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import useInput from '../hooks/useInput';
 
 
-const EventFormScreen = ({navigation}) => {
+const EventScreen = ({navigation}) => {
     const [article, setArticle] = useState(<EventComponent />)
     useEffect(() => {
 
@@ -102,4 +102,4 @@ const styles = StyleSheet.create({
     
 });
 
-export default EventFormScreen;
+export default EventScreen;
