@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Header, Tab, Tabs, TabHeading, Icon, Text } from 'native-base';
 import {View, StyleSheet,ScrollView } from 'react-native';
-import SearchBar from '../../components/SearchBar';
-import EventComponent from '../../components/EventComponent';
+import SearchBar from './SearchBar';
+import EventComponent from './EventComponent';
 
 
 const EventFormScreen = () => {
