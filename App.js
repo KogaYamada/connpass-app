@@ -25,7 +25,7 @@ const navigator = createStackNavigator(
     Event: EventScreen,
   },
   {
-    initialRouteName: 'Signin',
+    initialRouteName: 'MyPage',
     defaultNavigationOptions: {
       title: 'Connpass App',
     },

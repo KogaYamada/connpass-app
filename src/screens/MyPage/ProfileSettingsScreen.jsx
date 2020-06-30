@@ -8,7 +8,7 @@ const ProfileSettings = () => {
   return (
     <ScrollView>
       <View style={styles.avatarView}>
-        <TouchableOpacity style={{padding: 4}}>
+        <TouchableOpacity style={{ padding: 4 }}>
           <Avatar
             rounded
             icon={{ name: 'user', type: 'font-awesome' }}
@@ -26,7 +26,7 @@ const ProfileSettings = () => {
 const styles = StyleSheet.create({
   avatarView: {
     alignItems: 'center',
-    paddingVertical: 40,
+    paddingVertical: 20,
   },
 });
 
