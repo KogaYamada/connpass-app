@@ -46,7 +46,6 @@ const EventFormScreen = () => {
 const styles = StyleSheet.create({
   textTab: {
     fontSize: 13,
-    fontFamily: 'Arial',
     fontWeight: 'bold'
   },
   
