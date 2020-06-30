@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import {FlatList,Text,View, StyleSheet, HorizontalScrollView} from 'react-native';
-import EventComponent from '../../components/EventComponent';
+import EventComponent from './EventComponent';
 import { ScrollView } from 'react-native-gesture-handler';
 import useInput from '../hooks/useInput';
 
