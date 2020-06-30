@@ -5,7 +5,7 @@ import SearchBar from '../../components/SearchBar';
 import EventComponent from '../../components/EventComponent';
 
 
-const EventSearch = () => {
+const EventFormScreen = () => {
     return (
       <>
       <SearchBar />
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
   
 });
 
-export default EventSearch;
+export default EventFormScreen;
