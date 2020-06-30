@@ -11,6 +11,7 @@ import NotificationScreen from './src/screens/MyPage/NotificationScreen';
 import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
+import EventSearch from './src/screens/EventSearch';
 
 const navigator = createStackNavigator(
   {
@@ -23,6 +24,7 @@ const navigator = createStackNavigator(
     MessageList: MessageListScreen,
     MessageDetail: MessageDetailScreen,
     Event: EventScreen,
+    Search: EventSearch,
   },
   {
     initialRouteName: 'MyPage',
