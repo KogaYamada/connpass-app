@@ -8,7 +8,7 @@ const EventComponent = () => {
                 <View style={styles.innerFrame}>
                     <View style={styles.image}>
                     <Image
-                    style={{width: 298, height: 149, borderRadius: 10}}
+                    style={{width: 300, height: 160, borderRadius: 5}}
                     source={{uri: "https:picsum.photos/200/300"}}
                     />
                 </View>
@@ -37,19 +37,20 @@ const EventComponent = () => {
 const styles = StyleSheet.create({
     
     frame: {
-        height:310,
-        width:320,
-        borderRadius: 10,
+        height:300,
+        width:600,
+        borderRadius: 5,
     },
     innerFrame: {
         borderColor: '#d1cfd6',
         borderWidth: 1,
-        height: 250,
+        height: 260,
         width: 300,
-        borderRadius: 10
+        borderRadius: 5,
+        
     },
     image: {
-        height: 150,
+        height: 160,
         width: 300,
         borderBottomColor: '#d1cfd6',
         borderBottomWidth: 1,
@@ -76,6 +77,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginLeft: 15,
         
+        
     },
     group: {
         fontSize: 15,
@@ -83,16 +85,16 @@ const styles = StyleSheet.create({
     },
     subText: {
         fontSize: 15,
-        marginLeft: 10
+        marginLeft: 10,
+        
     },
     organizer: {
-        marginTop: 5,
         fontSize: 10,
         marginLeft: 10,
     },
     organizerName: {
         fontSize:10,
-        marginLeft: 10
+        marginLeft: 10,
     },
     textTopWrap: {
         flexDirection: 'row',

@@ -14,7 +14,7 @@ const EventScreen = ({navigation}) => {
     
     
     return(
-        <ScrollView>
+        <ScrollView style={styles.componentWrap}>
                 <Text style={styles.mainText}>参加イベント</Text>
                 <View style={styles.border__1}></View>
                 <ScrollView 
@@ -75,9 +75,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'Arial',
         padding: 5,
-        marginTop: 5
-
-        
+        marginTop: 5,    
     },
     border__1: {
         borderBottomColor: '#A82402',
@@ -98,6 +96,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 4,
         marginBottom: 10,
         width: '60%'
+    },
+    componentWrap: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        width:'100%'
     }
     
 });
