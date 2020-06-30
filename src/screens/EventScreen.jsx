@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     mainText: {
         fontSize: 20,
         fontWeight: 'bold',
-        fontFamily: 'Arial',
         padding: 5,
         marginTop: 5,    
     },
