@@ -27,7 +27,7 @@ const navigator = createStackNavigator(
     Search: EventSearch,
   },
   {
-    initialRouteName: 'Search',
+    initialRouteName: 'MyPage',
     defaultNavigationOptions: {
       title: 'Connpass App',
     },

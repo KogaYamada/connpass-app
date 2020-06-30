@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+// ソーシャルアプリの連携
+
 const Settings = () => {
   return (
     <View>
