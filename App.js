@@ -11,20 +11,16 @@ import NotificationScreen from './src/screens/MyPage/NotificationScreen';
 import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import EventFormScreen from './src/screens/EventFormScreen';
-=======
-import EventFormSearch from './src/screens/EventFormScreen';
->>>>>>> サーチスクリーンの作成
-=======
-import EventFormScreen from './src/screens/EventFormScreen';
->>>>>>> ファイルの修正
+import EventCreateScreen from './src/screens/EventCreateScreen';
+
 
 const navigator = createStackNavigator(
   {
     Signup: SignupScreen,
     Signin: SigninScreen,
+    EventCreate: EventCreateScreen,
+    Search: EventFormScreen,
     MyPage: MyPageScreen,
     ProfileSettings: ProfileSettingsScreen,
     Settings: SettingsScreen,
@@ -32,15 +28,8 @@ const navigator = createStackNavigator(
     MessageList: MessageListScreen,
     MessageDetail: MessageDetailScreen,
     Event: EventScreen,
-<<<<<<< HEAD
-<<<<<<< HEAD
-    Search: EventFormScreen,
-=======
-    Search: EventFormSearch,
->>>>>>> サーチスクリーンの作成
-=======
-    Search: EventFormScreen,
->>>>>>> ファイルの修正
+    
+    
   },
   {
     initialRouteName: 'Search',
@@ -48,6 +37,7 @@ const navigator = createStackNavigator(
       title: 'Connpass App',
     },
   }
+  
 );
 
 export default createAppContainer(navigator);

@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, StyleSheet, Text, Image,} from 'react-native';
 
+
+// イベントのコンポーネント
 const EventComponent = () => {
     return(
         <View style={styles.frame}>
@@ -8,7 +10,7 @@ const EventComponent = () => {
                 <View style={styles.innerFrame}>
                     <View style={styles.image}>
                     <Image
-                    style={{width: 300, height: 160, borderRadius: 5}}
+                    style={{width: 298, height: 160, borderRadius: 5}}
                     source={{uri: "https:picsum.photos/200/300"}}
                     />
                 </View>
@@ -22,10 +24,11 @@ const EventComponent = () => {
                         <Text style={styles.rightText}>12:00 ~</Text>
                         <Text>あと2日</Text>
                     </View>
-                        <Text style={styles.group}>グループ名</Text>
-                        <Text style={styles.subText}>タイトルタイトルタイトルタイトル</Text>
-                        <Text style={styles.organizer}>開催者名</Text>
-                        <Text style={styles.organizerName}>開催場所</Text>
+                    <View style={{width: 180, height: 50}}>
+                        <Text allowFontScaling={false} style={styles.group}>グループ名</Text>
+                        <Text allowFontScaling={false} style={styles.subText}>タイトルタイトルタイトルタイトル</Text>
+                        <Text allowFontScaling={false} style={styles.organizer}>開催者名</Text>
+                    </View>
                     </View>
                 </View>
             </View>
@@ -37,15 +40,10 @@ const EventComponent = () => {
 const styles = StyleSheet.create({
     
     frame: {
-<<<<<<< HEAD:src/screens/EventComponent.jsx
-        height:300,
-        width:600,
-        borderRadius: 5,
-=======
-        height:310,
+        height:280,
         width:320,
         borderRadius: 10,
->>>>>>> サーチスクリーンの作成:components/EventComponent.jsx
+        
     },
     innerFrame: {
         borderColor: '#d1cfd6',
@@ -57,7 +55,7 @@ const styles = StyleSheet.create({
     },
     image: {
         height: 160,
-        width: 300,
+        width: 299,
         borderBottomColor: '#d1cfd6',
         borderBottomWidth: 1,
     },
@@ -71,35 +69,37 @@ const styles = StyleSheet.create({
         padding: 5
     },
     leftContainer: {
-        fontSize: 25,
+        fontSize: 20,
         textAlign: 'center', 
     },
     textWrap: {
         flexDirection: 'row',
-        justifyContent: "space-between",
+        // justifyContent: "space-between",
+        height: 100,
+        width: 300
         
     },
     rightText: {
-        fontSize: 20,
+        fontSize: 8,
         marginLeft: 15,
         
         
     },
     group: {
-        fontSize: 15,
+        fontSize: 8,
         marginLeft: 10
     },
     subText: {
-        fontSize: 15,
+        fontSize: 8,
         marginLeft: 10,
         
     },
     organizer: {
-        fontSize: 10,
+        fontSize: 8,
         marginLeft: 10,
     },
     organizerName: {
-        fontSize:10,
+        fontSize:8,
         marginLeft: 10,
     },
     textTopWrap: {

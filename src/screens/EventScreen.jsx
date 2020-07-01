@@ -1,16 +1,11 @@
 import React, {useState,useEffect} from 'react';
 import {FlatList,Text,View, StyleSheet, HorizontalScrollView} from 'react-native';
-import EventComponent from './EventComponent';
+import EventComponent from '../components/EventComponent';
 import { ScrollView } from 'react-native-gesture-handler';
 import useInput from '../hooks/useInput';
 
 
 const EventScreen = ({navigation}) => {
-    const [article, setArticle] = useState(<EventComponent />)
-    useEffect(() => {
-
-    },[]);
-
     
     
     return(
@@ -73,10 +68,8 @@ const styles = StyleSheet.create({
     mainText: {
         fontSize: 20,
         fontWeight: 'bold',
-        fontFamily: 'Arial',
         padding: 5,
         marginTop: 5
-
         
     },
     border__1: {
