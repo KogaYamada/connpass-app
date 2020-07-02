@@ -12,7 +12,7 @@ import { CheckBox, Button, Input } from 'react-native-elements';
 import SpacerTwenty from '../components/SpacerTwenty';
 import useInput from '../hooks/useInput';
 
-const SignupScreen = () => {
+const SignupScreen = ({navigation}) => {
   // hooks
   const [isConsent, setIsConsent] = useState(false);
   const username = useInput('');
@@ -96,6 +96,7 @@ const SignupScreen = () => {
             <Button
               title="新規登録する"
               buttonStyle={{ backgroundColor: '#f03c3c' }}
+              onPress={()=>navigation.navigate('Event')}
             />
           </View>
         </SpacerTwenty>
