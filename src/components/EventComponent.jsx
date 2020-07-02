@@ -6,7 +6,6 @@ import {View, StyleSheet, Text, Image,} from 'react-native';
 const EventComponent = () => {
     return(
         <View style={styles.frame}>
-            
                 <View style={styles.innerFrame}>
                     <View style={styles.image}>
                     <Image

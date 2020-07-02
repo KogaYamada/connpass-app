@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         
     },
     mainGroupText: {
-        fontSize: 15,
+        fontSize: hp('1%'),
         fontWeight: '500',
         letterSpacing: 2,
         textAlign: 'center',

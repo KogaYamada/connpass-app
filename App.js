@@ -35,7 +35,7 @@ const navigator = createStackNavigator(
     
   },
   {
-    initialRouteName: 'Reserve',
+    initialRouteName: 'EventCreate',
     defaultNavigationOptions: {
       title: 'Connpass App',
     },
