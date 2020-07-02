@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Tab, Tabs, TabHeading, Icon, Text } from 'native-base';
 import {View, StyleSheet,ScrollView } from 'react-native';
 import SearchBar from './SearchBar';
-import EventComponent from './EventComponent';
+import EventComponent from '../components/EventComponent';
 
 
 const EventFormScreen = () => {
@@ -46,7 +46,6 @@ const EventFormScreen = () => {
 const styles = StyleSheet.create({
   textTab: {
     fontSize: 13,
-    fontFamily: 'Arial',
     fontWeight: 'bold'
   },
   
