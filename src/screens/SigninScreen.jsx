@@ -11,7 +11,7 @@ import { Text, Input, Button } from 'react-native-elements';
 import SpacerTwenty from '../components/SpacerTwenty';
 import useInput from '../hooks/useInput';
 
-const SigninScreen = () => {
+const SigninScreen = ({ navigation }) => {
   const email = useInput('');
   const password = useInput('');
 
@@ -37,7 +37,7 @@ const SigninScreen = () => {
               inputStyle={styles.input}
               {...password}
             />
-            <Button title="ログイン" type="outline" />
+            <Button title="ログイン" type="outline" onPress={() => navigation.navigate('MyPage')} />
             <View
               style={{
                 display: 'flex',
