@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     },
     innerFrame: {
         borderColor: '#d1cfd6',
-        borderWidth: 1,
+        borderWidth: 2,
         height: 260,
         width: 300,
         borderRadius: 5,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         height: 160,
         width: 299,
         borderBottomColor: '#d1cfd6',
-        borderBottomWidth: 1,
+        borderBottomWidth: 2,
     },
     month: {
         backgroundColor: '#d1cfd6'

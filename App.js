@@ -28,11 +28,12 @@ const navigator = createStackNavigator(
     MessageList: MessageListScreen,
     MessageDetail: MessageDetailScreen,
     Event: EventScreen,
+    EventCreate: EventCreateScreen,
     
     
   },
   {
-    initialRouteName: 'Search',
+    initialRouteName: 'EventCreate',
     defaultNavigationOptions: {
       title: 'Connpass App',
     },

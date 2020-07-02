@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Container, Header, Tab, Tabs, TabHeading, Icon, Text,Button } from 'native-base';
-import {View, StyleSheet,ScrollView, } from 'react-native';
+import MaterialTabs from 'react-native-material-tabs';
+import {View, StyleSheet,ScrollView,SafeAreaView } from 'react-native';
 import SearchBar from './SearchBar';
 import EventComponent from '../components/EventComponent';
 
