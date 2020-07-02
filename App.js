@@ -90,12 +90,17 @@ const navigator = createSwitchNavigator({
           }),
         },
       },
-      BottomTabNavigatorConfig
+      BottomTabNavigatorConfig,
     ),
     MessageDetail: MessageDetailScreen,
     ProfileSettings: ProfileSettingsScreen,
     Settings: SettingsScreen,
     Notification: NotificationScreen,
+  },
+  {
+    defaultNavigationOptions: {
+      headerBackTitle: 'Back',
+    },
   }),
 });
 
