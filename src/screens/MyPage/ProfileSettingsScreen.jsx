@@ -5,7 +5,7 @@ import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
 import ProfileSetting from '../../components/MyPage/ProfileSettings.component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-const ProfileSettings = () => {
+const ProfileSettings = ({navigation}) => {
   return (
     <KeyboardAwareScrollView>
       <ScrollView>
@@ -22,7 +22,7 @@ const ProfileSettings = () => {
         </View>
         <ProfileSetting />
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.cancelButton}>
+          <TouchableOpacity style={styles.cancelButton} onPress={() => navigation.navigate('MyPage')}>
             <Text style={styles.cancelText}>キャンセル</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.saveButton}>
