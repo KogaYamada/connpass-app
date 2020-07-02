@@ -1,10 +1,18 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Input} from 'react-native';
+
 
 const ReservedFrame = () => {
     return(
-        <View>
-        
+        <View style={styles.textWrap}>
+            
+            
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+
+});
+
+export default ReservedFrame;

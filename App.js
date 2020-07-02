@@ -13,6 +13,7 @@ import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
 import EventFormScreen from './src/screens/EventFormScreen';
 import EventCreateScreen from './src/screens/EventCreateScreen';
+import ReservedFrame from './src/components/ReservedFrame';
 
 
 const navigator = createStackNavigator(
@@ -29,11 +30,12 @@ const navigator = createStackNavigator(
     MessageDetail: MessageDetailScreen,
     Event: EventScreen,
     EventCreate: EventCreateScreen,
+    Reserve: ReservedFrame
     
     
   },
   {
-    initialRouteName: 'EventCreate',
+    initialRouteName: 'Reserve',
     defaultNavigationOptions: {
       title: 'Connpass App',
     },
