@@ -42,7 +42,7 @@ const BottomTabNavigatorConfig = {
 };
 
 const navigator = createSwitchNavigator({
-  LoginFlow: createStackNavigator({
+  loginFlow: createStackNavigator({
     Signin: SigninScreen,
     Signup: SignupScreen,
   }),
