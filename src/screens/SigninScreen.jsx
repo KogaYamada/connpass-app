@@ -37,7 +37,7 @@ const SigninScreen = ({ navigation }) => {
               inputStyle={styles.input}
               {...password}
             />
-            <Button title="ログイン" type="outline" onPress={() => navigation.navigate('Event')} />
+            <Button title="ログイン" type="outline" onPress={() => navigation.navigate('MyPage')} />
             <View
               style={{
                 display: 'flex',

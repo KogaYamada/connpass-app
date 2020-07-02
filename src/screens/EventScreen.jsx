@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     },
     componentWrap: {
         flexDirection: 'column',
-        justifyContent: 'center',
+        // justifyContent: 'center',
         width:'100%'
     }
     

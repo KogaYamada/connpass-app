@@ -3,12 +3,10 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
   ScrollView,
   RefreshControl,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
 import { Avatar, ListItem, Icon } from 'react-native-elements';
 
 function wait(timeout) {
@@ -54,54 +52,82 @@ const MyPageScreen = ({ navigation }) => {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
     >
-      <View style={styles.avatarView}>
-        <Avatar
-          rounded
-          icon={{ name: 'user', type: 'font-awesome' }}
-          overlayContainerStyle={{ backgroundColor: 'pink' }}
-          size="xlarge"
-        />
-        <Text style={styles.avatarName}>User Name</Text>
-      </View>
-      <View>
-        {list.map((item, i) => (
-          <TouchableOpacity onPress={() => navigation.navigate(item.root)}>
-            <ListItem
-              key={i}
-              title={item.title}
-              leftIcon={() => {
-                return (
-                  <Icon
-                    name={item.icon}
-                    type={item.type}
-                    style={{ width: 50 }}
-                  />
-                );
-              }}
-              bottomDivider
-              chevron
-            />
+      <View style={styles.container}>
+        <View style={styles.avatarView}>
+          <Avatar
+            rounded
+            icon={{ name: 'user', type: 'font-awesome' }}
+            overlayContainerStyle={{ backgroundColor: 'pink' }}
+            size={110}
+          />
+          <Text style={styles.avatarName}>User Name</Text>
+        </View>
+        <View style={styles.listContainer}>
+          {list.map((item, i) => (
+            <TouchableOpacity onPress={() => navigation.navigate(item.root)}>
+              <ListItem
+                key={i}
+                title={item.title}
+                leftIcon={() => {
+                  return (
+                    <Icon
+                      name={item.icon}
+                      type={item.type}
+                      style={{ width: 50 }}
+                    />
+                  );
+                }}
+                bottomDivider
+                chevron
+              />
+            </TouchableOpacity>
+          ))}
+        </View>
+        {/* <View style={styles.logOutView}>
+          <TouchableOpacity style={styles.logOutTouch}>
+            <Text style={styles.logoutText}>ログアウト</Text>
           </TouchableOpacity>
-        ))}
-      </View>
-      <View style={styles.logOutView}>
-        <Button title="ログアウト" color="red" style={styles.logOut} />
+        </View> */}
       </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+  },
   avatarView: {
     alignItems: 'center',
-    padding: 40,
+    paddingTop: '10%',
+    paddingBottom: '30%',
+    // flex: 1,
   },
+  // listContainer: {
+  //   flex: 1,
+  // },
   avatarName: {
-    marginTop: 30,
+    marginTop: 15,
     fontSize: 25,
   },
   logOutView: {
     marginTop: 20,
+    alignItems: 'center',
+  },
+  logOutTouch: {
+    borderWidth: 2,
+    borderColor: '#ee4400',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    height: 40,
+    width: 150,
+    borderRadius: 5,
+  },
+  logoutText: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: '#ee4400',
   },
 });
 
