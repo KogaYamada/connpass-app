@@ -19,7 +19,7 @@ const MyPageScreen = ({ navigation }) => {
   // メニューのリスト
   const list = [
     {
-      title: 'プロフィール設定',
+      title: 'プロフィール編集',
       icon: 'user-cog',
       type: 'font-awesome-5',
       root: 'ProfileSettings',
@@ -64,7 +64,10 @@ const MyPageScreen = ({ navigation }) => {
         </View>
         <View style={styles.listContainer}>
           {list.map((item, i) => (
-            <TouchableOpacity onPress={() => navigation.navigate(item.root)}>
+            <TouchableOpacity
+              key={i}
+              onPress={() => navigation.navigate(item.root)}
+            >
               <ListItem
                 key={i}
                 title={item.title}
