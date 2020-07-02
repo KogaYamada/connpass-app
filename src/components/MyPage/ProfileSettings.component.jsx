@@ -23,7 +23,7 @@ const NameSetting = () => {
       <View style={{ flexDirection: 'row' }}>
         <Icon name="profile" type="antdesign" size={20} color="#c7c7cd" />
         <Input
-          inputStyle={{height: 100}}
+          inputStyle={{ height: 100 }}
           style={styles.userIntroduction}
           label="自己紹介"
           multiline={true}
@@ -44,7 +44,9 @@ const styles = StyleSheet.create({
   },
   userName: {},
   userUrl: {},
-  userIntroduction: {},
+  userIntroduction: {
+    textAlignVertical: 'top',
+  },
 });
 
 export default NameSetting;
