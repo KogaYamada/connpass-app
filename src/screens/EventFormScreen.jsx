@@ -44,36 +44,35 @@ const EventFormScreen = ({ navigation }) => {
       </SafeAreaView>
       <Container>
         <Tabs style={styles.textTab}>
-          <Tab
-            activeTabStyle={{ backgroundColor: 'red' }}
-            heading={
-              <TabHeading>
-                <Text style={styles.textTab}>フロントエンド</Text>
-              </TabHeading>
-            }>
-            <View style={styles.viewWrap}>
-              <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
-            </View>
+          <Tab activeTabStyle={{backgroundColor: 'red'}} heading={ <TabHeading><Text style={styles.textTab}>フロントエンド</Text></TabHeading>}>
+          <View style={styles.viewWrap}>
+          <ScrollView showsVerticalScrollIndicator={false} >
+          <EventComponent />
+          <EventComponent />
+          <EventComponent />
+          <EventComponent />
+          </ScrollView>
+          </View>
           </Tab>
-          <Tab
-            heading={
-              <TabHeading>
-                <Text style={styles.textTab}>バックエンド</Text>
-              </TabHeading>
-            }>
-            <View style={styles.viewWrap}>
-              <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
-            </View>
+          <Tab heading={ <TabHeading><Text style={styles.textTab}>バックエンド</Text></TabHeading>}>
+          <View style={styles.viewWrap}>
+          <ScrollView showsVerticalScrollIndicator={false} >
+          <EventComponent />
+          <EventComponent />
+          <EventComponent />
+          <EventComponent />
+          </ScrollView>
+          </View>
           </Tab>
-          <Tab
-            heading={
-              <TabHeading>
-                <Text style={styles.textTab}>インフラ</Text>
-              </TabHeading>
-            }>
-            <View style={styles.viewWrap}>
-              <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
-            </View>
+          <Tab heading={ <TabHeading><Text style={styles.textTab}>インフラ</Text></TabHeading>}>
+          <View style={styles.viewWrap}>
+          <ScrollView showsVerticalScrollIndicator={false} >
+          <EventComponent />
+          <EventComponent />
+          <EventComponent />
+          <EventComponent />
+          </ScrollView>
+          </View>
           </Tab>
         </Tabs>
         <View style={styles.buttonAllWrap}>
@@ -95,15 +94,19 @@ const EventFormScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   viewWrap: {
-    flex: 1,
-    width: wp('100%'),
-    alignItems: 'center',
+    width: '100%',
+    textAlign: 'center',
+    alignItems: 'flex-end',
+    marginRight: 30
+    
   },
   textTab: {
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
-    width: wp('100%'),
+    width: '100%',
+    
+    
   },
   registerButton: {
     width: wp('70%'),
@@ -120,15 +123,13 @@ const styles = StyleSheet.create({
     height: hp('12%'),
   },
   buttonText: {
-    width: wp('70%'),
-    height: hp('5%'),
+    width:'100%',
+    textAlign: 'center'
+  },
+  entireWrap: {
     textAlign: 'center',
-    marginTop: hp('2%'),
-    fontSize: hp('2%'),
-  },
-  buttonAllWrap: {
-    height: hp('9%'),
-  },
+  }
+  
 });
 
 export default EventFormScreen;
