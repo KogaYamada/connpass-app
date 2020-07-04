@@ -9,7 +9,7 @@ const EventScreen = ({navigation}) => {
     
     
     return(
-        <ScrollView>
+        <ScrollView style={styles.viewWrap}>
                 <Text style={styles.mainText}>参加イベント</Text>
                 <View style={styles.border__1}></View>
                 <ScrollView 
@@ -57,10 +57,7 @@ const EventScreen = ({navigation}) => {
                 <EventComponent />
                 <EventComponent />
                 </ScrollView>
-
         </ScrollView>
-
-        
     );
 };
 
@@ -69,7 +66,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         padding: 5,
-        marginTop: 5
+        marginTop: 15
         
     },
     border__1: {
@@ -91,6 +88,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 4,
         marginBottom: 10,
         width: '60%'
+    },
+    viewWrap: {
+        backgroundColor: 'white'
     }
     
 });

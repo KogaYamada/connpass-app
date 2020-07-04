@@ -16,7 +16,7 @@ const EventFormScreen = ({navigation}) => {
         <Tabs style={styles.textTab}>
           <Tab activeTabStyle={{backgroundColor: 'red'}} heading={ <TabHeading><Text style={styles.textTab}>フロントエンド</Text></TabHeading>}>
           <View style={styles.viewWrap}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView showsVerticalScrollIndicator={false} >
           <EventComponent />
           <EventComponent />
           <EventComponent />
@@ -26,7 +26,7 @@ const EventFormScreen = ({navigation}) => {
           </Tab>
           <Tab heading={ <TabHeading><Text style={styles.textTab}>バックエンド</Text></TabHeading>}>
           <View style={styles.viewWrap}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView showsVerticalScrollIndicator={false} >
           <EventComponent />
           <EventComponent />
           <EventComponent />
@@ -36,7 +36,7 @@ const EventFormScreen = ({navigation}) => {
           </Tab>
           <Tab heading={ <TabHeading><Text style={styles.textTab}>インフラ</Text></TabHeading>}>
           <View style={styles.viewWrap}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView showsVerticalScrollIndicator={false} >
           <EventComponent />
           <EventComponent />
           <EventComponent />
@@ -62,15 +62,18 @@ const EventFormScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   viewWrap: {
-    flex:1,
     width: '100%',
-    alignItems: 'center'
+    textAlign: 'center',
+    alignItems: 'flex-end',
+    marginRight: 30
+    
   },
   textTab: {
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
     width: '100%',
+    
     
   },
   registerButton:{
@@ -93,6 +96,9 @@ const styles = StyleSheet.create({
   buttonText: {
     width:'100%',
     textAlign: 'center'
+  },
+  entireWrap: {
+    textAlign: 'center',
   }
   
 });

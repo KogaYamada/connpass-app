@@ -1,15 +1,17 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image,} from 'react-native';
+import {View, StyleSheet, Text, Image,TouchableOpacity} from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 // イベントのコンポーネント
 const EventComponent = () => {
     return(
+        <TouchableOpacity>
         <View style={styles.frame}>
                 <View style={styles.innerFrame}>
                     <View style={styles.image}>
                     <Image
-                    style={{width: 298, height: 160, borderRadius: 5}}
+                    style={{width: '100%', height: '100%', borderRadius: 5}}
                     source={{uri: "https:picsum.photos/200/300"}}
                     />
                 </View>
@@ -18,12 +20,12 @@ const EventComponent = () => {
                 <View style={styles.wrapContainer}>
                     <Text style={styles.leftContainer}>{'３月\n9日'}</Text>
                 </View>
-                <View style={styles.rightContainer}>
+                    <View style={styles.rightContainer}>
                     <View style={styles.textTopWrap}>
-                        <Text style={styles.rightText}>12:00 ~</Text>
+                        <Text style={styles.rightText}>12:00 ~ 13:00</Text>
                         <Text>あと2日</Text>
                     </View>
-                    <View style={{width: 180, height: 50}}>
+                    <View style={styles.rightWrapText}>
                         <Text allowFontScaling={false} style={styles.group}>グループ名</Text>
                         <Text allowFontScaling={false} style={styles.subText}>タイトルタイトルタイトルタイトル</Text>
                         <Text allowFontScaling={false} style={styles.organizer}>開催者名</Text>
@@ -32,6 +34,7 @@ const EventComponent = () => {
                 </View>
             </View>
         </View>
+        </TouchableOpacity>
     
     );
 };
@@ -39,24 +42,25 @@ const EventComponent = () => {
 const styles = StyleSheet.create({
     
     frame: {
-        height:280,
-        width:320,
+        height: hp('34%'),
+        width: wp('85%'),
         borderRadius: 10,
         
     },
     innerFrame: {
         borderColor: '#d1cfd6',
         borderWidth: 2,
-        height: 260,
-        width: 300,
+        height: hp('30%'),
+        width: wp('72.5%'),
         borderRadius: 5,
         
     },
     image: {
-        height: 160,
-        width: 299,
+        height: hp('18%'),
+        width: wp('72%'),
         borderBottomColor: '#d1cfd6',
         borderBottomWidth: 2,
+        
     },
     month: {
         backgroundColor: '#d1cfd6'
@@ -65,51 +69,52 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderRightColor: '#d1cfd6',
         borderRightWidth: 2,
+        height: hp('12%'),
+        width: wp('18%'),
         padding: 5
     },
     leftContainer: {
-        fontSize: 20,
+        fontSize: hp('3%'),
         textAlign: 'center', 
     },
     textWrap: {
         flexDirection: 'row',
-        // justifyContent: "space-between",
-        height: 100,
-        width: 300
-        
     },
     rightText: {
-        fontSize: 8,
+        fontSize: hp('1.7%'),
         marginLeft: 15,
-        
-        
+        width: wp('25%')
     },
     group: {
-        fontSize: 8,
-        marginLeft: 10
+        fontSize: hp('1.5%'),
+        marginLeft: 10,
+        textAlign: 'left'
     },
     subText: {
-        fontSize: 8,
+        fontSize: hp('1.5%'),
         marginLeft: 10,
         
     },
     organizer: {
-        fontSize: 8,
+        fontSize: hp('1.5%'),
         marginLeft: 10,
+        textAlign: 'left'
     },
     organizerName: {
-        fontSize:8,
+        fontSize: hp('1.5%'),
         marginLeft: 10,
+        
     },
     textTopWrap: {
         flexDirection: 'row',
         justifyContent: "space-between",
         padding: 5
-    }
+    },
+    rightWrapText: {
+        width: ('100%'),
+        
+    },
 
-
-
-    
 
 });
 

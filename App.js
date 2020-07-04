@@ -17,6 +17,7 @@ import EventScreen from './src/screens/EventScreen';
 import EventFormScreen from './src/screens/EventFormScreen';
 import EventCreateScreen from './src/screens/EventCreateScreen';
 import ReservedFrame from './src/components/ReservedFrame';
+import EventContactTheOrganizer from './src/screens/EventContactTheOrganizer';
 
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -99,6 +100,9 @@ const navigator = createSwitchNavigator({
     ProfileSettings: ProfileSettingsScreen,
     Settings: SettingsScreen,
     Notification: NotificationScreen,
+    EventCreate: EventCreateScreen,
+    主催者へのお問い合わせ: EventContactTheOrganizer,
+    
   },
   {
     defaultNavigationOptions: {
