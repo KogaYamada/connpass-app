@@ -4,6 +4,7 @@ import MaterialTabs from 'react-native-material-tabs';
 import {View, StyleSheet,ScrollView,SafeAreaView } from 'react-native';
 import SearchBar from './SearchBar';
 import EventComponent from '../components/EventComponent';
+import { heightPercentageToDP } from 'react-native-responsive-screen';
 
 
 const EventFormScreen = ({navigation}) => {
