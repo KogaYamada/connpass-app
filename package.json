@@ -16,6 +16,8 @@
     "native-base": "^2.13.12",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
+    "react-firebase-hooks": "^2.2.0",
+    "react-hook-form": "^6.0.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-elements": "^2.0.2",
     "react-native-gesture-handler": "^1.6.1",
