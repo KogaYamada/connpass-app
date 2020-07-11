@@ -3,7 +3,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: 'AIzaSyDT2RoxJOR79JcQ9sOqiLKdCUAMmDKSsNA',
   authDomain: 'connpass-app-cbe80.firebaseapp.com',
   databaseURL: 'https://connpass-app-cbe80.firebaseio.com',
@@ -15,5 +15,9 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+export const strage = firebase.storage();
 
 export default firebase;

@@ -37,7 +37,11 @@ const SigninScreen = ({ navigation }) => {
               inputStyle={styles.input}
               {...password}
             />
-            <Button title="ログイン" type="outline" onPress={() => navigation.navigate('MyPage')} />
+            <Button
+              title="ログイン"
+              type="outline"
+              onPress={() => navigation.navigate('MyPage')}
+            />
             <View
               style={{
                 display: 'flex',
@@ -66,7 +70,12 @@ const SigninScreen = ({ navigation }) => {
             }}
           >
             <Text>こちら</Text>
-            <TouchableOpacity style={styles.linkNavigation}>
+            <TouchableOpacity
+              style={styles.linkNavigation}
+              onPress={() => {
+                navigation.navigate('Signup');
+              }}
+            >
               <Text>新規会員登録</Text>
             </TouchableOpacity>
             <Text>をご利用ください。</Text>

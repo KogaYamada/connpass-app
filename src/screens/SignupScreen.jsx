@@ -9,17 +9,114 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { CheckBox, Button, Input } from 'react-native-elements';
+import { auth } from '../api/firebase/firebase';
+
 import SpacerTwenty from '../components/SpacerTwenty';
 import useInput from '../hooks/useInput';
 
-const SignupScreen = ({navigation}) => {
+const SignupScreen = ({ navigation }) => {
   // hooks
   const [isConsent, setIsConsent] = useState(false);
-  const username = useInput('');
-  const email = useInput('');
-  const password = useInput('');
-  const passwordConfirm = useInput('');
+  const [loading, setLoading] = useState(false);
+  const username = {
+    ...useInput(''),
+    showErrorColor: () => (username.errorMessage ? 'red' : 'black'),
+  };
+  const email = {
+    ...useInput(''),
+    showErrorColor: () => (username.errorMessage ? 'red' : 'black'),
+  };
+  const password = {
+    ...useInput(''),
+    showErrorColor: () => (username.errorMessage ? 'red' : 'black'),
+  };
+  const confirmPassword = {
+    ...useInput(''),
+    showErrorColor: () => (username.errorMessage ? 'red' : 'black'),
+  };
+  /**
+   * パスワードの入力内容を検証する。パスワードが5文字以下もしくは、
+   * ２つの入力された値が一致しない場合にエラーメッセージを追加してfalseを返す。
+   *
+   * 検証結果が問題なければtrueを返す。
+   */
+  const passwordValidation = () => {
+    if (password.value.length < 6) {
+      password.addErrorMessage('6文字以上で入力してください');
+      return false;
+    } else if (password.value !== confirmPassword.value) {
+      confirmPassword.addErrorMessage('パスワードが一致しません');
+      return false;
+    } else {
+      return true;
+    }
+  };
+  /**
+   * ユーザーネームを検証する。文字数が31文字以上もしくは、
+   * 0文字以下でエラーメッセージを追加してfalseを返す。
+   *
+   * 検証結果が問題なければtrueを返す。
+   */
+  const usernameValidation = () => {
+    if (username.value.trim().length > 30) {
+      username.addErrorMessage('30文字以内で入力したください');
+      return false;
+    } else if (username.value.trim().length <= 0) {
+      username.addErrorMessage('文字を入力してください');
+      return false;
+    } else {
+      return true;
+    }
+  };
+  /**
+   * firebase authへアカウント作成リクエストを送ってエラーが返ってきた場合にエラーコードを元にエラーメッセージを作成する。
+   * @param {*} string createUserWithEmailAndPasswordメソッドのエラーコード
+   */
+  const emailValidation = (errorCode) => {
+    switch (errorCode) {
+      case 'auth/email-already-in-use':
+        email.addErrorMessage('このメールアドレスは既に登録されています');
+        return;
+      default:
+        alert('エラーが発生しました。入力内容を確認してください。');
+        return;
+    }
+  };
+  const signup = async () => {
+    setLoading(true);
+    try {
+      const user = await auth.createUserWithEmailAndPassword(
+        email.value,
+        password.value
+      );
+      console.log(user);
+      setLoading(false);
+    } catch (err) {
+      emailValidation(err.code);
+      await console.log(err);
+      setLoading(false);
+    }
+  };
 
+  /**
+   * 各検証結果に問題なく、利用規約にチェックが入っている場合にサインアップ関数を実行する。
+   */
+  const handleSubmit = () => {
+    if (!isConsent) {
+      alert('利用規約をご確認の上、同意してください');
+      return;
+    }
+    username.addErrorMessage('');
+    password.addErrorMessage('');
+    confirmPassword.addErrorMessage('');
+    email.addErrorMessage('');
+
+    let error = false;
+    if (!usernameValidation()) error = true;
+    if (!passwordValidation()) error = true;
+    if (!error) signup();
+    error = false;
+  };
   // render
   return (
     <SafeAreaView>
@@ -39,7 +136,14 @@ const SignupScreen = ({navigation}) => {
             最低限の情報を入力したください。
           </Text>
           <View style={styles.inputArea}>
-            <Text style={styles.label}>ユーザー名</Text>
+            <Text
+              style={{
+                ...styles.label,
+                color: username.errorMessage ? 'red' : 'black',
+              }}
+            >
+              ユーザー名
+            </Text>
             <Input
               inputStyle={styles.input}
               autoCapitalize="none"
@@ -54,7 +158,14 @@ const SignupScreen = ({navigation}) => {
             ※サイト内IDとしても利用します
           </Text>
           <View style={styles.inputArea}>
-            <Text style={styles.label}>メールアドレス</Text>
+            <Text
+              style={{
+                ...styles.label,
+                color: email.errorMessage ? 'red' : 'black',
+              }}
+            >
+              メールアドレス
+            </Text>
             <Input
               inputStyle={styles.input}
               autoCapitalize="none"
@@ -64,7 +175,14 @@ const SignupScreen = ({navigation}) => {
           </View>
           <Text style={styles.message}>半角英数字</Text>
           <View style={styles.inputArea}>
-            <Text style={styles.label}>パスワード</Text>
+            <Text
+              style={{
+                ...styles.label,
+                color: password.errorMessage ? 'red' : 'black',
+              }}
+            >
+              パスワード
+            </Text>
             <Input
               secureTextEntry
               inputStyle={styles.input}
@@ -75,13 +193,20 @@ const SignupScreen = ({navigation}) => {
           </View>
           <Text style={styles.message}>半角英数字で6文字以上</Text>
           <View style={styles.inputArea}>
-            <Text style={styles.label}>パスワード(確認)</Text>
+            <Text
+              style={{
+                ...styles.label,
+                color: confirmPassword.errorMessage ? 'red' : 'black',
+              }}
+            >
+              パスワード(確認)
+            </Text>
             <Input
               secureTextEntry
               inputStyle={styles.input}
               autoCapitalize="none"
               autoCorrect={false}
-              {...passwordConfirm}
+              {...confirmPassword}
             />
           </View>
           <View style={{ alignItems: 'center' }}>
@@ -94,9 +219,11 @@ const SignupScreen = ({navigation}) => {
               }}
             />
             <Button
+              disabled={loading}
+              loading={loading}
               title="新規登録する"
               buttonStyle={{ backgroundColor: '#f03c3c' }}
-              onPress={()=>navigation.navigate('Event')}
+              onPress={handleSubmit}
             />
           </View>
         </SpacerTwenty>
@@ -137,6 +264,9 @@ const styles = StyleSheet.create({
     borderBottomColor: '#707070',
     borderBottomWidth: 2,
     paddingHorizontal: 3,
+  },
+  errorMessage: {
+    color: 'red',
   },
 });
 
