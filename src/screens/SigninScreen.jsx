@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Image,
@@ -8,12 +8,54 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Text, Input, Button } from 'react-native-elements';
-import SpacerTwenty from '../components/SpacerTwenty';
+import { Context as AuthContext } from '../context/AuthContext';
 import useInput from '../hooks/useInput';
+import useInputError from '../hooks/useInputError';
+import SpacerTwenty from '../components/SpacerTwenty';
 
 const SigninScreen = ({ navigation }) => {
-  const email = useInput('');
-  const password = useInput('');
+  const { state, signin } = useContext(AuthContext);
+  const email = { ...useInput(''), ...useInputError() };
+  const password = { ...useInput(''), ...useInputError() };
+
+  /**
+   * メールアドレスを検証する。何も入力されていない場合エラーブロックに入り、エラーメッセージを追加する。
+   * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
+   */
+  const emailValidation = () => {
+    if (email.value.trim().length <= 0) {
+      email.addErrorMessage('メールアドレスを入力してください');
+      return true;
+    } else {
+      return false;
+    }
+  };
+  /**
+   * パスワードの入力内容を検証する。
+   * パスワードが入力されていない場合にエラーブロックに入り、エラーメッセージを追加する。
+   * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
+   */
+  const passwordValidation = () => {
+    if (!password.value.length) {
+      password.addErrorMessage('パスワードを入力してください');
+      return true;
+    } else {
+      return false;
+    }
+  };
+  /**
+   * 各検証結果に問題ない場合にサインイン関数を実行する。
+   */
+  const handleSubmit = () => {
+    email.addErrorMessage('');
+    password.addErrorMessage('');
+
+    let error = false;
+    error = passwordValidation();
+    error = emailValidation();
+    if (!error) signin({ email, password });
+    error = false;
+  };
 
   return (
     <SafeAreaView>
@@ -33,6 +75,7 @@ const SigninScreen = ({ navigation }) => {
               {...email}
             />
             <Input
+              secureTextEntry
               placeholder="パスワード"
               inputStyle={styles.input}
               {...password}
@@ -40,7 +83,10 @@ const SigninScreen = ({ navigation }) => {
             <Button
               title="ログイン"
               type="outline"
-              onPress={() => navigation.navigate('MyPage')}
+              onPress={() => {
+                handleSubmit();
+                // navigation.navigate('MyPage')
+              }}
             />
             <View
               style={{

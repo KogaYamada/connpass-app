@@ -10,38 +10,21 @@ import {
 import { SafeAreaView } from 'react-navigation';
 import { CheckBox, Button, Input } from 'react-native-elements';
 import { Context as AuthContext } from '../context/AuthContext';
-
-import SpacerTwenty from '../components/SpacerTwenty';
 import useInput from '../hooks/useInput';
+import useInputError from '../hooks/useInputError';
+import SpacerTwenty from '../components/SpacerTwenty';
 
 const SignupScreen = ({ navigation }) => {
   // hooks
   const [isConsent, setIsConsent] = useState(false);
   const { state, signup } = useContext(AuthContext);
-  const inputColors = () => {
-    const [errorMessage, setErrorMessage] = useState('');
-    return {
-      errorMessage,
-      addErrorMessage: (errorMessage) => {
-        setErrorMessage(errorMessage);
-      },
-      borderColor: function () {
-        return this.errorMessage ? 'red' : '#707070';
-      },
-      textColor: function () {
-        return this.errorMessage ? 'red' : 'black';
-      },
-    };
-  };
-  const username = { ...useInput(''), ...inputColors() };
-  const email = { ...useInput(''), ...inputColors() };
-  const password = { ...useInput(''), ...inputColors() };
-  const confirmPassword = { ...useInput(''), ...inputColors() };
-
+  const username = { ...useInput(''), ...useInputError() };
+  const email = { ...useInput(''), ...useInputError() };
+  const password = { ...useInput(''), ...useInputError() };
+  const confirmPassword = { ...useInput(''), ...useInputError() };
   /**
    * パスワードの入力内容を検証する。パスワードが5文字以下もしくは、
    * ２つの入力された値が一致しない場合にエラーブロックに入り、エラーメッセージを追加する。
-   *
    * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
    */
   const passwordValidation = () => {
@@ -58,9 +41,7 @@ const SignupScreen = ({ navigation }) => {
   /**
    * ユーザーネームを検証する。文字数が31文字以上もしくは、
    * 0文字以下でエラーブロックに入り、エラーメッセージを追加する。
-   *
    * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
-   *
    */
   const usernameValidation = () => {
     if (username.value.trim().length > 30) {
@@ -75,9 +56,7 @@ const SignupScreen = ({ navigation }) => {
   };
   /**
    * メールアドレスを検証する。何も入力されていない場合エラーブロックに入り、エラーメッセージを追加する。
-   *
    * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
-   *
    */
   const emailValidation = () => {
     if (email.value.trim().length <= 0) {
@@ -85,22 +64,6 @@ const SignupScreen = ({ navigation }) => {
       return true;
     } else {
       return false;
-    }
-  };
-  /**
-   * firebase authへアカウント作成リクエストを送ってエラーが返ってきた場合にエラーコードを元にエラーメッセージを作成する。
-   *
-   * 必要があればエラーコードの処理の種類を増やしていく。
-   * @param errorCode createUserWithEmailAndPasswordメソッドのエラーコード
-   */
-  const emailAuthValidation = (errorCode) => {
-    switch (errorCode) {
-      case 'auth/email-already-in-use':
-        email.addErrorMessage('このメールアドレスは既に登録されています');
-        return;
-      default:
-        alert('エラーが発生しました。入力内容を確認してください。');
-        return;
     }
   };
   /**
@@ -120,7 +83,7 @@ const SignupScreen = ({ navigation }) => {
     error = usernameValidation();
     error = passwordValidation();
     error = emailValidation();
-    if (!error) signup({ email, password }, emailAuthValidation);
+    if (!error) signup({ email, password, username });
     error = false;
   };
   // render
