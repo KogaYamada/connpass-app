@@ -9,71 +9,75 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { CheckBox, Button, Input } from 'react-native-elements';
-import { auth } from '../api/firebase/firebase';
 import { Context as AuthContext } from '../context/AuthContext';
 
 import SpacerTwenty from '../components/SpacerTwenty';
 import useInput from '../hooks/useInput';
 
 const SignupScreen = ({ navigation }) => {
+  const inputColors = {
+    borderColor: function () {
+      return this.errorMessage ? 'red' : '#707070';
+    },
+    textColor: function () {
+      return this.errorMessage ? 'red' : 'black';
+    },
+  };
   // hooks
   const { state, signup } = useContext(AuthContext);
   const [isConsent, setIsConsent] = useState(false);
-  const username = {
-    ...useInput(''),
-    showErrorColor: () => (username.errorMessage ? 'red' : 'black'),
-  };
-  const email = {
-    ...useInput(''),
-    showErrorColor: () => (username.errorMessage ? 'red' : 'black'),
-  };
-  const password = {
-    ...useInput(''),
-    showErrorColor: () => (username.errorMessage ? 'red' : 'black'),
-  };
-  const confirmPassword = {
-    ...useInput(''),
-    showErrorColor: () => (username.errorMessage ? 'red' : 'black'),
-  };
+  const username = { ...useInput(''), ...inputColors };
+  const email = { ...useInput(''), ...inputColors };
+  const password = { ...useInput(''), ...inputColors };
+  const confirmPassword = { ...useInput(''), ...inputColors };
   /**
    * パスワードの入力内容を検証する。パスワードが5文字以下もしくは、
-   * ２つの入力された値が一致しない場合にエラーメッセージを追加してfalseを返す。
-   *
-   * 検証結果が問題なければtrueを返す。
+   * ２つの入力された値が一致しない場合にエラーブロックに入り、エラーメッセージを追加する。
    */
   const passwordValidation = () => {
     if (password.value.length < 6) {
       password.addErrorMessage('6文字以上で入力してください');
-      return false;
+      return true;
     } else if (password.value !== confirmPassword.value) {
       confirmPassword.addErrorMessage('パスワードが一致しません');
-      return false;
-    } else {
       return true;
+    } else {
+      return false;
     }
   };
   /**
    * ユーザーネームを検証する。文字数が31文字以上もしくは、
-   * 0文字以下でエラーメッセージを追加してfalseを返す。
-   *
-   * 検証結果が問題なければtrueを返す。
+   * 0文字以下でエラーブロックに入り、エラーメッセージを追加する。
    */
   const usernameValidation = () => {
     if (username.value.trim().length > 30) {
       username.addErrorMessage('30文字以内で入力したください');
-      return false;
-    } else if (username.value.trim().length <= 0) {
-      username.addErrorMessage('文字を入力してください');
-      return false;
-    } else {
       return true;
+    } else if (username.value.trim().length <= 0) {
+      username.addErrorMessage('ユーザー名を入力してください');
+      return true;
+    } else {
+      return false;
+    }
+  };
+  /**
+   * メールアドレスを検証する。何も入力されていない場合エラーブロックに入り、エラーメッセージを追加する。
+   */
+  const emailValidation = () => {
+    if (email.value.trim().length <= 0) {
+      email.addErrorMessage('メールアドレスを入力してください');
+      return true;
+    } else {
+      return false;
     }
   };
   /**
    * firebase authへアカウント作成リクエストを送ってエラーが返ってきた場合にエラーコードを元にエラーメッセージを作成する。
+   *
+   * 必要があればエラーコードの処理の種類を増やしていく。
    * @param errorCode createUserWithEmailAndPasswordメソッドのエラーコード
    */
-  const emailValidation = (errorCode) => {
+  const emailAuthValidation = (errorCode) => {
     switch (errorCode) {
       case 'auth/email-already-in-use':
         email.addErrorMessage('このメールアドレスは既に登録されています');
@@ -97,9 +101,10 @@ const SignupScreen = ({ navigation }) => {
     email.addErrorMessage('');
 
     let error = false;
-    if (!usernameValidation()) error = true;
-    if (!passwordValidation()) error = true;
-    if (!error) signup({ email, password }, emailValidation);
+    if (usernameValidation()) error = true;
+    if (passwordValidation()) error = true;
+    if (emailValidation()) error = true;
+    if (!error) signup({ email, password }, emailAuthValidation);
     error = false;
   };
   // render
@@ -124,13 +129,16 @@ const SignupScreen = ({ navigation }) => {
             <Text
               style={{
                 ...styles.label,
-                color: username.errorMessage ? 'red' : 'black',
+                color: username.textColor(),
               }}
             >
               ユーザー名
             </Text>
             <Input
-              inputStyle={styles.input}
+              inputStyle={{
+                ...styles.input,
+                borderBottomColor: username.borderColor(),
+              }}
               autoCapitalize="none"
               autoCorrect={false}
               {...username}
@@ -146,13 +154,16 @@ const SignupScreen = ({ navigation }) => {
             <Text
               style={{
                 ...styles.label,
-                color: email.errorMessage ? 'red' : 'black',
+                color: email.textColor(),
               }}
             >
               メールアドレス
             </Text>
             <Input
-              inputStyle={styles.input}
+              inputStyle={{
+                ...styles.input,
+                borderBottomColor: email.borderColor(),
+              }}
               autoCapitalize="none"
               autoCorrect={false}
               {...email}
@@ -163,14 +174,17 @@ const SignupScreen = ({ navigation }) => {
             <Text
               style={{
                 ...styles.label,
-                color: password.errorMessage ? 'red' : 'black',
+                color: password.textColor(),
               }}
             >
               パスワード
             </Text>
             <Input
               secureTextEntry
-              inputStyle={styles.input}
+              inputStyle={{
+                ...styles.input,
+                borderBottomColor: password.borderColor(),
+              }}
               autoCapitalize="none"
               autoCorrect={false}
               {...password}
@@ -181,14 +195,17 @@ const SignupScreen = ({ navigation }) => {
             <Text
               style={{
                 ...styles.label,
-                color: confirmPassword.errorMessage ? 'red' : 'black',
+                color: confirmPassword.textColor(),
               }}
             >
               パスワード(確認)
             </Text>
             <Input
               secureTextEntry
-              inputStyle={styles.input}
+              inputStyle={{
+                ...styles.input,
+                borderBottomColor: confirmPassword.borderColor(),
+              }}
               autoCapitalize="none"
               autoCorrect={false}
               {...confirmPassword}
@@ -244,7 +261,6 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 2,
     borderTopStartRadius: 2,
     backgroundColor: '#DCDCDC',
-    borderBottomColor: '#707070',
     borderBottomWidth: 2,
     paddingHorizontal: 3,
   },
