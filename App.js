@@ -39,72 +39,78 @@ const navigator = createSwitchNavigator({
     Signin: SigninScreen,
     Signup: SignupScreen,
   }),
-  mainFlow: createStackNavigator({
-    Connpass: createBottomTabNavigator(
-      {
-        Home: {
-          screen: EventScreen,
-          navigationOptions: () => ({
-            title: 'マイイベント',
-            tabBarIcon: ({ tintColor }) => {
-              return (
-                <MaterialIcons
-                  name="event-available"
-                  color={tintColor}
-                  size={24}
-                />
-              );
-            },
-          }),
+  mainFlow: createStackNavigator(
+    {
+      Connpass: createBottomTabNavigator(
+        {
+          Home: {
+            screen: EventScreen,
+            navigationOptions: () => ({
+              title: 'マイイベント',
+              tabBarIcon: ({ tintColor }) => {
+                return (
+                  <MaterialIcons
+                    name="event-available"
+                    color={tintColor}
+                    size={24}
+                  />
+                );
+              },
+            }),
+          },
+          Search: {
+            screen: EventFormScreen,
+            navigationOptions: () => ({
+              title: 'イベント検索',
+              tabBarIcon: ({ tintColor }) => {
+                return (
+                  <MaterialCommunityIcons
+                    name="calendar-search"
+                    color={tintColor}
+                    size={24}
+                  />
+                );
+              },
+            }),
+          },
+          Massage: {
+            screen: MessageListScreen,
+            navigationOptions: () => ({
+              title: 'メッセージ',
+              tabBarIcon: ({ tintColor }) => {
+                return (
+                  <AntDesign name="message1" color={tintColor} size={24} />
+                );
+              },
+            }),
+          },
+          MyPage: {
+            screen: MyPageScreen,
+            navigationOptions: () => ({
+              title: 'マイページ',
+              tabBarIcon: ({ tintColor }) => {
+                return (
+                  <FontAwesome5 name="user-alt" color={tintColor} size={24} />
+                );
+              },
+            }),
+          },
         },
-        Search: {
-          screen: EventFormScreen,
-          navigationOptions: () => ({
-            title: 'イベント検索',
-            tabBarIcon: ({ tintColor }) => {
-              return (
-                <MaterialCommunityIcons
-                  name="calendar-search"
-                  color={tintColor}
-                  size={24}
-                />
-              );
-            },
-          }),
-        },
-        Massage: {
-          screen: MessageListScreen,
-          navigationOptions: () => ({
-            title: 'メッセージ',
-            tabBarIcon: ({ tintColor }) => {
-              return <AntDesign name="message1" color={tintColor} size={24} />;
-            },
-          }),
-        },
-        MyPage: {
-          screen: MyPageScreen,
-          navigationOptions: () => ({
-            title: 'マイページ',
-            tabBarIcon: ({ tintColor }) => {
-              return (
-                <FontAwesome5 name="user-alt" color={tintColor} size={24} />
-              );
-            },
-          }),
-        },
-      },
-      BottomTabNavigatorConfig,
-    ),
-    MessageDetail: MessageDetailScreen,
-    ProfileSettings: ProfileSettingsScreen,
-    Settings: SettingsScreen,
-    Notification: NotificationScreen,
-  },
-  {
-    defaultNavigationOptions: {
-      headerBackTitle: 'Back',
+        BottomTabNavigatorConfig
+      ),
+      MessageDetail: MessageDetailScreen,
+      ProfileSettings: ProfileSettingsScreen,
+      Settings: SettingsScreen,
+      Notification: NotificationScreen,
     },
-  }),
+    {
+      defaultNavigationOptions: {
+        headerBackTitle: 'Back',
+      },
+    }
+  ),
 });
 
-export default createAppContainer(navigator);
+const App = createAppContainer(navigator);
+
+export default () => <App />;
