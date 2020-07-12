@@ -16,6 +16,8 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+export const createUserProfileDocument = () => {};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 export const strage = firebase.storage();

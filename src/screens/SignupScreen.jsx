@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Text,
@@ -10,14 +10,15 @@ import {
 import { SafeAreaView } from 'react-navigation';
 import { CheckBox, Button, Input } from 'react-native-elements';
 import { auth } from '../api/firebase/firebase';
+import { Context as AuthContext } from '../context/AuthContext';
 
 import SpacerTwenty from '../components/SpacerTwenty';
 import useInput from '../hooks/useInput';
 
 const SignupScreen = ({ navigation }) => {
   // hooks
+  const { state, signup } = useContext(AuthContext);
   const [isConsent, setIsConsent] = useState(false);
-  const [loading, setLoading] = useState(false);
   const username = {
     ...useInput(''),
     showErrorColor: () => (username.errorMessage ? 'red' : 'black'),
@@ -70,7 +71,7 @@ const SignupScreen = ({ navigation }) => {
   };
   /**
    * firebase authへアカウント作成リクエストを送ってエラーが返ってきた場合にエラーコードを元にエラーメッセージを作成する。
-   * @param {*} string createUserWithEmailAndPasswordメソッドのエラーコード
+   * @param errorCode createUserWithEmailAndPasswordメソッドのエラーコード
    */
   const emailValidation = (errorCode) => {
     switch (errorCode) {
@@ -82,22 +83,6 @@ const SignupScreen = ({ navigation }) => {
         return;
     }
   };
-  const signup = async () => {
-    setLoading(true);
-    try {
-      const user = await auth.createUserWithEmailAndPassword(
-        email.value,
-        password.value
-      );
-      console.log(user);
-      setLoading(false);
-    } catch (err) {
-      emailValidation(err.code);
-      await console.log(err);
-      setLoading(false);
-    }
-  };
-
   /**
    * 各検証結果に問題なく、利用規約にチェックが入っている場合にサインアップ関数を実行する。
    */
@@ -114,7 +99,7 @@ const SignupScreen = ({ navigation }) => {
     let error = false;
     if (!usernameValidation()) error = true;
     if (!passwordValidation()) error = true;
-    if (!error) signup();
+    if (!error) signup({ email, password }, emailValidation);
     error = false;
   };
   // render
@@ -219,8 +204,6 @@ const SignupScreen = ({ navigation }) => {
               }}
             />
             <Button
-              disabled={loading}
-              loading={loading}
               title="新規登録する"
               buttonStyle={{ backgroundColor: '#f03c3c' }}
               onPress={handleSubmit}
