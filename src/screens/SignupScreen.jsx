@@ -33,6 +33,8 @@ const SignupScreen = ({ navigation }) => {
   /**
    * パスワードの入力内容を検証する。パスワードが5文字以下もしくは、
    * ２つの入力された値が一致しない場合にエラーブロックに入り、エラーメッセージを追加する。
+   *
+   * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
    */
   const passwordValidation = () => {
     if (password.value.length < 6) {
@@ -48,6 +50,9 @@ const SignupScreen = ({ navigation }) => {
   /**
    * ユーザーネームを検証する。文字数が31文字以上もしくは、
    * 0文字以下でエラーブロックに入り、エラーメッセージを追加する。
+   *
+   * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
+   *
    */
   const usernameValidation = () => {
     if (username.value.trim().length > 30) {
@@ -62,6 +67,9 @@ const SignupScreen = ({ navigation }) => {
   };
   /**
    * メールアドレスを検証する。何も入力されていない場合エラーブロックに入り、エラーメッセージを追加する。
+   *
+   * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
+   *
    */
   const emailValidation = () => {
     if (email.value.trim().length <= 0) {
@@ -101,9 +109,9 @@ const SignupScreen = ({ navigation }) => {
     email.addErrorMessage('');
 
     let error = false;
-    if (usernameValidation()) error = true;
-    if (passwordValidation()) error = true;
-    if (emailValidation()) error = true;
+    error = usernameValidation();
+    error = passwordValidation();
+    error = emailValidation();
     if (!error) signup({ email, password }, emailAuthValidation);
     error = false;
   };
