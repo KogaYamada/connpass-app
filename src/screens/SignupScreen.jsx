@@ -15,21 +15,29 @@ import SpacerTwenty from '../components/SpacerTwenty';
 import useInput from '../hooks/useInput';
 
 const SignupScreen = ({ navigation }) => {
-  const inputColors = {
-    borderColor: function () {
-      return this.errorMessage ? 'red' : '#707070';
-    },
-    textColor: function () {
-      return this.errorMessage ? 'red' : 'black';
-    },
-  };
   // hooks
-  const { state, signup } = useContext(AuthContext);
   const [isConsent, setIsConsent] = useState(false);
-  const username = { ...useInput(''), ...inputColors };
-  const email = { ...useInput(''), ...inputColors };
-  const password = { ...useInput(''), ...inputColors };
-  const confirmPassword = { ...useInput(''), ...inputColors };
+  const { state, signup } = useContext(AuthContext);
+  const inputColors = () => {
+    const [errorMessage, setErrorMessage] = useState('');
+    return {
+      errorMessage,
+      addErrorMessage: (errorMessage) => {
+        setErrorMessage(errorMessage);
+      },
+      borderColor: function () {
+        return this.errorMessage ? 'red' : '#707070';
+      },
+      textColor: function () {
+        return this.errorMessage ? 'red' : 'black';
+      },
+    };
+  };
+  const username = { ...useInput(''), ...inputColors() };
+  const email = { ...useInput(''), ...inputColors() };
+  const password = { ...useInput(''), ...inputColors() };
+  const confirmPassword = { ...useInput(''), ...inputColors() };
+
   /**
    * パスワードの入力内容を検証する。パスワードが5文字以下もしくは、
    * ２つの入力された値が一致しない場合にエラーブロックに入り、エラーメッセージを追加する。
