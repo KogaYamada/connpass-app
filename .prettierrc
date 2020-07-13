@@ -1,3 +1,9 @@
 {
-  "singleQuote": true
+  "singleQuote": true,
+  "semi": true,
+  "printWidth": 80,
+  "jsxBracketSameLine": true,
+  "jsxSingleQuote": false,
+  "tabWidth": 2,
+  "quoteProps": "as-needed"
 }
