@@ -28,12 +28,7 @@ const EventFormScreen = ({ navigation }) => {
               </TabHeading>
             }>
             <View style={styles.viewWrap}>
-              <ScrollView showsVerticalScrollIndicator={false}>
-                <EventComponent />
-                <EventComponent />
-                <EventComponent />
-                <EventComponent />
-              </ScrollView>
+              <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
             </View>
           </Tab>
           <Tab
@@ -43,12 +38,7 @@ const EventFormScreen = ({ navigation }) => {
               </TabHeading>
             }>
             <View style={styles.viewWrap}>
-              <ScrollView showsVerticalScrollIndicator={false}>
-                <EventComponent />
-                <EventComponent />
-                <EventComponent />
-                <EventComponent />
-              </ScrollView>
+              <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
             </View>
           </Tab>
           <Tab
@@ -58,12 +48,7 @@ const EventFormScreen = ({ navigation }) => {
               </TabHeading>
             }>
             <View style={styles.viewWrap}>
-              <ScrollView showsVerticalScrollIndicator={false}>
-                <EventComponent />
-                <EventComponent />
-                <EventComponent />
-                <EventComponent />
-              </ScrollView>
+              <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
             </View>
           </Tab>
         </Tabs>

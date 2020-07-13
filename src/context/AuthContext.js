@@ -1,6 +1,6 @@
 import createDataContxt from './createDataContext';
 import { auth, createUserProfileDocument } from '../api/firebase/firebase';
-import { authValidation } from '../utils/firebaseErrors';
+import { authValidation } from '../utils/firebase.errors';
 
 // types
 const SIGN_UP_AND_SIGN_IN = 'SIGN_UP_AND_SIGN_IN';
@@ -12,7 +12,7 @@ const authReducer = (state, action) => {
     case SIGN_UP_AND_SIGN_IN:
       return { ...state, currentUser: action.payload };
     case SIGN_OUT:
-      return { ...state, currentUser: action.payload };
+      return { ...state, currentUser: null };
     default:
       return state;
   }
@@ -78,7 +78,7 @@ const signin = (dispatch) => async ({ email, password }) => {
 const signout = (dispatch) => () => {
   auth.signOut();
   /*TODO: navigate to signin */
-  dispatch({ type: SIGN_OUT, payload: null });
+  dispatch({ type: SIGN_OUT });
 };
 
 export const { Provider, Context } = createDataContxt(
