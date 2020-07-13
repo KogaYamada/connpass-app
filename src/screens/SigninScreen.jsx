@@ -151,6 +151,14 @@ const SigninScreen = ({ navigation }) => {
               type="outline"
             />
           </View>
+
+          {/* TODO Delete this */}
+          <Button
+            onPress={() => {
+              navigation.navigate('mainFlow');
+            }}
+            title="TEST NAV"
+          />
         </SpacerTwenty>
       </ScrollView>
     </SafeAreaView>
