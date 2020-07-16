@@ -15,6 +15,7 @@ import {
   addDummyJoinedEvent,
   addDummyHostEvent,
   addDummystandbyEvent,
+  addDummyEvent,
 } from '../utils/firebase.data';
 import { Button } from 'react-native';
 
@@ -54,15 +55,15 @@ const EventScreen = ({ navigation }) => {
         querySnapshot.forEach((doc) => {
           standbyEventArray = [...standbyEventArray, doc.data()];
         });
-        console.log(standbyEventArray);
         setStandbyEvent(standbyEventArray);
       });
   }, []);
   return (
     <ScrollView>
-      {/* <Button onPress={addDummyJoinedEvent} title="add dummy join data" />
-      <Button onPress={addDummyHostEvent} title="add dummy host data" />
-      <Button onPress={addDummystandbyEvent} title="add dummy standby data" /> */}
+      {/* <Button onPress={addDummyJoinedEvent} title="add dummy join data" /> */}
+      {/* <Button onPress={addDummyHostEvent} title="add dummy host data" /> */}
+      {/* <Button onPress={addDummystandbyEvent} title="add dummy standby data" /> */}
+      {/* <Button onPress={addDummyEvent} title="add dummy event data" /> */}
       <Text style={styles.mainText}>参加イベント</Text>
       <View style={styles.border__1}></View>
       <ScrollView horizontal showsHorizontalScrollIndicator={true}>
