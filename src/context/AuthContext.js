@@ -18,16 +18,42 @@ const authReducer = (state, action) => {
   }
 };
 
+const tryLocalSignin = (dispatch) => async () =>
+  auth.onAuthStateChanged(async (user) => {
+    if (user) {
+      const userRef = await createUserProfileDocument(user);
+      userRef.onSnapshot((snapShot) => {
+        dispatch({
+          type: SIGN_UP_AND_SIGN_IN,
+          payload: { id: snapShot.id, ...snapShot.data() },
+        });
+        /* TODO: navigation to home screen */
+      });
+    } else {
+      dispatch({ type: SIGN_OUT });
+      /* TODO: navigation to signin screen */
+    }
+  });
+
 const signup = (dispatch) => async ({ email, password, username }) => {
   try {
     const { user } = await auth.createUserWithEmailAndPassword(
       email.value,
       password.value
     );
+
     user.updateProfile({ displayName: username.value });
-    /*TODO: add user data for firestore */
-    /*TODO: navigate to tutorial */
-    dispatch({ type: SIGN_UP_AND_SIGN_IN, payload: user });
+
+    const userRef = await createUserProfileDocument(user, {
+      displayName: username.value,
+    });
+    userRef.onSnapshot((snapShot) => {
+      dispatch({
+        type: SIGN_UP_AND_SIGN_IN,
+        payload: { id: snapShot.id, ...snapShot.data() },
+      });
+      /*TODO: navigate to tutorial */
+    });
   } catch (error) {
     const { type, message } = authValidation(error.code);
     switch (type) {
@@ -53,8 +79,16 @@ const signin = (dispatch) => async ({ email, password }) => {
       email.value,
       password.value
     );
-    /*TODO: add user data for firestore */
-    /*TODO: navigate to home */
+    const userRef = await createUserProfileDocument(user, {
+      displayName: username.value,
+    });
+    userRef.onSnapshot((snapShot) => {
+      dispatch({
+        type: SIGN_UP_AND_SIGN_IN,
+        payload: { id: snapShot.id, ...snapShot.data() },
+      });
+      /*TODO: navigate to home */
+    });
     dispatch({ type: SIGN_UP_AND_SIGN_IN, payload: user });
   } catch (error) {
     const { type, message } = authValidation(error.code);
@@ -87,6 +121,7 @@ export const { Provider, Context } = createDataContxt(
     signin,
     signup,
     signout,
+    tryLocalSignin,
   },
   { currentUser: null }
 );
