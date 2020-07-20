@@ -1,16 +1,16 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+// import React from 'react';
+// import { View, Text, StyleSheet } from 'react-native';
 
-// ソーシャルアプリの連携
+// // ソーシャルアプリの連携
 
-const Settings = () => {
-  return (
-    <View>
-      <Text>Settings</Text>
-    </View>
-  );
-};
+// const Settings = () => {
+//   return (
+//     <View>
+//       <Text>Settings</Text>
+//     </View>
+//   );
+// };
 
-const styles = StyleSheet.create({});
+// const styles = StyleSheet.create({});
 
-export default Settings;
+// export default Settings;

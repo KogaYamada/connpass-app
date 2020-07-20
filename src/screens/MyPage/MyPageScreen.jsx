@@ -7,7 +7,12 @@ import {
   RefreshControl,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Avatar, ListItem, Icon } from 'react-native-elements';
+import { Avatar } from 'react-native-elements';
+import { Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 function wait(timeout) {
   return new Promise((resolve) => {
@@ -15,29 +20,7 @@ function wait(timeout) {
   });
 }
 
-const MyPageScreen = ({ navigation }) => {
-  // メニューのリスト
-  const list = [
-    {
-      title: 'プロフィール編集',
-      icon: 'user-cog',
-      type: 'font-awesome-5',
-      root: 'ProfileSettings',
-    },
-    {
-      title: '通知設定',
-      icon: 'md-notifications',
-      type: 'ionicon',
-      root: 'Notification',
-    },
-    {
-      title: 'その他の設定',
-      icon: 'md-settings',
-      type: 'ionicon',
-      root: 'Settings',
-    },
-  ];
-
+const MyPageScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
@@ -48,89 +31,121 @@ const MyPageScreen = ({ navigation }) => {
 
   return (
     <ScrollView
+      // style={styles.myPage}
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }
-    >
-      <View style={styles.container}>
-        <View style={styles.avatarView}>
-          <Avatar
-            rounded
-            icon={{ name: 'user', type: 'font-awesome' }}
-            overlayContainerStyle={{ backgroundColor: 'pink' }}
-            size={110}
-          />
-          <Text style={styles.avatarName}>User Name</Text>
-        </View>
-        <View style={styles.listContainer}>
-          {list.map((item, i) => (
-            <TouchableOpacity
-              key={i}
-              onPress={() => navigation.navigate(item.root)}
-            >
-              <ListItem
-                key={i}
-                title={item.title}
-                leftIcon={() => {
-                  return (
-                    <Icon
-                      name={item.icon}
-                      type={item.type}
-                      style={{ width: 50 }}
-                    />
-                  );
-                }}
-                bottomDivider
-                chevron
-              />
-            </TouchableOpacity>
-          ))}
-        </View>
-        {/* <View style={styles.logOutView}>
-          <TouchableOpacity style={styles.logOutTouch}>
-            <Text style={styles.logoutText}>ログアウト</Text>
+      }>
+      <View style={styles.myPageTop}>
+        <View style={styles.settingIconView}>
+          <TouchableOpacity style={styles.settingIconTouch}>
+            <Ionicons name="md-settings" size={30} color="black" />
           </TouchableOpacity>
-        </View> */}
+        </View>
+        <View style={styles.container}>
+          <View style={styles.avatarView}>
+            {/* ↓文字数制限必要↓ */}
+            <Text style={styles.avatarName}>User Name</Text>
+            <Avatar
+              rounded
+              icon={{ name: 'user', type: 'font-awesome' }}
+              overlayContainerStyle={{ backgroundColor: 'pink' }}
+              size={90}
+            />
+          </View>
+          <View style={styles.avatarUrlView}>
+            <View style={styles.linkView}>
+              <Entypo name="link" size={17} color="black" />
+              <Text style={styles.avatarUrl}>https://example.com</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View style={styles.pencil}>
+        <TouchableOpacity>
+          <View style={styles.pencilView}>
+            <FontAwesome name="pencil" size={30} color="black" />
+          </View>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.myPageBottom}>
+        <View style={styles.userAbout}>
+          <Text style={styles.aboutTitle}>自己紹介</Text>
+          <Text style={styles.about}>
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </Text>
+        </View>
       </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  myPageTop: {
+    height: hp('30%'),
+    backgroundColor: 'skyblue',
+  },
+  settingIconView: {
+    padding: 10,
+    marginLeft: '86%',
+  },
   container: {
     flexDirection: 'column',
   },
   avatarView: {
     alignItems: 'center',
-    paddingTop: '10%',
-    paddingBottom: '30%',
-    // flex: 1,
-  },
-  // listContainer: {
-  //   flex: 1,
-  // },
-  avatarName: {
-    marginTop: 15,
-    fontSize: 25,
-  },
-  logOutView: {
-    marginTop: 20,
-    alignItems: 'center',
-  },
-  logOutTouch: {
-    borderWidth: 2,
-    borderColor: '#ee4400',
-    alignItems: 'center',
+    marginBottom: '3%',
+    paddingHorizontal: '10%',
     flexDirection: 'row',
-    justifyContent: 'center',
-    height: 40,
-    width: 150,
-    borderRadius: 5,
+    justifyContent: 'space-between',
   },
-  logoutText: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    color: '#ee4400',
+  avatarName: {
+    width: wp('50%'),
+    fontSize: 25,
+    paddingRight: '5%',
+  },
+  avatarUrlView: {
+    paddingHorizontal: wp('10%'),
+  },
+  linkView: {
+    flexDirection: 'row',
+  },
+  avatarUrl: {
+    fontSize: 15,
+    marginLeft: 5,
+  },
+  pencil: {
+    width: 45,
+    height: 45,
+    top: '-5%',
+    left: '72%',
+  },
+  pencilView: {
+    width: 45,
+    height: 45,
+    borderWidth: 1,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ddd'
+  },
+  myPageBottom: {
+    // backgroundColor: 'pink',
+    // height: hp('51.4%'),
+    // height: 'auto',
+  },
+  userAbout: {
+    paddingHorizontal: '10%',
+  },
+  aboutTitle: {
+    fontSize: 20,
+    marginBottom: 10,
+  },
+  about: {
+    fontSize: 15,
+    lineHeight: 20,
   },
 });
 
