@@ -21,6 +21,8 @@ import EventFormScreen from './src/screens/EventFormScreen';
 import EventCreateScreen from './src/screens/EventCreateScreen';
 import ReservedFrame from './src/components/ReservedFrame';
 
+import { setNavigator } from './src/navigationRef';
+
 //contexts
 import { Provider as AuthProvider } from './src/context/AuthContext';
 
@@ -122,6 +124,10 @@ const App = createAppContainer(navigator);
 
 export default () => (
   <AuthProvider>
-    <App />
+    <App
+      ref={(navigator) => {
+        setNavigator(navigator);
+      }}
+    />
   </AuthProvider>
 );

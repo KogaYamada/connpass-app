@@ -1,6 +1,7 @@
 import createDataContxt from './createDataContext';
 import { auth, createUserProfileDocument } from '../api/firebase/firebase';
 import { authValidation } from '../utils/firebase.errors';
+import { navigate } from '../navigationRef';
 
 // types
 const SIGN_UP_AND_SIGN_IN = 'SIGN_UP_AND_SIGN_IN';
@@ -28,10 +29,12 @@ const tryLocalSignin = (dispatch) => async () =>
           payload: { id: snapShot.id, ...snapShot.data() },
         });
         /* TODO: navigation to home screen */
+        navigate('Home');
       });
     } else {
       dispatch({ type: SIGN_OUT });
       /* TODO: navigation to signin screen */
+      navigate('signin');
     }
   });
 
@@ -79,15 +82,14 @@ const signin = (dispatch) => async ({ email, password }) => {
       email.value,
       password.value
     );
-    const userRef = await createUserProfileDocument(user, {
-      displayName: username.value,
-    });
+    const userRef = await createUserProfileDocument(user);
     userRef.onSnapshot((snapShot) => {
       dispatch({
         type: SIGN_UP_AND_SIGN_IN,
         payload: { id: snapShot.id, ...snapShot.data() },
       });
       /*TODO: navigate to home */
+      navigate('Home');
     });
     dispatch({ type: SIGN_UP_AND_SIGN_IN, payload: user });
   } catch (error) {
