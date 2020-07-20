@@ -31,8 +31,8 @@ const tryLocalSignin = (dispatch) => async () =>
         navigate('Home');
       });
     } else {
+      navigate('Signin');
       dispatch({ type: SIGN_OUT });
-      navigate('signin');
     }
   });
 
