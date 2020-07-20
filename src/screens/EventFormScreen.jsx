@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect} from 'react';
 import {
   Container,
   Header,
@@ -8,16 +8,40 @@ import {
   Icon,
   Text,
   Button,
+  
 } from 'native-base';
 import MaterialTabs from 'react-native-material-tabs';
 import { View, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import EventComponent from '../components/EventComponent';
+import { firestore } from '../api/firebase/firebase';
 
 const EventFormScreen = ({ navigation }) => {
+  const [term, setTerm] = useState('');
+
+  useEffect(() => {
+    firestore
+      .collection('version/1/users/MJpyUalJPCO2zIJ6J6fd3mOzwTo2/joinEvent')
+      .get()
+      .then((querySnapshot) => {
+        let joinEventsArray = [];
+        querySnapshot.forEach((doc) => {
+          joinEventsArray = [...joinEventsArray, doc.data()];
+        });
+        setTerm(joinEventsArray);
+      });
+  },[])
+  console.log(setTerm)
+  
   return (
     <>
-      <SearchBar />
+    <SafeAreaView>
+      <SearchBar 
+      term={term}
+      onTermChange={setTerm}
+      onTeamSubmit={() => joinEventsArray(term)}
+      />
+    </SafeAreaView>
       <Container>
         <Tabs style={styles.textTab}>
           <Tab
