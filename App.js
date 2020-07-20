@@ -122,6 +122,7 @@ const App = createAppContainer(navigator);
 
 export default () => (
   <AuthProvider>
-    <App />
+    {/* <App /> */}
+    <EventFormScreen />
   </AuthProvider>
 );
