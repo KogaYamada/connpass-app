@@ -20,6 +20,7 @@ import EventScreen from './src/screens/EventScreen';
 import EventFormScreen from './src/screens/EventFormScreen';
 import EventCreateScreen from './src/screens/EventCreateScreen';
 import ReservedFrame from './src/components/ReservedFrame';
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 
 import { setNavigator } from './src/navigationRef';
 
@@ -44,6 +45,7 @@ const BottomTabNavigatorConfig = {
 };
 
 const navigator = createSwitchNavigator({
+  ResolveAuth: ResolveAuthScreen,
   LoginFlow: createStackNavigator({
     Signin: SigninScreen,
     Signup: SignupScreen,
