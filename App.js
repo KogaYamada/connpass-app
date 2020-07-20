@@ -11,15 +11,15 @@ import {
 import SignupScreen from './src/screens/SignupScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import MyPageScreen from './src/screens/MyPage/MyPageScreen';
-import ProfileSettingsScreen from './src/screens/MyPage/ProfileSettingsScreen';
-import SettingsScreen from './src/screens/MyPage/SettingsScreen';
-import NotificationScreen from './src/screens/MyPage/NotificationScreen';
 import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
 import EventFormScreen from './src/screens/EventFormScreen';
 import EventCreateScreen from './src/screens/EventCreateScreen';
 import ReservedFrame from './src/components/ReservedFrame';
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+
+import { setNavigator } from './src/navigationRef';
 
 //contexts
 import { Provider as AuthProvider } from './src/context/AuthContext';
@@ -29,6 +29,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+
+// なんかFirebaseのエラーが出るので調べたやつインストールした //
+import {decode, encode} from 'base-64'
+if (!global.btoa) {  global.btoa = encode }
+if (!global.atob) { global.atob = decode }
+///////////////////////////////////////////////////////////
 
 const BottomTabNavigatorConfig = {
   tabBarOptions: {
@@ -42,6 +48,7 @@ const BottomTabNavigatorConfig = {
 };
 
 const navigator = createSwitchNavigator({
+  ResolveAuth: ResolveAuthScreen,
   LoginFlow: createStackNavigator({
     Signin: SigninScreen,
     Signup: SignupScreen,
@@ -106,9 +113,6 @@ const navigator = createSwitchNavigator({
         BottomTabNavigatorConfig
       ),
       MessageDetail: MessageDetailScreen,
-      ProfileSettings: ProfileSettingsScreen,
-      Settings: SettingsScreen,
-      Notification: NotificationScreen,
     },
     {
       defaultNavigationOptions: {
@@ -122,7 +126,10 @@ const App = createAppContainer(navigator);
 
 export default () => (
   <AuthProvider>
-    {/* <App /> */}
-    <EventFormScreen />
+    <App
+      ref={(navigator) => {
+        setNavigator(navigator);
+      }}
+    />
   </AuthProvider>
 );

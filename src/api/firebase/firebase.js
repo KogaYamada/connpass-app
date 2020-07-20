@@ -16,7 +16,31 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-export const createUserProfileDocument = () => {};
+export const createUserProfileDocument = async (userAuth, addtionaldata) => {
+  if (!userAuth) return;
+
+  const userRef = firestore.doc(`version/1/users/${userAuth.uid}`);
+
+  const snapshot = userRef.get();
+
+  if (!snapshot.exists) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...addtionaldata,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  return userRef;
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();

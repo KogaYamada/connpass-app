@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   View,
   Image,
@@ -12,12 +12,18 @@ import { Context as AuthContext } from '../context/AuthContext';
 import useInput from '../hooks/useInput';
 import useInputError from '../hooks/useInputError';
 import SpacerTwenty from '../components/SpacerTwenty';
+import { auth } from '../api/firebase/firebase';
 
 const SigninScreen = ({ navigation }) => {
   const { state, signin } = useContext(AuthContext);
   const email = { ...useInput(''), ...useInputError() };
   const password = { ...useInput(''), ...useInputError() };
 
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      console.log(user);
+    });
+  }, []);
   /**
    * メールアドレスを検証する。何も入力されていない場合エラーブロックに入り、エラーメッセージを追加する。
    * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
@@ -93,8 +99,7 @@ const SigninScreen = ({ navigation }) => {
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'center',
-              }}
-            >
+              }}>
               <Text>※パスワードを忘れた方は</Text>
               <TouchableOpacity style={styles.linkNavigation}>
                 <Text>パスワード再設定へ</Text>
@@ -113,15 +118,13 @@ const SigninScreen = ({ navigation }) => {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'center',
-            }}
-          >
+            }}>
             <Text>こちら</Text>
             <TouchableOpacity
               style={styles.linkNavigation}
               onPress={() => {
                 navigation.navigate('Signup');
-              }}
-            >
+              }}>
               <Text>新規会員登録</Text>
             </TouchableOpacity>
             <Text>をご利用ください。</Text>

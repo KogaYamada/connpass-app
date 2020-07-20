@@ -1,6 +1,7 @@
 import createDataContxt from './createDataContext';
 import { auth, createUserProfileDocument } from '../api/firebase/firebase';
 import { authValidation } from '../utils/firebase.errors';
+import { navigate } from '../navigationRef';
 
 // types
 const SIGN_UP_AND_SIGN_IN = 'SIGN_UP_AND_SIGN_IN';
@@ -18,16 +19,43 @@ const authReducer = (state, action) => {
   }
 };
 
+const tryLocalSignin = (dispatch) => async () =>
+  auth.onAuthStateChanged(async (user) => {
+    if (user) {
+      const userRef = await createUserProfileDocument(user);
+      userRef.onSnapshot((snapShot) => {
+        dispatch({
+          type: SIGN_UP_AND_SIGN_IN,
+          payload: { id: snapShot.id, ...snapShot.data() },
+        });
+        navigate('Home');
+      });
+    } else {
+      dispatch({ type: SIGN_OUT });
+      navigate('signin');
+    }
+  });
+
 const signup = (dispatch) => async ({ email, password, username }) => {
   try {
     const { user } = await auth.createUserWithEmailAndPassword(
       email.value,
       password.value
     );
+
     user.updateProfile({ displayName: username.value });
-    /*TODO: add user data for firestore */
-    /*TODO: navigate to tutorial */
-    dispatch({ type: SIGN_UP_AND_SIGN_IN, payload: user });
+
+    const userRef = await createUserProfileDocument(user, {
+      displayName: username.value,
+    });
+    userRef.onSnapshot((snapShot) => {
+      dispatch({
+        type: SIGN_UP_AND_SIGN_IN,
+        payload: { id: snapShot.id, ...snapShot.data() },
+      });
+      /*TODO: navigate to tutorial */
+      navigate('Home');
+    });
   } catch (error) {
     const { type, message } = authValidation(error.code);
     switch (type) {
@@ -53,8 +81,14 @@ const signin = (dispatch) => async ({ email, password }) => {
       email.value,
       password.value
     );
-    /*TODO: add user data for firestore */
-    /*TODO: navigate to home */
+    const userRef = await createUserProfileDocument(user);
+    userRef.onSnapshot((snapShot) => {
+      dispatch({
+        type: SIGN_UP_AND_SIGN_IN,
+        payload: { id: snapShot.id, ...snapShot.data() },
+      });
+      navigate('Home');
+    });
     dispatch({ type: SIGN_UP_AND_SIGN_IN, payload: user });
   } catch (error) {
     const { type, message } = authValidation(error.code);
@@ -78,6 +112,7 @@ const signin = (dispatch) => async ({ email, password }) => {
 const signout = (dispatch) => () => {
   auth.signOut();
   /*TODO: navigate to signin */
+  navigate('Signin');
   dispatch({ type: SIGN_OUT });
 };
 
@@ -87,6 +122,7 @@ export const { Provider, Context } = createDataContxt(
     signin,
     signup,
     signout,
+    tryLocalSignin,
   },
   { currentUser: null }
 );
