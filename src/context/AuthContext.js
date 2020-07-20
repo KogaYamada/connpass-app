@@ -28,12 +28,10 @@ const tryLocalSignin = (dispatch) => async () =>
           type: SIGN_UP_AND_SIGN_IN,
           payload: { id: snapShot.id, ...snapShot.data() },
         });
-        /* TODO: navigation to home screen */
         navigate('Home');
       });
     } else {
       dispatch({ type: SIGN_OUT });
-      /* TODO: navigation to signin screen */
       navigate('signin');
     }
   });
@@ -56,6 +54,7 @@ const signup = (dispatch) => async ({ email, password, username }) => {
         payload: { id: snapShot.id, ...snapShot.data() },
       });
       /*TODO: navigate to tutorial */
+      navigate('Home');
     });
   } catch (error) {
     const { type, message } = authValidation(error.code);
@@ -88,7 +87,6 @@ const signin = (dispatch) => async ({ email, password }) => {
         type: SIGN_UP_AND_SIGN_IN,
         payload: { id: snapShot.id, ...snapShot.data() },
       });
-      /*TODO: navigate to home */
       navigate('Home');
     });
     dispatch({ type: SIGN_UP_AND_SIGN_IN, payload: user });
@@ -114,6 +112,7 @@ const signin = (dispatch) => async ({ email, password }) => {
 const signout = (dispatch) => () => {
   auth.signOut();
   /*TODO: navigate to signin */
+  navigate('Signin');
   dispatch({ type: SIGN_OUT });
 };
 
