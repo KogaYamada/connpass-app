@@ -11,6 +11,7 @@ import {
 import SignupScreen from './src/screens/SignupScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import MyPageScreen from './src/screens/MyPage/MyPageScreen';
+import SettingsScreen from './src/screens/MyPage/SettingsScreen';
 import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
@@ -113,6 +114,7 @@ const navigator = createSwitchNavigator({
         BottomTabNavigatorConfig
       ),
       MessageDetail: MessageDetailScreen,
+      Settings: SettingsScreen,
     },
     {
       defaultNavigationOptions: {
