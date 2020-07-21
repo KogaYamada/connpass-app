@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
 import { Avatar } from 'react-native-elements';
-import { Entypo } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   Button,
   Form,
@@ -16,6 +16,11 @@ import {
   Right,
 } from 'native-base';
 import Modal from 'react-native-modal';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const ProfileSettings = ({ isModalVisible, setModalVisible }) => {
   return (
@@ -51,12 +56,12 @@ const ProfileSettings = ({ isModalVisible, setModalVisible }) => {
           </Right>
         </Header>
         {/* ここから中身 */}
-        <View style={styles.modalContents}>
-          <View style={styles.myPageTop}>
-            <View style={styles.container}>
+        <KeyboardAwareScrollView>
+          <View style={styles.modalContents}>
+            <View style={styles.contentsTop}>
               <View style={styles.avatarView}>
-                <Form>
-                  <Label>表示名</Label>
+                <Form style={{ width: '60%' }}>
+                  <Label style={styles.label}>表示名</Label>
                   <Item>
                     <Input style={styles.avatarName}>Current User Name</Input>
                   </Item>
@@ -73,31 +78,35 @@ const ProfileSettings = ({ isModalVisible, setModalVisible }) => {
                 </View>
               </View>
               <View style={styles.avatarUrlView}>
-                <View style={styles.linkView}>
-                  <Form>
-                    <Label>
-                      <Entypo name="link" size={17} color="black" />
-                      リンク
-                    </Label>
-                    <Item>
-                      <Input style={styles.avatarUrl}>Current User Link</Input>
-                    </Item>
-                  </Form>
-                </View>
+                <Form>
+                  <Label style={styles.label}>リンク</Label>
+                  <Item>
+                    <Input style={styles.avatarUrl}>Current User Link</Input>
+                  </Item>
+                </Form>
               </View>
             </View>
-          </View>
-          <View style={styles.myPageBottom}>
-            <View style={styles.userAbout}>
+            <View style={styles.coverImg}>
+              <TouchableOpacity>
+                <View style={styles.coverImgView}>
+                  <MaterialCommunityIcons
+                    name="camera-plus-outline"
+                    size={25}
+                    color="black"
+                  />
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.contentsBottom}>
               <Form>
-                <Label>自己紹介</Label>
-                <Textarea rowSpan={5} bordered>
+                <Label style={styles.label}>自己紹介</Label>
+                <Textarea rowSpan={8} bordered>
                   Current User About
                 </Textarea>
               </Form>
             </View>
           </View>
-        </View>
+        </KeyboardAwareScrollView>
       </Container>
     </Modal>
   );
@@ -106,15 +115,61 @@ const ProfileSettings = ({ isModalVisible, setModalVisible }) => {
 const styles = StyleSheet.create({
   modal: {
     margin: 0,
+    marginTop: '7%',
+    borderRadius: 100,
   },
   modalContents: {
-    padding: '10%',
+    // padding: '10%',
     backgroundColor: 'white',
   },
   modalHeader: {
     paddingTop: '2%',
     backgroundColor: '#eee',
   },
+  contentsTop: {
+    // height: hp('35%'),
+    backgroundColor: 'skyblue',
+    padding: '10%',
+  },
+  avatarView: {
+    alignItems: 'center',
+    marginBottom: '3%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  avatarName: {
+    width: wp('50%'),
+    height: hp('7%'),
+    fontSize: 17,
+  },
+  avatarUrl: {
+    height: hp('7%'),
+    fontSize: 17,
+  },
+  coverImg: {
+    width: 45,
+    height: 45,
+    top: '-4%',
+    left: '72%',
+  },
+  coverImgView: {
+    width: 45,
+    height: 45,
+    borderWidth: 1,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#eee',
+  },
+  contentsBottom: {
+    padding: '10%',
+    paddingTop: 0,
+  },
+  //// Label ////
+  label: {
+    fontSize: 17,
+  },
+  ///////////////
 });
 
 export default ProfileSettings;

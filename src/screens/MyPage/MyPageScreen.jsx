@@ -21,7 +21,7 @@ function wait(timeout) {
   });
 }
 
-const MyPageScreen = () => {
+const MyPageScreen = ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -39,7 +39,11 @@ const MyPageScreen = () => {
       }>
       <View style={styles.myPageTop}>
         <View style={styles.settingIconView}>
-          <TouchableOpacity style={styles.settingIconTouch}>
+          <TouchableOpacity
+            style={styles.settingIconTouch}
+            onPress={() => {
+              navigation.navigate('Settings');
+            }}>
             <Ionicons name="md-settings" size={30} color="black" />
           </TouchableOpacity>
         </View>
@@ -68,7 +72,7 @@ const MyPageScreen = () => {
             setModalVisible(true);
           }}>
           <View style={styles.pencilView}>
-            <FontAwesome name="pencil" size={30} color="black" />
+            <FontAwesome name="pencil" size={25} color="black" />
           </View>
           {/* モーダルのコンポーネント */}
           <ProfileSetting
