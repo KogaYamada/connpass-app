@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import  {View, StyleSheet, TextInput} from 'react-native';
 import {Feather} from '@expo/vector-icons';
 
+
 const SearchBar = ({term, onTermChange, onTermSubmit}) => {
     
     return(

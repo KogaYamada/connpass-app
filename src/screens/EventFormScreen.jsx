@@ -15,31 +15,32 @@ import { View, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import EventComponent from '../components/EventComponent';
 import { firestore } from '../api/firebase/firebase';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
+const onSearchSubmit = (term) => {
+  console.log(term)
+}
 
 const EventFormScreen = ({ navigation }) => {
-  const [term, setTerm] = useState('');
+  const [term, setTerm] = useState([]);
 
   useEffect(() => {
     firestore
       .collection('version/1/users/MJpyUalJPCO2zIJ6J6fd3mOzwTo2/joinEvent')
       .get()
-      .then((querySnapshot) => {
-        let joinEventsArray = [];
-        querySnapshot.forEach((doc) => {
-          joinEventsArray = [...joinEventsArray, doc.data()];
-        });
-        setTerm(joinEventsArray);
+      .then(() => {
+        
       });
   },[])
-  console.log(setTerm)
+  
   
   return (
     <>
-    <SafeAreaView>
+    <SafeAreaView style={{width: wp('100%')}}>
       <SearchBar 
       term={term}
-      onTermChange={setTerm}
-      onTeamSubmit={() => joinEventsArray(term)}
+      onTermChange={term.value}
+      onTermSubmit={onSearchSubmit}
       />
     </SafeAreaView>
       <Container>
@@ -76,15 +77,17 @@ const EventFormScreen = ({ navigation }) => {
             </View>
           </Tab>
         </Tabs>
-        <View style={styles.buttonWrap}>
-          <Button
-            style={styles.registerButton}
-            full={false}
-            rounded
-            danger
-            onPress={() => navigation.navigate('EventCreate')}>
-            <Text style={styles.buttonText}> イベントを作成する</Text>
-          </Button>
+        <View style={styles.buttonAllWrap}>
+          <View style={styles.buttonWrap}>
+            <Button
+              style={styles.registerButton}
+              full={false}
+              rounded
+              danger
+              onPress={() => navigation.navigate('EventCreate')}>
+              <Text style={styles.buttonText}> イベントを作成する</Text>
+            </Button>
+          </View>
         </View>
       </Container>
     </>
@@ -94,18 +97,18 @@ const EventFormScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   viewWrap: {
     flex: 1,
-    width: '100%',
+    width: wp('100%'),
     alignItems: 'center',
   },
   textTab: {
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
-    width: '100%',
+    width: wp('100%'),
   },
   registerButton: {
-    width: '70%',
-    height: 100,
+    width: wp('70%'),
+    height: hp('60%'),
     marginBottom: 50,
     flex: 1,
     alignItems: 'center',
@@ -113,14 +116,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#b6192e',
   },
   buttonWrap: {
-    width: '100%',
+    width: wp('100%'),
     alignItems: 'center',
-    height: 100,
+    height: hp('11%'),
+    
   },
   buttonText: {
-    width: '100%',
+    width: wp('70%'),
     textAlign: 'center',
+    
   },
+  buttonAllWrap: {
+    height: hp('6%'),
+  }
 });
 
 export default EventFormScreen;
