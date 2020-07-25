@@ -18,6 +18,7 @@ import EventFormScreen from './src/screens/EventFormScreen';
 import EventCreateScreen from './src/screens/EventCreateScreen';
 import ReservedFrame from './src/components/ReservedFrame';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import EventDetail from './src/screens/EventDetailScreen';
 
 import { setNavigator } from './src/navigationRef';
 
@@ -32,6 +33,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 // なんかFirebaseのエラーが出るので調べたやつインストールした //
 import {decode, encode} from 'base-64'
+import EventDetailScreen from './src/screens/EventDetailScreen';
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
 ///////////////////////////////////////////////////////////
@@ -113,6 +115,9 @@ const navigator = createSwitchNavigator({
         BottomTabNavigatorConfig
       ),
       MessageDetail: MessageDetailScreen,
+      trackListFlow: createStackNavigator({
+        Event: EventFormScreen
+      }),
     },
     {
       defaultNavigationOptions: {
