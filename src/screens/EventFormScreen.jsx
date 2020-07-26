@@ -41,7 +41,8 @@ const EventFormScreen = ({ navigation }) => {
       term={term}
       onTermChange={term.value}
       onTermSubmit={onSearchSubmit}
-      />
+    />
+
     </SafeAreaView>
       <Container>
         <Tabs style={styles.textTab}>

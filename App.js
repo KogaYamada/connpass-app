@@ -17,6 +17,7 @@ import EventFormScreen from './src/screens/EventFormScreen';
 import EventCreateScreen from './src/screens/EventCreateScreen';
 import ReservedFrame from './src/components/ReservedFrame';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import EventDetail from './src/screens/EventDetailScreen';
 import MyPageScreen from './src/screens/MyPage/MyPageScreen';
 import SettingsScreen from './src/screens/MyPage/SettingsScreen';
 import ChangePassScreen from './src/screens/MyPage/ChangePassScreen';
@@ -38,6 +39,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 // なんかFirebaseのエラーが出るので調べたやつインストールした //
 import {decode, encode} from 'base-64'
+import EventDetailScreen from './src/screens/EventDetailScreen';
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
 ///////////////////////////////////////////////////////////
@@ -119,6 +121,9 @@ const navigator = createSwitchNavigator({
         BottomTabNavigatorConfig
       ),
       MessageDetail: MessageDetailScreen,
+      trackListFlow: createStackNavigator({
+        Event: EventFormScreen
+      }),
       Settings: SettingsScreen,
       ChangePass: ChangePassScreen,
       ChangeEmail: ChangeEmailScreen,

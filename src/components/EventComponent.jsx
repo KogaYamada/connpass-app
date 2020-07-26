@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 // イベントのコンポーネント
+
 const EventComponent = ({ eventData: { item } }) => {
-  console.log(item);
   return (
     <View style={styles.frame}>
       <View style={styles.innerFrame}>
@@ -43,20 +44,20 @@ const EventComponent = ({ eventData: { item } }) => {
 
 const styles = StyleSheet.create({
   frame: {
-    height: 280,
-    width: 320,
+    height: hp('35%'),
+    width: wp('80%'),
     borderRadius: 10,
   },
   innerFrame: {
     borderColor: '#d1cfd6',
     borderWidth: 2,
-    height: 260,
-    width: 300,
+    height: hp('30%'),
+    width: wp('72.8%'),
     borderRadius: 5,
   },
   image: {
-    height: 160,
-    width: 299,
+    height: hp('18%'),
+    width: wp('72%'),
     borderBottomColor: '#d1cfd6',
     borderBottomWidth: 2,
   },
@@ -70,33 +71,34 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   leftContainer: {
-    fontSize: 20,
+    fontSize: hp('2%'),
     textAlign: 'center',
+    margin: 10,
   },
   textWrap: {
     flexDirection: 'row',
     // justifyContent: "space-between",
-    height: 100,
-    width: 300,
+    height: hp('11.6%'),
+    width: wp('100%'),
+    
   },
   rightText: {
-    fontSize: 8,
+    fontSize: hp('1.8%'),
     marginLeft: 15,
+    marginBottom: 2
   },
   group: {
-    fontSize: 8,
+    fontSize: hp('1.8%'),
     marginLeft: 10,
+    marginBottom: 5
   },
   subText: {
-    fontSize: 8,
+    fontSize: hp('1.5%'),
     marginLeft: 10,
+    marginBottom: 5
   },
   organizer: {
-    fontSize: 8,
-    marginLeft: 10,
-  },
-  organizerName: {
-    fontSize: 8,
+    fontSize: hp('1.3%'),
     marginLeft: 10,
   },
   textTopWrap: {
