@@ -14,6 +14,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+
 function wait(timeout) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
   avatarName: {
     width: wp('50%'),
-    fontSize: 25,
+    fontSize: hp('3.5%'),
     paddingRight: '5%',
   },
   avatarUrlView: {
@@ -113,18 +114,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   avatarUrl: {
-    fontSize: 15,
+    fontSize: hp('1.7%'),
     marginLeft: 5,
   },
   pencil: {
-    width: 45,
-    height: 45,
+    width: wp('20%'),
+    height: hp('5%'),
     top: '-5%',
     left: '72%',
   },
   pencilView: {
-    width: 45,
-    height: 45,
+    width: wp('11%'),
+    height: hp('5.2%'),
     borderWidth: 1,
     borderRadius: 30,
     alignItems: 'center',
@@ -140,11 +141,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: '10%',
   },
   aboutTitle: {
-    fontSize: 20,
+    fontSize: hp('2.5%'),
     marginBottom: 10,
   },
   about: {
-    fontSize: 15,
+    fontSize: hp('1.5%'),
     lineHeight: 20,
   },
 });

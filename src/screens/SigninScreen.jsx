@@ -13,6 +13,7 @@ import useInput from '../hooks/useInput';
 import useInputError from '../hooks/useInputError';
 import SpacerTwenty from '../components/SpacerTwenty';
 import { auth } from '../api/firebase/firebase';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
 const SigninScreen = ({ navigation }) => {
   const { state, signin } = useContext(AuthContext);
@@ -64,12 +65,13 @@ const SigninScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView>
-      <ScrollView style={{ backgroundColor: '#F7F7F7' }}>
+    <SafeAreaView style={styles.viewWrap}>
+      <View style={styles.imageWrap}>
         <Image
-          style={{ marginLeft: 70 }}
+          style={styles.imageUrl}
           source={require('../../assets/connpass_logo_1.png')}
         />
+      </View>
         <SpacerTwenty>
           <View style={styles.loginView}>
             <View style={styles.headerView}>
@@ -163,7 +165,7 @@ const SigninScreen = ({ navigation }) => {
             title="TEST NAV"
           />
         </SpacerTwenty>
-      </ScrollView>
+      
     </SafeAreaView>
   );
 };
@@ -174,7 +176,7 @@ const styles = StyleSheet.create({
     borderLeftColor: '#A82402',
   },
   header: {
-    fontSize: 18,
+    fontSize: wp('4.5%'),
     fontWeight: '400',
     textAlign: 'center',
   },
@@ -199,6 +201,21 @@ const styles = StyleSheet.create({
   socialButtonTitle: {
     color: '#000000',
   },
+  viewWrap: {
+    width: wp('100%'),
+    height: hp('100%'),
+    marginTop: 100
+  },
+  imageUrl: {
+    width: wp('65%'),
+    height: hp('10%'),
+  },
+  imageWrap: {
+    width: wp('100%'),
+    height: hp('10%'),
+    alignItems: 'center',
+    flexDirection: 'column'
+  }
 });
 
 SigninScreen.navigationOptions = () => {
