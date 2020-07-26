@@ -13,6 +13,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import ProfileSetting from '../../components/MyPage/ProfileSettings.component';
 
 function wait(timeout) {
   return new Promise((resolve) => {
@@ -20,8 +21,9 @@ function wait(timeout) {
   });
 }
 
-const MyPageScreen = () => {
+const MyPageScreen = ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -37,7 +39,11 @@ const MyPageScreen = () => {
       }>
       <View style={styles.myPageTop}>
         <View style={styles.settingIconView}>
-          <TouchableOpacity style={styles.settingIconTouch}>
+          <TouchableOpacity
+            style={styles.settingIconTouch}
+            onPress={() => {
+              navigation.navigate('Settings');
+            }}>
             <Ionicons name="md-settings" size={30} color="black" />
           </TouchableOpacity>
         </View>
@@ -61,10 +67,19 @@ const MyPageScreen = () => {
         </View>
       </View>
       <View style={styles.pencil}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            setModalVisible(true);
+          }}>
           <View style={styles.pencilView}>
-            <FontAwesome name="pencil" size={30} color="black" />
+            <FontAwesome name="pencil" size={25} color="black" />
           </View>
+          {/* モーダルのコンポーネント */}
+          <ProfileSetting
+            isModalVisible={isModalVisible}
+            setModalVisible={setModalVisible}
+          />
+          {/* ////////////////////// */}
         </TouchableOpacity>
       </View>
       <View style={styles.myPageBottom}>
@@ -129,7 +144,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ddd'
+    backgroundColor: '#ddd',
   },
   myPageBottom: {
     // backgroundColor: 'pink',
