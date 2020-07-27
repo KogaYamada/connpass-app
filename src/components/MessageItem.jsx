@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { Avatar } from 'react-native-elements';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default {
   /**
@@ -39,7 +40,7 @@ export default {
             <Text>{item.date} ＞ </Text>
           </View>
           <View style={{ flex: 2 }}>
-            <Text style={{ fontSize: 12 }}>{item.content}</Text>
+            <Text style={{ fontSize: hp('1.5%') }}>{item.content}</Text>
           </View>
         </View>
       </View>
@@ -85,14 +86,14 @@ export default {
 const styles = StyleSheet.create({
   backTextWhite: {
     color: '#FFFFFF',
-    fontSize: 22,
+    fontSize: hp('2%'),
   },
   rowFront: {
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     borderBottomColor: '#DDDDDD',
     borderBottomWidth: 1,
-    height: 90,
+    height: hp('10%'),
   },
   rowBack: {
     alignItems: 'center',
@@ -108,21 +109,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
     top: 0,
-    width: 75,
+    width: wp('17%'),
   },
   backRightBtnRight: {
     backgroundColor: '#FF7450',
     right: 0,
   },
   messageItem: {
-    height: 90,
+    height: hp('10%'),
     borderBottomWidth: 1,
     borderBottomColor: '#707070',
     display: 'flex',
     flexDirection: 'row',
   },
   header: {
-    fontSize: 18,
+    fontSize: hp('2%'),
     fontWeight: '400',
   },
 });
