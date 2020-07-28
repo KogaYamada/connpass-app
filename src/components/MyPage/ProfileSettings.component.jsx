@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
-import { Avatar } from 'react-native-elements';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   Button,
@@ -63,17 +62,20 @@ const ProfileSettings = ({ isModalVisible, setModalVisible }) => {
                 <Form style={{ width: '60%' }}>
                   <Label style={styles.label}>表示名</Label>
                   <Item>
-                    <Input style={styles.avatarName}>Current User Name</Input>
+                    <Input
+                      style={styles.avatarName}
+                      placeholder="user name"></Input>
                   </Item>
                 </Form>
-                <View>
+                <View style={styles.avatarIconView}>
                   <TouchableOpacity>
-                    <Avatar
-                      rounded
-                      icon={{ name: 'user', type: 'font-awesome' }}
-                      overlayContainerStyle={{ backgroundColor: 'pink' }}
-                      size={90}
-                    />
+                    <View style={styles.avatarIcon}>
+                      <MaterialCommunityIcons
+                        name="camera-plus-outline"
+                        size={30}
+                        color="black"
+                      />
+                    </View>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -81,7 +83,9 @@ const ProfileSettings = ({ isModalVisible, setModalVisible }) => {
                 <Form>
                   <Label style={styles.label}>リンク</Label>
                   <Item>
-                    <Input style={styles.avatarUrl}>Current User Link</Input>
+                    <Input
+                      style={styles.avatarUrl}
+                      placeholder="user link"></Input>
                   </Item>
                 </Form>
               </View>
@@ -91,7 +95,7 @@ const ProfileSettings = ({ isModalVisible, setModalVisible }) => {
                 <View style={styles.coverImgView}>
                   <MaterialCommunityIcons
                     name="camera-plus-outline"
-                    size={25}
+                    size={20}
                     color="black"
                   />
                 </View>
@@ -100,9 +104,7 @@ const ProfileSettings = ({ isModalVisible, setModalVisible }) => {
             <View style={styles.contentsBottom}>
               <Form>
                 <Label style={styles.label}>自己紹介</Label>
-                <Textarea rowSpan={8} bordered>
-                  Current User About
-                </Textarea>
+                <Textarea rowSpan={8} bordered></Textarea>
               </Form>
             </View>
           </View>
@@ -119,7 +121,6 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   modalContents: {
-    // padding: '10%',
     backgroundColor: 'white',
   },
   modalHeader: {
@@ -127,7 +128,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
   contentsTop: {
-    // height: hp('35%'),
     backgroundColor: 'skyblue',
     padding: '10%',
   },
@@ -141,6 +141,20 @@ const styles = StyleSheet.create({
     width: wp('50%'),
     height: hp('7%'),
     fontSize: 17,
+  },
+  avatarIconView: {
+    borderRadius: 50,
+    backgroundColor: 'pink',
+    width: 80,
+    height: 80,
+  },
+  avatarIcon: {
+    borderRadius: 50,
+    backgroundColor: 'rgba(255, 255, 255, .3)',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   avatarUrl: {
     height: hp('7%'),
