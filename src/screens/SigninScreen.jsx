@@ -131,6 +131,13 @@ const SigninScreen = ({ navigation }) => {
             </TouchableOpacity>
             <Text>をご利用ください。</Text>
           </View>
+              {/* TODO Delete this */}
+              <Button
+                onPress={() => {
+                  navigation.navigate('mainFlow');
+                }}
+                title="TEST NAV"
+              />
           <View style={styles.loginView}>
             <View style={styles.headerView}>
               <Text style={styles.header}>
@@ -157,13 +164,6 @@ const SigninScreen = ({ navigation }) => {
             />
           </View>
 
-          {/* TODO Delete this */}
-          <Button
-            onPress={() => {
-              navigation.navigate('mainFlow');
-            }}
-            title="TEST NAV"
-          />
         </SpacerTwenty>
       
     </SafeAreaView>
