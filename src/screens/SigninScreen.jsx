@@ -66,9 +66,11 @@ const SigninScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.viewWrap}>
+      
       <View style={styles.imageWrap}>
         <Image
           style={styles.imageUrl}
+          resizeMode='contain'
           source={require('../../assets/connpass_logo_1.png')}
         />
       </View>
@@ -89,6 +91,7 @@ const SigninScreen = ({ navigation }) => {
               {...password}
             />
             <Button
+              style={styles.loginButton}
               title="ログイン"
               type="outline"
               onPress={() => {
@@ -96,40 +99,37 @@ const SigninScreen = ({ navigation }) => {
                 // navigation.navigate('MyPage')
               }}
             />
+            <View style={styles.passwordTextWrap}>
+              <Text>※パスワードを忘れた方は</Text>
+              <TouchableOpacity style={styles.linkNavigation}>
+                <Text style={styles.passwordText}>パスワード再設定へ</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.textWrap}>
+            <Text style={styles.loginMessage}>
+              Twitter / Facebook / GitHub ボタンから
+              お持ちのアカウントで新規登録を行ってください。
+            </Text>
+            <Text style={styles.loginMessage}>
+              ソーシャルのアカウントをお持ちでない方は、
+            </Text>
             <View
               style={{
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'center',
               }}>
-              <Text>※パスワードを忘れた方は</Text>
-              <TouchableOpacity style={styles.linkNavigation}>
-                <Text>パスワード再設定へ</Text>
+              <Text>こちら</Text>
+              <TouchableOpacity
+                style={styles.linkNavigation}
+                onPress={() => {
+                  navigation.navigate('Signup');
+                }}>
+                <Text>新規会員登録</Text>
               </TouchableOpacity>
+              <Text>をご利用ください。</Text>
             </View>
-          </View>
-          <Text style={styles.loginMessage}>
-            Twitter / Facebook / GitHub ボタンから
-            お持ちのアカウントで新規登録を行ってください。
-          </Text>
-          <Text style={styles.loginMessage}>
-            ソーシャルのアカウントをお持ちでない方は、
-          </Text>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }}>
-            <Text>こちら</Text>
-            <TouchableOpacity
-              style={styles.linkNavigation}
-              onPress={() => {
-                navigation.navigate('Signup');
-              }}>
-              <Text>新規会員登録</Text>
-            </TouchableOpacity>
-            <Text>をご利用ください。</Text>
           </View>
           <View style={styles.loginView}>
             <View style={styles.headerView}>
@@ -165,7 +165,6 @@ const SigninScreen = ({ navigation }) => {
             title="TEST NAV"
           />
         </SpacerTwenty>
-      
     </SafeAreaView>
   );
 };
@@ -185,7 +184,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   linkNavigation: {
-    borderBottomColor: '#000000',
+    borderBottomColor: '#6C6969',
     borderBottomWidth: 1,
   },
   loginMessage: {
@@ -204,17 +203,34 @@ const styles = StyleSheet.create({
   viewWrap: {
     width: wp('100%'),
     height: hp('100%'),
-    marginTop: 100
+    marginTop: 80,
+    
   },
   imageUrl: {
-    width: wp('65%'),
+    width: wp('60%'),
     height: hp('10%'),
   },
   imageWrap: {
     width: wp('100%'),
-    height: hp('10%'),
+    height: hp('12%'),
     alignItems: 'center',
     flexDirection: 'column'
+  },
+  passwordTextWrap: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center'
+  },
+  passwordText: {
+    color: '#605D5D',
+    marginLeft: 5
+  },
+  loginButton: {
+    marginTop: hp('1.5%'),
+    marginBottom: hp('3%')
+  },
+  textWrap: {
+    marginBottom: hp('1%')
   }
 });
 

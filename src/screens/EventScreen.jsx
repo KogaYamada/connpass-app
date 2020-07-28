@@ -60,6 +60,7 @@ const EventScreen = ({ navigation }) => {
         setStandbyEvent(standbyEventArray);
       });
   }, []);
+
   return (
     <ScrollView>
       {/* <Button onPress={addDummyJoinedEvent} title="add dummy join data" /> */}
@@ -76,7 +77,12 @@ const EventScreen = ({ navigation }) => {
           horizontal
           data={joinEvents}
           keyExtractor={(item) => item.id}
-          renderItem={(item) =><TouchableOpacity><EventComponent eventData={item} /></TouchableOpacity>}
+          renderItem={(item) =>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('EventFrame')}
+          >
+          <EventComponent eventData={item} />
+          </TouchableOpacity>}
           />
           )}
       </ScrollView>
@@ -89,7 +95,11 @@ const EventScreen = ({ navigation }) => {
             horizontal
             data={hostEvents}
             keyExtractor={(item) => item.id}
-            renderItem={(item) => <TouchableOpacity><EventComponent eventData={item} /></TouchableOpacity>}
+            renderItem={(item) => 
+            <TouchableOpacity
+              onPress={() => navigation.navigate('EventFrame')}
+            ><EventComponent eventData={item} />
+            </TouchableOpacity>}
           />
         )}
       </ScrollView>
@@ -104,7 +114,7 @@ const EventScreen = ({ navigation }) => {
             keyExtractor={(item) => item.id}
             renderItem={(item) => 
             <TouchableOpacity
-              onPress={() => navigation.navigate('Massage')}
+              onPress={() => navigation.navigate('EventFrame')}
             ><EventComponent eventData={item} />
             </TouchableOpacity>}
           />
@@ -113,6 +123,7 @@ const EventScreen = ({ navigation }) => {
     </ScrollView>
   );
 };
+
 
 const styles = StyleSheet.create({
   mainText: {
