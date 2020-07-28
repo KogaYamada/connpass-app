@@ -10,7 +10,6 @@ import {
 //screens
 import SignupScreen from './src/screens/SignupScreen';
 import SigninScreen from './src/screens/SigninScreen';
-import MyPageScreen from './src/screens/MyPage/MyPageScreen';
 import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
@@ -20,6 +19,14 @@ import EventDetail from './src/screens/EventDetailScreen';
 import EventFrameScreen from './src/screens/EventFrameScreen';
 import ReservedFrame from './src/components/ReservedFrame';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import EventDetail from './src/screens/EventDetailScreen';
+import MyPageScreen from './src/screens/MyPage/MyPageScreen';
+import SettingsScreen from './src/screens/MyPage/SettingsScreen';
+import ChangePassScreen from './src/screens/MyPage/ChangePassScreen';
+import ChangeEmailScreen from './src/screens/MyPage/ChangeEmailScreen';
+import RegistrationEmailScreen from './src/screens/MyPage/RegistrationEmailScreen';
+import LinkAccountsScreen from './src/screens/MyPage/LinkAccountsScreen';
+import HelpCenterScreen from './src/screens/MyPage/HelpCenterScreen';
 
 import { setNavigator } from './src/navigationRef';
 
@@ -119,9 +126,16 @@ const navigator = createSwitchNavigator({
       // ここから下にページを追加していく
       MessageDetail: MessageDetailScreen,
       EventFrame: EventFrameScreen,
-      EventCreate: EventCreateScreen
-      
-      
+      EventCreate: EventCreateScreen,
+      trackListFlow: createStackNavigator({
+        Event: EventFormScreen
+      }),
+      Settings: SettingsScreen,
+      ChangePass: ChangePassScreen,
+      ChangeEmail: ChangeEmailScreen,
+      RegistrationEmail: RegistrationEmailScreen,
+      LinkAccounts: LinkAccountsScreen,
+      HelpCenter: HelpCenterScreen,
     },
     {
       defaultNavigationOptions: {
