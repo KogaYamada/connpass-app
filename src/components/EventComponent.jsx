@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // イベントのコンポーネント
 
@@ -25,15 +26,28 @@ const EventComponent = ({ eventData: { item } }) => {
               <Text>あと2日</Text>
             </View>
             <View style={{ width: 180, height: 50 }}>
+
+              {/* グループ名を表示している部分 */}
+              <TouchableOpacity>
               <Text allowFontScaling={false} style={styles.group}>
                 {item.group}
               </Text>
+              </TouchableOpacity>
+
+              {/* イベント名が表示されている部分 */}
+              <TouchableOpacity>
               <Text allowFontScaling={false} style={styles.subText}>
                 {item.mainTitle}
               </Text>
+              </TouchableOpacity>
+
+              {/* ユーザー名や主催者名を表示している部分 */}
+              <TouchableOpacity>
               <Text allowFontScaling={false} style={styles.organizer}>
                 {item.author}
               </Text>
+              </TouchableOpacity>
+
             </View>
           </View>
         </View>
@@ -43,11 +57,13 @@ const EventComponent = ({ eventData: { item } }) => {
 };
 
 const styles = StyleSheet.create({
+  // イベントの枠全体を囲っているスタイルの部分
   frame: {
     height: hp('35%'),
     width: wp('80%'),
     borderRadius: 10,
   },
+  // イベントの枠自体の部分、外枠の線など
   innerFrame: {
     borderColor: '#d1cfd6',
     borderWidth: 2,
@@ -55,15 +71,14 @@ const styles = StyleSheet.create({
     width: wp('72.8%'),
     borderRadius: 5,
   },
+  // 画像のスタイル部分
   image: {
     height: hp('18%'),
     width: wp('72%'),
     borderBottomColor: '#d1cfd6',
     borderBottomWidth: 2,
   },
-  month: {
-    backgroundColor: '#d1cfd6',
-  },
+  // 画像より下の部分の箱
   wrapContainer: {
     flexDirection: 'row',
     borderRightColor: '#d1cfd6',

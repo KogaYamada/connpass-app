@@ -6,11 +6,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 const EventCreateScreen = ({navigation}) => {
     return(
         <View style={styles.allWrap}>
-        <ImageBackground 
-        style={styles.backImage}
-        source={require('../../assets/944339.jpg')}
-        >
             <View style={styles.imageWrap}>
+                {/* ロレンピクサムから画像持ってきて差し込んでいる */}
                 <Image
                 style={styles.image}
                 source={{uri: "https:picsum.photos/200/300"}}
@@ -41,7 +38,7 @@ const EventCreateScreen = ({navigation}) => {
             <View style={styles.bottomWrap}>
                 
             </View>
-        </ImageBackground>
+       
         </View>
     
     );
@@ -79,22 +76,23 @@ const styles = StyleSheet.create({
         
     },
     mainGroupText: {
-        fontSize: hp('1%'),
+        fontSize: hp('1.5%'),
+        height: hp('2.3%'),
         fontWeight: '500',
         letterSpacing: 2,
         textAlign: 'center',
-        
+        marginTop: hp('0.4%')    
     },
     mainTitle: {
-        fontSize: 8,
+        fontSize: hp('1.5%'),
         letterSpacing: 3,
-        marginBottom: 5
+        marginBottom: hp('1%')
     },
     textWrap: {
-        marginLeft: 10,
         lineHeight: 5,
-        height: 100,
-        width: '100%'
+        marginLeft: hp('1%'),
+        height: hp('14%'),
+        width: '95%'
     },
     eventTime: {
         fontSize: 8,
@@ -107,7 +105,8 @@ const styles = StyleSheet.create({
     },
     allWrap: {
         width: '100%',
-        flex: 1
+        flex: 1,
+        backgroundColor: '#fff'
     },
     backImage: {
         width: '100%',

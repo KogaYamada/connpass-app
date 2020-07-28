@@ -16,9 +16,10 @@ import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
 import EventFormScreen from './src/screens/EventFormScreen';
 import EventCreateScreen from './src/screens/EventCreateScreen';
+import EventDetail from './src/screens/EventDetailScreen';
+import EventFrameScreen from './src/screens/EventFrameScreen';
 import ReservedFrame from './src/components/ReservedFrame';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
-import EventDetail from './src/screens/EventDetailScreen';
 
 import { setNavigator } from './src/navigationRef';
 
@@ -56,6 +57,7 @@ const navigator = createSwitchNavigator({
     Signup: SignupScreen,
   }),
   mainFlow: createStackNavigator(
+    // ここから下はボトムタブナビゲーションのページ
     {
       Connpass: createBottomTabNavigator(
         {
@@ -114,10 +116,12 @@ const navigator = createSwitchNavigator({
         },
         BottomTabNavigatorConfig
       ),
+      // ここから下にページを追加していく
       MessageDetail: MessageDetailScreen,
-      trackListFlow: createStackNavigator({
-        Event: EventFormScreen
-      }),
+      EventFrame: EventFrameScreen,
+      EventCreate: EventCreateScreen
+      
+      
     },
     {
       defaultNavigationOptions: {
