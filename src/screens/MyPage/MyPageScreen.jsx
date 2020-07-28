@@ -15,7 +15,6 @@ import {
 } from 'react-native-responsive-screen';
 import ProfileSetting from '../../components/MyPage/ProfileSettings.component';
 
-
 function wait(timeout) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
@@ -50,7 +49,6 @@ const MyPageScreen = ({ navigation }) => {
         </View>
         <View style={styles.container}>
           <View style={styles.avatarView}>
-            {/* ↓文字数制限必要↓ */}
             <Text style={styles.avatarName}>User Name</Text>
             <Avatar
               rounded
@@ -105,7 +103,8 @@ const styles = StyleSheet.create({
   },
   settingIconView: {
     padding: 10,
-    marginLeft: '86%',
+    position: 'relative',
+    left: '87%',
   },
   container: {
     flexDirection: 'column',
@@ -135,14 +134,16 @@ const styles = StyleSheet.create({
   pencil: {
     width: wp('20%'),
     height: hp('5%'),
-    top: '-5%',
+    top: '-6%',
     left: '72%',
   },
   pencilView: {
-    width: wp('11%'),
-    height: hp('5.2%'),
+    /// ここを％で指定すると丸が崩れるのでpx固定でよろしく ///
+    width: 50,
+    height: 50,
+    ////////////////////////////////////////////////////
     borderWidth: 1,
-    borderRadius: 30,
+    borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ddd',

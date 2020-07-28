@@ -104,6 +104,7 @@ const ProfileSettings = ({ isModalVisible, setModalVisible }) => {
             <View style={styles.contentsBottom}>
               <Form>
                 <Label style={styles.label}>自己紹介</Label>
+                {/* ↓文字制限必要 */}
                 <Textarea rowSpan={8} bordered></Textarea>
               </Form>
             </View>
