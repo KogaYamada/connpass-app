@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect} from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import {
   Container,
   Header,
@@ -8,18 +8,20 @@ import {
   Icon,
   Text,
   Button,
-  
 } from 'native-base';
 import MaterialTabs from 'react-native-material-tabs';
 import { View, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import EventComponent from '../components/EventComponent';
 import { firestore } from '../api/firebase/firebase';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const onSearchSubmit = (term) => {
-  console.log(term)
-}
+  console.log(term);
+};
 
 const EventFormScreen = ({ navigation }) => {
   const [term, setTerm] = useState([]);
@@ -28,22 +30,18 @@ const EventFormScreen = ({ navigation }) => {
     firestore
       .collection('version/1/users/MJpyUalJPCO2zIJ6J6fd3mOzwTo2/joinEvent')
       .get()
-      .then(() => {
-        
-      });
-  },[])
-  
-  
+      .then(() => {});
+  }, []);
+
   return (
     <>
-    <SafeAreaView style={{width: wp('100%')}}>
-      <SearchBar 
-      term={term}
-      onTermChange={term.value}
-      onTermSubmit={onSearchSubmit}
-    />
-
-    </SafeAreaView>
+      <SafeAreaView style={{ width: wp('100%') }}>
+        <SearchBar
+          term={term}
+          onTermChange={term.value}
+          onTermSubmit={onSearchSubmit}
+        />
+      </SafeAreaView>
       <Container>
         <Tabs style={styles.textTab}>
           <Tab
@@ -109,7 +107,7 @@ const styles = StyleSheet.create({
   },
   registerButton: {
     width: wp('70%'),
-    height: hp('60%'),
+    height: hp('100%'),
     marginBottom: 50,
     flex: 1,
     alignItems: 'center',
@@ -119,17 +117,18 @@ const styles = StyleSheet.create({
   buttonWrap: {
     width: wp('100%'),
     alignItems: 'center',
-    height: hp('11%'),
-    
+    height: hp('12%'),
   },
   buttonText: {
     width: wp('70%'),
+    height: hp('5%'),
     textAlign: 'center',
-    
+    marginTop: hp('2%'),
+    fontSize: hp('2%'),
   },
   buttonAllWrap: {
-    height: hp('6%'),
-  }
+    height: hp('9%'),
+  },
 });
 
 export default EventFormScreen;
