@@ -138,10 +138,10 @@ const styles = StyleSheet.create({
     left: '72%',
   },
   pencilView: {
-    /// ここを％で指定すると丸が崩れるのでpx固定でよろしく ///
+    /// ここを％で指定すると丸が崩れるのでpx固定で ///
     width: 50,
     height: 50,
-    ////////////////////////////////////////////////////
+    //////////////////////////////////////////////
     borderWidth: 1,
     borderRadius: 100,
     alignItems: 'center',
