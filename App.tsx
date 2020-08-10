@@ -39,9 +39,21 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 // なんかFirebaseのエラーが出るので調べたやつインストールした //
+<<<<<<< HEAD:App.js
 import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
+=======
+
+// import { decode, encode } from 'base-64';
+// if (!global.btoa) {
+//   global.btoa = encode;
+// }
+// if (!global.atob) {
+//   global.atob = decode;
+// }
+
+>>>>>>> ee081e87bb721323ed7e9d90286d54e8de7edb42:App.tsx
 ///////////////////////////////////////////////////////////
 
 const BottomTabNavigatorConfig = {
@@ -127,7 +139,7 @@ const navigator = createSwitchNavigator({
       EventCreate: EventCreateScreen,
       EventDetail: EventDetailScreen,
       trackListFlow: createStackNavigator({
-        Event: EventFormScreen
+        Event: EventFormScreen,
       }),
       Settings: SettingsScreen,
       ChangePass: ChangePassScreen,
