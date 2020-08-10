@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Text,
@@ -9,27 +8,96 @@ import {
   StyleSheet,
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import { CheckBox, Button } from 'react-native-elements';
-import SignupSpacer from '../components/SignupSpacer';
+import { CheckBox, Button, Input } from 'react-native-elements';
+import { Context as AuthContext } from '../context/AuthContext';
 import useInput from '../hooks/useInput';
+import useInputError from '../hooks/useInputError';
+import SpacerTwenty from '../components/SpacerTwenty';
 
-const SignupScreen = () => {
+const SignupScreen = ({ navigation }) => {
   // hooks
   const [isConsent, setIsConsent] = useState(false);
-  const username = useInput('');
-  const email = useInput('');
-  const password = useInput('');
-  const passwordConfirm = useInput('');
+  const { state, signup } = useContext(AuthContext);
+  const username = { ...useInput(''), ...useInputError() };
+  const email = { ...useInput(''), ...useInputError() };
+  const password = { ...useInput(''), ...useInputError() };
+  const confirmPassword = { ...useInput(''), ...useInputError() };
+  /**
+   * パスワードの入力内容を検証する。パスワードが5文字以下もしくは、
+   * ２つの入力された値が一致しない場合にエラーブロックに入り、エラーメッセージを追加する。
+   * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
+   */
+  const passwordValidation = () => {
+    if (password.value.length < 6) {
+      password.addErrorMessage('6文字以上で入力してください');
+      return true;
+    } else if (password.value !== confirmPassword.value) {
+      confirmPassword.addErrorMessage('パスワードが一致しません');
+      return true;
+    } else {
+      return false;
+    }
+  };
+  /**
+   * ユーザーネームを検証する。文字数が31文字以上もしくは、
+   * 0文字以下でエラーブロックに入り、エラーメッセージを追加する。
+   * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
+   */
+  const usernameValidation = () => {
+    if (username.value.trim().length > 30) {
+      username.addErrorMessage('30文字以内で入力したください');
+      return true;
+    } else if (username.value.trim().length <= 0) {
+      username.addErrorMessage('ユーザー名を入力してください');
+      return true;
+    } else {
+      return false;
+    }
+  };
+  /**
+   * メールアドレスを検証する。何も入力されていない場合エラーブロックに入り、エラーメッセージを追加する。
+   * @return エラーがあればtrueを返し、エラーがなければfalseを返す。
+   */
+  const emailValidation = () => {
+    if (email.value.trim().length <= 0) {
+      email.addErrorMessage('メールアドレスを入力してください');
+      return true;
+    } else {
+      return false;
+    }
+  };
+  /**
+   * 各検証結果に問題なく、利用規約にチェックが入っている場合にサインアップ関数を実行する。
+   */
+  const handleSubmit = () => {
+    if (!isConsent) {
+      alert('利用規約をご確認の上、同意してください');
+      return;
+    }
+    username.addErrorMessage('');
+    password.addErrorMessage('');
+    confirmPassword.addErrorMessage('');
+    email.addErrorMessage('');
 
+    let error = false;
+    error = usernameValidation();
+    error = passwordValidation();
+    error = emailValidation();
+    if (!error) signup({ email, password, username });
+    error = false;
+  };
   // render
   return (
-    <ScrollView>
-      <SafeAreaView>
-        <Image source={require('../../assets/connpass_logo_1.png')} />
+    <SafeAreaView>
+      <ScrollView>
+        <Image
+          style={{ marginLeft: 70 }}
+          source={require('../../assets/connpass_logo_1.png')}
+        />
         <View style={styles.title}>
           <Text style={styles.titleText}>新規会員登録</Text>
         </View>
-        <SignupSpacer>
+        <SpacerTwenty>
           <Text style={{ textAlign: 'center' }}>
             このサービスを始めるための
           </Text>
@@ -37,9 +105,19 @@ const SignupScreen = () => {
             最低限の情報を入力したください。
           </Text>
           <View style={styles.inputArea}>
-            <Text style={styles.label}>ユーザー名</Text>
-            <TextInput
-              style={styles.input}
+            <Text
+              style={{
+                ...styles.label,
+                color: username.textColor(),
+              }}
+            >
+              ユーザー名
+            </Text>
+            <Input
+              inputStyle={{
+                ...styles.input,
+                borderBottomColor: username.borderColor(),
+              }}
               autoCapitalize="none"
               autoCorrect={false}
               {...username}
@@ -48,11 +126,23 @@ const SignupScreen = () => {
           <Text style={styles.message}>
             半角英数字・次の記号(-_)で30文字以内
           </Text>
-          <Text>※サイト内IDとしても利用します</Text>
+          <Text style={{ marginHorizontal: 10 }}>
+            ※サイト内IDとしても利用します
+          </Text>
           <View style={styles.inputArea}>
-            <Text style={styles.label}>メールアドレス</Text>
-            <TextInput
-              style={styles.input}
+            <Text
+              style={{
+                ...styles.label,
+                color: email.textColor(),
+              }}
+            >
+              メールアドレス
+            </Text>
+            <Input
+              inputStyle={{
+                ...styles.input,
+                borderBottomColor: email.borderColor(),
+              }}
               autoCapitalize="none"
               autoCorrect={false}
               {...email}
@@ -60,10 +150,20 @@ const SignupScreen = () => {
           </View>
           <Text style={styles.message}>半角英数字</Text>
           <View style={styles.inputArea}>
-            <Text style={styles.label}>パスワード</Text>
-            <TextInput
+            <Text
+              style={{
+                ...styles.label,
+                color: password.textColor(),
+              }}
+            >
+              パスワード
+            </Text>
+            <Input
               secureTextEntry
-              style={styles.input}
+              inputStyle={{
+                ...styles.input,
+                borderBottomColor: password.borderColor(),
+              }}
               autoCapitalize="none"
               autoCorrect={false}
               {...password}
@@ -71,13 +171,23 @@ const SignupScreen = () => {
           </View>
           <Text style={styles.message}>半角英数字で6文字以上</Text>
           <View style={styles.inputArea}>
-            <Text style={styles.label}>パスワード(確認)</Text>
-            <TextInput
+            <Text
+              style={{
+                ...styles.label,
+                color: confirmPassword.textColor(),
+              }}
+            >
+              パスワード(確認)
+            </Text>
+            <Input
               secureTextEntry
-              style={styles.input}
+              inputStyle={{
+                ...styles.input,
+                borderBottomColor: confirmPassword.borderColor(),
+              }}
               autoCapitalize="none"
               autoCorrect={false}
-              {...passwordConfirm}
+              {...confirmPassword}
             />
           </View>
           <View style={{ alignItems: 'center' }}>
@@ -92,11 +202,12 @@ const SignupScreen = () => {
             <Button
               title="新規登録する"
               buttonStyle={{ backgroundColor: '#f03c3c' }}
+              onPress={handleSubmit}
             />
           </View>
-        </SignupSpacer>
-      </SafeAreaView>
-    </ScrollView>
+        </SpacerTwenty>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -117,21 +228,23 @@ const styles = StyleSheet.create({
   },
   message: {
     color: 'blue',
+    marginHorizontal: 10,
   },
   label: {
     fontSize: 16,
     paddingTop: 5,
-    paddingLeft: 10,
-  },
-  inputArea: {
-    height: 60,
-    backgroundColor: '#DFDFDF',
-    borderBottomColor: 'grey',
-    borderBottomWidth: 2,
+    marginHorizontal: 10,
+    backgroundColor: '#DCDCDC',
   },
   input: {
-    height: 40,
-    marginHorizontal: 8,
+    borderTopEndRadius: 2,
+    borderTopStartRadius: 2,
+    backgroundColor: '#DCDCDC',
+    borderBottomWidth: 2,
+    paddingHorizontal: 3,
+  },
+  errorMessage: {
+    color: 'red',
   },
 });
 

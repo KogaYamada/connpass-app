@@ -4,6 +4,7 @@ export default (initialValue) => {
   const [value, setValue] = useState(initialValue);
   return {
     value,
+    setValue,
     onChangeText: (newValue) => {
       setValue(newValue);
     },
