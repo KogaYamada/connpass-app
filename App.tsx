@@ -26,6 +26,7 @@ import ChangeEmailScreen from './src/screens/MyPage/ChangeEmailScreen';
 import RegistrationEmailScreen from './src/screens/MyPage/RegistrationEmailScreen';
 import LinkAccountsScreen from './src/screens/MyPage/LinkAccountsScreen';
 import HelpCenterScreen from './src/screens/MyPage/HelpCenterScreen';
+import TestScreen from './src/test-screen';
 
 import { setNavigator } from './src/navigationRef';
 
@@ -141,6 +142,7 @@ const navigator = createSwitchNavigator({
       RegistrationEmail: RegistrationEmailScreen,
       LinkAccounts: LinkAccountsScreen,
       HelpCenter: HelpCenterScreen,
+      Test: TestScreen,
     },
     {
       defaultNavigationOptions: {
