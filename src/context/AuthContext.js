@@ -71,7 +71,6 @@ const signup = (dispatch) => async ({ email, password, username }) => {
       default:
         break;
     }
-    console.log(error);
   }
 };
 
