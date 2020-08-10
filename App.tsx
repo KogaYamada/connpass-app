@@ -39,9 +39,15 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 // なんかFirebaseのエラーが出るので調べたやつインストールした //
-import {decode, encode} from 'base-64'
-if (!global.btoa) {  global.btoa = encode }
-if (!global.atob) { global.atob = decode }
+
+// import { decode, encode } from 'base-64';
+// if (!global.btoa) {
+//   global.btoa = encode;
+// }
+// if (!global.atob) {
+//   global.atob = decode;
+// }
+
 ///////////////////////////////////////////////////////////
 
 const BottomTabNavigatorConfig = {
