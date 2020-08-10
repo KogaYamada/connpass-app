@@ -26,6 +26,7 @@ import ChangeEmailScreen from './src/screens/MyPage/ChangeEmailScreen';
 import RegistrationEmailScreen from './src/screens/MyPage/RegistrationEmailScreen';
 import LinkAccountsScreen from './src/screens/MyPage/LinkAccountsScreen';
 import HelpCenterScreen from './src/screens/MyPage/HelpCenterScreen';
+import AuthImport from './src/components-ad/atoms/auth-input.component';
 
 import { setNavigator } from './src/navigationRef';
 
@@ -73,7 +74,8 @@ const navigator = createSwitchNavigator({
       Connpass: createBottomTabNavigator(
         {
           Home: {
-            screen: EventScreen,
+            // screen: EventScreen,
+            screen: AuthImport,
             navigationOptions: () => ({
               title: 'マイイベント',
               tabBarIcon: ({ tintColor }) => {
