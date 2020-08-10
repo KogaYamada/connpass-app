@@ -1,3 +1,8 @@
+## 開発するにあたって
+* UI設計はAtomic Designをベースに行っています。<br />
+参考：https://ponday.hatenablog.com/entry/2018/12/05/085100
+
+
 ## 注意事項
 ### 作業を開始するとき
 * feature/#<Issue番号>_<作業名>でブランチを作成してください。
