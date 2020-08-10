@@ -44,35 +44,51 @@ const EventFormScreen = ({ navigation }) => {
       </SafeAreaView>
       <Container>
         <Tabs style={styles.textTab}>
-          <Tab activeTabStyle={{backgroundColor: 'red'}} heading={ <TabHeading><Text style={styles.textTab}>フロントエンド</Text></TabHeading>}>
-          <View style={styles.viewWrap}>
-          <ScrollView showsVerticalScrollIndicator={false} >
+          <Tab
+            activeTabStyle={{ backgroundColor: 'red' }}
+            heading={
+              <TabHeading>
+                <Text style={styles.textTab}>フロントエンド</Text>
+              </TabHeading>
+            }>
+            <View style={styles.viewWrap}>
+              <ScrollView showsVerticalScrollIndicator={false}>
+                {/* <EventComponent />
           <EventComponent />
           <EventComponent />
-          <EventComponent />
-          <EventComponent />
-          </ScrollView>
-          </View>
+          <EventComponent /> */}
+              </ScrollView>
+            </View>
           </Tab>
-          <Tab heading={ <TabHeading><Text style={styles.textTab}>バックエンド</Text></TabHeading>}>
-          <View style={styles.viewWrap}>
-          <ScrollView showsVerticalScrollIndicator={false} >
+          <Tab
+            heading={
+              <TabHeading>
+                <Text style={styles.textTab}>バックエンド</Text>
+              </TabHeading>
+            }>
+            <View style={styles.viewWrap}>
+              <ScrollView showsVerticalScrollIndicator={false}>
+                {/* <EventComponent />
           <EventComponent />
           <EventComponent />
-          <EventComponent />
-          <EventComponent />
-          </ScrollView>
-          </View>
+          <EventComponent /> */}
+              </ScrollView>
+            </View>
           </Tab>
-          <Tab heading={ <TabHeading><Text style={styles.textTab}>インフラ</Text></TabHeading>}>
-          <View style={styles.viewWrap}>
-          <ScrollView showsVerticalScrollIndicator={false} >
+          <Tab
+            heading={
+              <TabHeading>
+                <Text style={styles.textTab}>インフラ</Text>
+              </TabHeading>
+            }>
+            <View style={styles.viewWrap}>
+              <ScrollView showsVerticalScrollIndicator={false}>
+                {/* <EventComponent />
           <EventComponent />
           <EventComponent />
-          <EventComponent />
-          <EventComponent />
-          </ScrollView>
-          </View>
+          <EventComponent /> */}
+              </ScrollView>
+            </View>
           </Tab>
         </Tabs>
         <View style={styles.buttonAllWrap}>
@@ -97,16 +113,13 @@ const styles = StyleSheet.create({
     width: '100%',
     textAlign: 'center',
     alignItems: 'flex-end',
-    marginRight: 30
-    
+    marginRight: 30,
   },
   textTab: {
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
     width: '100%',
-    
-    
   },
   registerButton: {
     width: wp('70%'),
@@ -123,13 +136,12 @@ const styles = StyleSheet.create({
     height: hp('12%'),
   },
   buttonText: {
-    width:'100%',
-    textAlign: 'center'
+    width: '100%',
+    textAlign: 'center',
   },
   entireWrap: {
     textAlign: 'center',
-  }
-  
+  },
 });
 
 export default EventFormScreen;
