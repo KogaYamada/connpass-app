@@ -74,7 +74,7 @@ const navigator = createSwitchNavigator({
       Connpass: createBottomTabNavigator(
         {
           Home: {
-            screen: AuthImport,
+            screen: EventScreen,
             navigationOptions: () => ({
               title: 'マイイベント',
               tabBarIcon: ({ tintColor }) => {
