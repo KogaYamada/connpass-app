@@ -18,13 +18,15 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
+import SocialButton_component from '../components-ad/atoms/SocialButton_component'
+
 const SigninScreen = ({ navigation }) => {
   const { state, signin } = useContext(AuthContext);
   const email = { ...useInput(''), ...useInputError() };
   const password = { ...useInput(''), ...useInputError() };
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => { 
       console.log(user);
     });
   }, []);
@@ -130,30 +132,7 @@ const SigninScreen = ({ navigation }) => {
               <Text>をご利用ください。</Text>
             </View>
           </View>
-          <Text style={styles.loginMessage}>
-            Twitter / Facebook / GitHub ボタンから
-            お持ちのアカウントで新規登録を行ってください。
-          </Text>
-          <Text style={styles.loginMessage}>
-            ソーシャルのアカウントをお持ちでない方は、
-          </Text>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }}>
-            <Text>こちら</Text>
-            <TouchableOpacity
-              style={styles.linkNavigation}
-              onPress={() => {
-                navigation.navigate('Signup');
-              }}>
-              <Text>新規会員登録</Text>
-            </TouchableOpacity>
-            <Text>をご利用ください。</Text>
-          </View>
-              {/* TODO Delete this */}
+
               <Button
                 onPress={() => {
                   navigation.navigate('mainFlow');
@@ -166,24 +145,17 @@ const SigninScreen = ({ navigation }) => {
                 お持ちのアカウントで登録/ログイン
               </Text>
             </View>
-            <Button
-              buttonStyle={styles.socialButton}
-              titleStyle={styles.socialButtonTitle}
-              title="Twitterで登録/ログイン"
-              type="outline"
+            
+            <SocialButton_component
+              ButtonType={"twitter"}
             />
-            <Button
-              buttonStyle={styles.socialButton}
-              titleStyle={styles.socialButtonTitle}
-              title="Facebookで登録/ログイン"
-              type="outline"
+            <SocialButton_component
+              ButtonType={"facebook"}
             />
-            <Button
-              buttonStyle={styles.socialButton}
-              titleStyle={styles.socialButtonTitle}
-              title="Githubで登録/ログイン"
-              type="outline"
+            <SocialButton_component
+              ButtonType={"github"}
             />
+            
           </View>
 
         </SpacerTwenty>
