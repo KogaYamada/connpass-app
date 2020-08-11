@@ -44,7 +44,7 @@ const SettingsScreen = ({ navigation }) => {
     <Container>
       <Content>
         <List>
-          <ListItem itemDivider>
+          <ListItem itemDivider style={styles.items}>
             <Text style={styles.dividerText}>アカウント</Text>
           </ListItem>
           {firstBlock.map((item) => (
@@ -57,7 +57,7 @@ const SettingsScreen = ({ navigation }) => {
               </ListItem>
             </TouchableOpacity>
           ))}
-          <ListItem itemDivider>
+          <ListItem itemDivider style={styles.items}>
             <Text style={styles.dividerText}>設定</Text>
           </ListItem>
           {secondBlock.map((item) =>
@@ -93,9 +93,14 @@ const styles = StyleSheet.create({
   },
   Items: {
     justifyContent: 'space-between',
+    marginLeft: 0,
+    paddingLeft: 18,
   },
   logOut: {
     justifyContent: 'space-around',
+    marginLeft: 0,
+    paddingLeft: 18,
+    // ↑left以外はデフォルトでついてる
   },
   logOutText: {
     color: 'red',

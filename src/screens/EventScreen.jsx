@@ -10,7 +10,10 @@ import EventComponent from '../components/EventComponent';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import useInput from '../hooks/useInput';
 import { firestore } from '../api/firebase/firebase';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 import {
   addDummyJoinedEvent,
@@ -19,7 +22,6 @@ import {
   addDummyEvent,
 } from '../utils/firebase.data';
 import { Button } from 'react-native';
-
 
 const EventScreen = ({ navigation }) => {
   const [joinEvents, setJoinEvents] = useState(null);
@@ -74,17 +76,17 @@ const EventScreen = ({ navigation }) => {
       <ScrollView horizontal showsHorizontalScrollIndicator={true}>
         {joinEvents && (
           <FlatList
-          horizontal
-          data={joinEvents}
-          keyExtractor={(item) => item.id}
-          renderItem={(item) =>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('EventFrame')}
-          >
-          <EventComponent eventData={item} />
-          </TouchableOpacity>}
+            horizontal
+            data={joinEvents}
+            keyExtractor={(item) => item.id}
+            renderItem={(item) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('EventFrame')}>
+                <EventComponent eventData={item} />
+              </TouchableOpacity>
+            )}
           />
-          )}
+        )}
       </ScrollView>
 
       <Text style={styles.mainText}>主催イベント</Text>
@@ -95,11 +97,12 @@ const EventScreen = ({ navigation }) => {
             horizontal
             data={hostEvents}
             keyExtractor={(item) => item.id}
-            renderItem={(item) => 
-            <TouchableOpacity
-              onPress={() => navigation.navigate('EventFrame')}
-            ><EventComponent eventData={item} />
-            </TouchableOpacity>}
+            renderItem={(item) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('EventFrame')}>
+                <EventComponent eventData={item} />
+              </TouchableOpacity>
+            )}
           />
         )}
       </ScrollView>
@@ -112,18 +115,27 @@ const EventScreen = ({ navigation }) => {
             horizontal
             data={standbyEvents}
             keyExtractor={(item) => item.id}
-            renderItem={(item) => 
-            <TouchableOpacity
-              onPress={() => navigation.navigate('EventFrame')}
-            ><EventComponent eventData={item} />
-            </TouchableOpacity>}
+            renderItem={(item) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('EventFrame')}>
+                <EventComponent eventData={item} />
+              </TouchableOpacity>
+            )}
           />
         )}
       </ScrollView>
+
+      {/* コンポーネントのサンプルページへ遷移！！！ */}
+      <Text
+        onPress={() => {
+          navigation.navigate('Test');
+        }}>
+        テストページへ
+      </Text>
+      {/* ------------------------------------ */}
     </ScrollView>
   );
 };
-
 
 const styles = StyleSheet.create({
   mainText: {
@@ -149,7 +161,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 4,
     marginBottom: 25,
     width: wp('50%'),
-  }
+  },
 });
 
 export default EventScreen;
