@@ -19,7 +19,9 @@ const Title: FC<TitleProps> = ({
   children,
 }) => {
   const _bold = bold ? 'bold' : 'none';
-  const _sideBarColor = ((color: SideBarColorProps): SideBarColor => {
+  const _sideBarColor: SideBarColor = ((
+    color: SideBarColorProps
+  ): SideBarColor => {
     switch (color) {
       case 'red':
         return '#A82402';
