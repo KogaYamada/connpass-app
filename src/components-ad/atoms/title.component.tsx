@@ -1,72 +1,62 @@
 import React, { FC } from 'react';
-import { View, Text } from 'native-base';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, GestureResponderEvent } from 'react-native';
+import { View } from 'native-base';
 
+type SideBarColor = '#A82402' | '#000';
+type SideBarColorProps = 'red' | undefined;
 interface TitleProps {
-  title: string;
-  bold: boolean;
-  border: boolean;
-  titleFontSize: 'small' | 'middle' | 'large';
+  bold?: boolean;
+  sideBarColor?: SideBarColorProps;
+  size?: 'small' | 'middle' | 'large';
+  onPress?: (event: GestureResponderEvent) => void;
 }
 
-const smallStyle = {
-  fontSize: 140,
-};
-
-const middleStyle = {
-  fontSize: 20,
-};
-
-const largeStyle = {
-  fontSize: 46,
-};
-
 const Title: FC<TitleProps> = ({
-  title = 'title',
-  bold = true,
-  border,
-  titleFontSize = 'small',
+  bold,
+  sideBarColor,
+  size = 'middle',
+  onPress,
+  children,
 }) => {
-  //propsによってstyleを変える方法がわからない。
-  const fontSizeStyle = () => {
-    if (titleFontSize === 'small') {
-      return smallStyle;
-    } else if (titleFontSize === 'middle') {
-      return middleStyle;
-    } else {
-      return largeStyle;
+  const _bold = bold ? 'bold' : 'none';
+  const _sideBarColor = ((color: SideBarColorProps): SideBarColor => {
+    switch (color) {
+      case 'red':
+        return '#A82402';
+      default:
+        return '#000';
     }
-  };
-
-  const fontBoldStyle = () => {
-    if (bold) {
-      return {fontWeight: 'bold'};
-    } else {
-      return {fontWeight: 'normal'}
-    }
-  };
-
-  console.log(fontBoldStyle());
+  })(sideBarColor);
   return (
-    <View>
-      <Text style={[fontSizeStyle(), fontBoldStyle()]}>{title}</Text>
+    <View
+      style={
+        sideBarColor
+          ? { borderLeftWidth: 4, borderLeftColor: _sideBarColor }
+          : null
+      }>
+      <Text style={{ ...styles[size], ...styles[_bold] }} onPress={onPress}>
+        {children}
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
+  // size
+  small: {
+    fontSize: 24,
   },
-  fontBod: {
+  middle: {
+    fontSize: 36,
+  },
+  large: {
+    fontSize: 48,
+  },
+  // bold
+  bold: {
     fontWeight: 'bold',
   },
-  fontNormal: {
-    fontWeight: 'normal',
-  },
-  fontSize: {
-    fontSize: 20
-  }
+  none: {},
 });
 
 export default Title;
