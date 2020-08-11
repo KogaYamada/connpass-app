@@ -129,8 +129,9 @@ const navigator = createSwitchNavigator({
         BottomTabNavigatorConfig
       ),
       // ここから下にページを追加していく
+      Test: TestScreen,
       MessageDetail: MessageDetailScreen,
-      EventFrame: EventFrameScreen,
+      // EventFrame: EventFrameScreen,
       EventCreate: EventCreateScreen,
       EventDetail: EventDetailScreen,
       trackListFlow: createStackNavigator({
@@ -142,7 +143,6 @@ const navigator = createSwitchNavigator({
       RegistrationEmail: RegistrationEmailScreen,
       LinkAccounts: LinkAccountsScreen,
       HelpCenter: HelpCenterScreen,
-      Test: TestScreen,
     },
     {
       defaultNavigationOptions: {
