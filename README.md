@@ -11,3 +11,5 @@
 ### 作業が終わったとき
 * 不要なコード(console.log()など)があればを削除してください。
 * developブランチにPRしてください。
+* PRがマージされたらIssueもCloseしたいので、PRに,Closes  #<Issue番号>のようにしてください。
+ex. Closes  #999999
