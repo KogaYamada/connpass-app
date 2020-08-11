@@ -5,21 +5,20 @@ import { StyleSheet } from 'react-native';
 
 interface AuthInputProps {
   placeholder: string;
-  error: boolean;
-
+  errMesage: string;
 }
 
-const AuthInput: FC<AuthInputProps> = ({placeholder, error}) => {
+const AuthInput: FC<AuthInputProps> = ({placeholder, errMesage = ''}) => {
   const [text, onChangeText] = useState('');
   return (
     <View>
       <TextInput
-        style={[styles.authInput, error && styles.errorBorder]}
+        style={[styles.authInput, errMesage.trim() !== '' && styles.errorBorder]}
         onChangeText={(text) => onChangeText(text)}
         value={text}
         placeholder={placeholder}
       />
-      {error && <Text style={styles.errText}>エラーです。</Text>}
+      {errMesage.trim() !== '' && <Text style={styles.errText}>{errMesage}</Text>}
     </View>
   );
 }
@@ -30,9 +29,10 @@ const styles = StyleSheet.create({
   authInput: {
     borderStyle: 'solid',
     borderWidth: 1,
-    borderRadius: 4,
+    borderRadius: 7,
     height: 40,
-    borderColor: '#86939E'
+    borderColor: '#707070',
+    backgroundColor: '#EBEBEB',
   },
   errorBorder: {
     borderColor: 'red',
