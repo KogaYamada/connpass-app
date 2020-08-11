@@ -130,6 +130,36 @@ const SigninScreen = ({ navigation }) => {
               <Text>をご利用ください。</Text>
             </View>
           </View>
+          <Text style={styles.loginMessage}>
+            Twitter / Facebook / GitHub ボタンから
+            お持ちのアカウントで新規登録を行ってください。
+          </Text>
+          <Text style={styles.loginMessage}>
+            ソーシャルのアカウントをお持ちでない方は、
+          </Text>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+            }}>
+            <Text>こちら</Text>
+            <TouchableOpacity
+              style={styles.linkNavigation}
+              onPress={() => {
+                navigation.navigate('Signup');
+              }}>
+              <Text>新規会員登録</Text>
+            </TouchableOpacity>
+            <Text>をご利用ください。</Text>
+          </View>
+              {/* TODO Delete this */}
+              <Button
+                onPress={() => {
+                  navigation.navigate('mainFlow');
+                }}
+                title="TEST NAV"
+              />
           <View style={styles.loginView}>
             <View style={styles.headerView}>
               <Text style={styles.header}>
@@ -156,13 +186,6 @@ const SigninScreen = ({ navigation }) => {
             />
           </View>
 
-          {/* TODO Delete this */}
-          <Button
-            onPress={() => {
-              navigation.navigate('mainFlow');
-            }}
-            title="TEST NAV"
-          />
         </SpacerTwenty>
       </SafeAreaView>
     </ScrollView>

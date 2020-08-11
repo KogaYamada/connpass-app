@@ -69,6 +69,7 @@ const EventScreen = ({ navigation }) => {
       {/* <Button onPress={addDummyHostEvent} title="add dummy host data" /> */}
       {/* <Button onPress={addDummystandbyEvent} title="add dummy standby data" /> */}
       {/* <Button onPress={addDummyEvent} title="add dummy event data" /> */}
+      
       <Text style={styles.mainText}>参加イベント</Text>
       <View style={styles.border__1}></View>
 
@@ -123,6 +124,15 @@ const EventScreen = ({ navigation }) => {
           />
         )}
       </ScrollView>
+
+      {/* コンポーネントのサンプルページへ遷移！！！ */}
+      <Text
+        onPress={() => {
+          navigation.navigate('Test');
+        }}>
+        テストページへ
+      </Text>
+      {/* ------------------------------------ */}
     </ScrollView>
   );
 };

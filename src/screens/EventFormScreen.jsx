@@ -52,7 +52,12 @@ const EventFormScreen = ({ navigation }) => {
               </TabHeading>
             }>
             <View style={styles.viewWrap}>
-              <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
+              <ScrollView showsVerticalScrollIndicator={false}>
+                {/* <EventComponent />
+          <EventComponent />
+          <EventComponent />
+          <EventComponent /> */}
+              </ScrollView>
             </View>
           </Tab>
           <Tab
@@ -62,7 +67,12 @@ const EventFormScreen = ({ navigation }) => {
               </TabHeading>
             }>
             <View style={styles.viewWrap}>
-              <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
+              <ScrollView showsVerticalScrollIndicator={false}>
+                {/* <EventComponent />
+          <EventComponent />
+          <EventComponent />
+          <EventComponent /> */}
+              </ScrollView>
             </View>
           </Tab>
           <Tab
@@ -72,7 +82,12 @@ const EventFormScreen = ({ navigation }) => {
               </TabHeading>
             }>
             <View style={styles.viewWrap}>
-              <ScrollView showsVerticalScrollIndicator={false}></ScrollView>
+              <ScrollView showsVerticalScrollIndicator={false}>
+                {/* <EventComponent />
+          <EventComponent />
+          <EventComponent />
+          <EventComponent /> */}
+              </ScrollView>
             </View>
           </Tab>
         </Tabs>
@@ -95,15 +110,16 @@ const EventFormScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   viewWrap: {
-    flex: 1,
-    width: wp('100%'),
-    alignItems: 'center',
+    width: '100%',
+    textAlign: 'center',
+    alignItems: 'flex-end',
+    marginRight: 30,
   },
   textTab: {
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
-    width: wp('100%'),
+    width: '100%',
   },
   registerButton: {
     width: wp('70%'),
@@ -120,14 +136,11 @@ const styles = StyleSheet.create({
     height: hp('12%'),
   },
   buttonText: {
-    width: wp('70%'),
-    height: hp('5%'),
+    width: '100%',
     textAlign: 'center',
-    marginTop: hp('2%'),
-    fontSize: hp('2%'),
   },
-  buttonAllWrap: {
-    height: hp('9%'),
+  entireWrap: {
+    textAlign: 'center',
   },
 });
 
