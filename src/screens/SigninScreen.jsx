@@ -17,6 +17,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Divider from '../components-ad/atoms/divider.component';
 
 const SigninScreen = ({ navigation }) => {
   const { state, signin } = useContext(AuthContext);
@@ -154,12 +155,13 @@ const SigninScreen = ({ navigation }) => {
             <Text>をご利用ください。</Text>
           </View>
               {/* TODO Delete this */}
-              <Button
+              {/* <Button
                 onPress={() => {
                   navigation.navigate('mainFlow');
                 }}
                 title="TEST NAV"
-              />
+              /> */}
+              <Divider height={'large'} />
           <View style={styles.loginView}>
             <View style={styles.headerView}>
               <Text style={styles.header}>
