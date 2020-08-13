@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Text, Input, Button } from "react-native-elements";
 
-export default Button_component = ({ title, color, titlecolor, onPress }) => {
+export default ({ title, color, titlecolor, onPress }) => {
   const styles = StyleSheet.create({
     Button: {
       backgroundColor: color,
