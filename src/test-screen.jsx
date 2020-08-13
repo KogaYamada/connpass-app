@@ -1,8 +1,10 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import Button from "./components-ad/atoms/button.component";
 const TestScreen = () => {
-  return <View></View>;
+  return <View style={{ backgroundColor: "red" }}>
+    <Button color="#fff" title="ログイン" />
+  </View>;
 };
 
 const styles = StyleSheet.create({});
