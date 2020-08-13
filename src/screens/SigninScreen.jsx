@@ -18,7 +18,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-import SocialButton_component from '../components-ad/atoms/SocialButton_component'
+import Button_component from '../components-ad/atoms/Button_component'
 
 const SigninScreen = ({ navigation }) => {
   const { state, signin } = useContext(AuthContext);
@@ -146,16 +146,26 @@ const SigninScreen = ({ navigation }) => {
               </Text>
             </View>
             
-            <SocialButton_component
-              ButtonType={"twitter"}
-            />
-            <SocialButton_component
-              ButtonType={"facebook"}
-            />
-            <SocialButton_component
-              ButtonType={"github"}
+            <Button_component
+              color= "gray"
+              title="Twitterでログイン"
+              titlecolor="white"
+              onPress={() => { console.log("Twitterでログイン")}}
             />
             
+            <Button_component
+              color= "gray"
+              title="Facebookでログイン"
+              titlecolor="white"
+              onPress={() => { console.log("Facebookでログイン")}}
+            />
+            
+            <Button_component
+              color= "gray"
+              title="GitHubでログイン"
+              titlecolor="white"
+              onPress={() => { console.log("GitHubでログイン")}}
+            />
           </View>
 
         </SpacerTwenty>
