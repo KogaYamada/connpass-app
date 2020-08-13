@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from "react";
 import {
   View,
   Image,
@@ -6,22 +6,24 @@ import {
   ScrollView,
   TouchableOpacity,
   StyleSheet,
-} from 'react-native';
-import { Text, Input, Button } from 'react-native-elements';
-import { Context as AuthContext } from '../context/AuthContext';
-import useInput from '../hooks/useInput';
-import useInputError from '../hooks/useInputError';
-import SpacerTwenty from '../components/SpacerTwenty';
-import { auth } from '../api/firebase/firebase';
+} from "react-native";
+import { Text, Input, Button } from "react-native-elements";
+import { Context as AuthContext } from "../context/AuthContext";
+import useInput from "../hooks/useInput";
+import useInputError from "../hooks/useInputError";
+import SpacerTwenty from "../components/SpacerTwenty";
+import { auth } from "../api/firebase/firebase";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+} from "react-native-responsive-screen";
+
+import Button_component from "../components-ad/atoms/button.component";
 
 const SigninScreen = ({ navigation }) => {
   const { state, signin } = useContext(AuthContext);
-  const email = { ...useInput(''), ...useInputError() };
-  const password = { ...useInput(''), ...useInputError() };
+  const email = { ...useInput(""), ...useInputError() };
+  const password = { ...useInput(""), ...useInputError() };
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -34,7 +36,7 @@ const SigninScreen = ({ navigation }) => {
    */
   const emailValidation = () => {
     if (email.value.trim().length <= 0) {
-      email.addErrorMessage('メールアドレスを入力してください');
+      email.addErrorMessage("メールアドレスを入力してください");
       return true;
     } else {
       return false;
@@ -47,7 +49,7 @@ const SigninScreen = ({ navigation }) => {
    */
   const passwordValidation = () => {
     if (!password.value.length) {
-      password.addErrorMessage('パスワードを入力してください');
+      password.addErrorMessage("パスワードを入力してください");
       return true;
     } else {
       return false;
@@ -57,8 +59,8 @@ const SigninScreen = ({ navigation }) => {
    * 各検証結果に問題ない場合にサインイン関数を実行する。
    */
   const handleSubmit = () => {
-    email.addErrorMessage('');
-    password.addErrorMessage('');
+    email.addErrorMessage("");
+    password.addErrorMessage("");
 
     let error = false;
     error = passwordValidation();
@@ -74,7 +76,7 @@ const SigninScreen = ({ navigation }) => {
           <Image
             style={styles.imageUrl}
             resizeMode="contain"
-            source={require('../../assets/connpass_logo_1.png')}
+            source={require("../../assets/connpass_logo_1.png")}
           />
         </View>
         <SpacerTwenty>
@@ -115,77 +117,64 @@ const SigninScreen = ({ navigation }) => {
             </Text>
             <View
               style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'center',
-              }}>
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
               <Text>こちら</Text>
               <TouchableOpacity
                 style={styles.linkNavigation}
                 onPress={() => {
-                  navigation.navigate('Signup');
-                }}>
+                  navigation.navigate("Signup");
+                }}
+              >
                 <Text>新規会員登録</Text>
               </TouchableOpacity>
               <Text>をご利用ください。</Text>
             </View>
           </View>
-          <Text style={styles.loginMessage}>
-            Twitter / Facebook / GitHub ボタンから
-            お持ちのアカウントで新規登録を行ってください。
-          </Text>
-          <Text style={styles.loginMessage}>
-            ソーシャルのアカウントをお持ちでない方は、
-          </Text>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }}>
-            <Text>こちら</Text>
-            <TouchableOpacity
-              style={styles.linkNavigation}
-              onPress={() => {
-                navigation.navigate('Signup');
-              }}>
-              <Text>新規会員登録</Text>
-            </TouchableOpacity>
-            <Text>をご利用ください。</Text>
-          </View>
-              {/* TODO Delete this */}
-              <Button
-                onPress={() => {
-                  navigation.navigate('mainFlow');
-                }}
-                title="TEST NAV"
-              />
+
+          <Button
+            onPress={() => {
+              navigation.navigate("mainFlow");
+            }}
+            title="TEST NAV"
+          />
           <View style={styles.loginView}>
             <View style={styles.headerView}>
               <Text style={styles.header}>
                 お持ちのアカウントで登録/ログイン
               </Text>
             </View>
-            <Button
-              buttonStyle={styles.socialButton}
-              titleStyle={styles.socialButtonTitle}
-              title="Twitterで登録/ログイン"
-              type="outline"
+
+            <Button_component
+              color="gray"
+              title="Twitterでログイン"
+              titlecolor="white"
+              onPress={() => {
+                console.log("Twitterでログイン");
+              }}
             />
-            <Button
-              buttonStyle={styles.socialButton}
-              titleStyle={styles.socialButtonTitle}
-              title="Facebookで登録/ログイン"
-              type="outline"
+
+            <Button_component
+              color="gray"
+              title="Facebookでログイン"
+              titlecolor="white"
+              onPress={() => {
+                console.log("Facebookでログイン");
+              }}
             />
-            <Button
-              buttonStyle={styles.socialButton}
-              titleStyle={styles.socialButtonTitle}
-              title="Githubで登録/ログイン"
-              type="outline"
+
+            <Button_component
+              color="gray"
+              title="GitHubでログイン"
+              titlecolor="white"
+              onPress={() => {
+                console.log("GitHubでログイン");
+              }}
             />
           </View>
-
         </SpacerTwenty>
       </SafeAreaView>
     </ScrollView>
@@ -195,65 +184,65 @@ const SigninScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   headerView: {
     borderLeftWidth: 3,
-    borderLeftColor: '#A82402',
+    borderLeftColor: "#A82402",
   },
   header: {
-    fontSize: wp('4%'),
-    fontWeight: '400',
-    textAlign: 'center',
+    fontSize: wp("4%"),
+    fontWeight: "400",
+    textAlign: "center",
   },
   loginView: {
     marginHorizontal: 25,
     marginVertical: 10,
   },
   linkNavigation: {
-    borderBottomColor: '#6C6969',
+    borderBottomColor: "#6C6969",
     borderBottomWidth: 1,
   },
   loginMessage: {
-    textAlign: 'center',
+    textAlign: "center",
     marginHorizontal: 10,
   },
   socialButton: {
-    borderColor: '#707070',
+    borderColor: "#707070",
     borderWidth: 1,
     borderRadius: 5,
     margin: 10,
   },
   socialButtonTitle: {
-    color: '#000000',
+    color: "#000000",
   },
   viewWrap: {
-    width: wp('100%'),
-    height: hp('100%'),
+    width: wp("100%"),
+    height: hp("100%"),
   },
   imageUrl: {
-    width: wp('60%'),
-    height: hp('10%'),
+    width: wp("60%"),
+    height: hp("10%"),
   },
   imageWrap: {
-    width: wp('100%'),
-    height: hp('12%'),
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: wp("100%"),
+    height: hp("12%"),
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 15,
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   passwordTextWrap: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
   },
   passwordText: {
-    color: '#605D5D',
+    color: "#605D5D",
     marginLeft: 5,
   },
   loginButton: {
-    marginTop: hp('1.5%'),
-    marginBottom: hp('3%'),
+    marginTop: hp("1.5%"),
+    marginBottom: hp("3%"),
   },
   textWrap: {
-    marginBottom: hp('1%'),
+    marginBottom: hp("1%"),
   },
 });
 
