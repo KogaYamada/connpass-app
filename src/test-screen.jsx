@@ -1,11 +1,10 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import TextComponent from "./components-ad/atoms/text.components";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
 const TestScreen = () => {
-  return (<View style={styles.screen}>
-    <TextComponent />
-  </View>);
-};
+  return <View style={styles.screen}>
+  </View>;
+
 
 const styles = StyleSheet.create({
   screen: {
