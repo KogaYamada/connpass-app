@@ -5,9 +5,23 @@ import { View } from 'native-base';
 type SideBarColor = '#A82402' | '#000';
 type SideBarColorProps = 'red' | undefined;
 interface TitleProps {
+  /**
+   * `true`の時、タイトル文字に`bold`を追加
+   */
   bold?: boolean;
+  /**
+   * タイトル横のバーの色、指定無しで非表示。
+   * `red`,の中から選択。
+   */
   sideBarColor?: SideBarColorProps;
+  /**
+   * 文字のサイズ。
+   * `small`, `middle`, `large`から選択。デフォルトは`middle`
+   */
   size?: 'small' | 'middle' | 'large';
+  /**
+   * タイトルを押した時の関数
+   */
   onPress?: (event: GestureResponderEvent) => void;
 }
 
@@ -58,6 +72,7 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
+  // none
   none: {},
 });
 
