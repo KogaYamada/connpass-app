@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import TextComponent from "./components-ad/atoms/text.components";
 const TestScreen = () => {
-  return <View style={styles.screen}></View>;
+  return (<View style={styles.screen}>
+    <TextComponent />
+  </View>);
 };
 
 const styles = StyleSheet.create({
