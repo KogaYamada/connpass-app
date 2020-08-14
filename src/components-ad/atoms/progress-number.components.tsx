@@ -4,30 +4,28 @@ import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface ProgressNumberProps {
-  progressNumber: number;
+  number: number;
   progressText: string;
-  complete: boolean;
   status: 'normal' | 'now' | 'complete';
 }
 
 const ProgressNumber: FC<ProgressNumberProps> = ({
-  progressNumber,
+  number,
   progressText,
   status = 'normal',
 }) => {
-  const _BgColor = status === 'complete' ? 'BgColor' : 'none';
-  const _BorderBolor = status === 'normal' ? 'BorderBolor' : 'none';
-  const _textColor = status === 'complete' ? 'textColor' : 'none';
+  const _BgColor = status === 'normal' ? 'none' : 'BgColor';
+  const _textColor = status === 'normal' ? 'none' : 'textColor';
   return (
     <View style={styles.container}>
-      <View style={[styles.circle, styles[_BgColor], styles[_BorderBolor]]}>
+      <View style={[styles.circle, styles[_BgColor]]}>
         {status === 'complete' ? (
           <Text style={[styles.progressNumberStyle, styles[_textColor]]}>
             <Icon name="check" size={17} />
           </Text>
         ) : (
           <Text style={[styles.progressNumberStyle, styles[_textColor]]}>
-            {progressNumber}
+            {number}
           </Text>
         )}
       </View>
@@ -56,7 +54,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 'auto',
     marginBottom: 'auto',
-    color: '#707070',
   },
   progressTextStyle: {
     fontSize: 10,
@@ -73,10 +70,6 @@ const styles = StyleSheet.create({
   },
   textColor: {
     color: '#fff',
-  },
-  BorderBolor: {
-    borderColor: '#707070',
-    borderWidth: 1,
   },
   none: {},
 });
