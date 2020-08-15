@@ -1,13 +1,14 @@
 // ----------[ATOMS]--------------
 import Title from '../../src/components-ad/atoms/title/title.stories';
-import AuthInput from '../../src/components-ad/atoms/auth-input/auth-input.stories';
+import Input from '../../src/components-ad/atoms/input/input.stories';
 import Divider from '../../src/components-ad/atoms/divider/divider.stories';
 import FloatButton from '../../src/components-ad/atoms/float-button/float-button.stories';
+import Button from '../../src/components-ad/atoms/button/button.stories';
 
 // ----------[MOLECULES]--------------
-
+import FormInput from '../../src/components-ad/molecules/form-input/form-input.stories';
 // ----------[ORGANISMS]--------------
-
+import LoginForm from '../../src/components-ad/organisms/login-form/login-form.stories';
 // ----------[TEMPLATES]--------------
 
 // ----------[SCREENS]--------------
