@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { StyleSheet, Text, GestureResponderEvent } from 'react-native';
-import { View } from 'native-base';
+import { StyleSheet, Text, GestureResponderEvent, View } from 'react-native';
 
 type SideBarColor = '#A82402' | '#000';
 type SideBarColorProps = 'red' | undefined;

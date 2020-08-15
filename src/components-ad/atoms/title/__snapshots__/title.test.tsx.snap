@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`title snapshot tests <Title bold>タイトル</Title> :タイトルが太字 1`] = `
+<View
+  style={null}
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 36,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
+
+exports[`title snapshot tests <Title sideBarColor="red">タイトル</Title> :タイトル横に赤いバー表示 1`] = `
+<View
+  style={
+    Object {
+      "borderLeftColor": "#A82402",
+      "borderLeftWidth": 4,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 36,
+      }
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
+
+exports[`title snapshot tests <Title size="large">タイトル</Title> :サイズlarge 1`] = `
+<View
+  style={null}
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 48,
+      }
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
+
+exports[`title snapshot tests <Title size="middle">タイトル</Title> :サイズmiddle 1`] = `
+<View
+  style={null}
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 36,
+      }
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
+
+exports[`title snapshot tests <Title size="small">タイトル</Title> :サイズsmall 1`] = `
+<View
+  style={null}
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 24,
+      }
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
+
+exports[`title snapshot tests <Title>タイトル</Title> :propsなしのタイトル 1`] = `
+<View
+  style={null}
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 36,
+      }
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
