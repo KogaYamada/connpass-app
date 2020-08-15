@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 interface DividerProps {
+  /* 要素の高さ */
   height?: 'small' | 'middle' | 'large';
 }
 

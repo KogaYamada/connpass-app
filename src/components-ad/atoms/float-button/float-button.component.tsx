@@ -8,10 +8,15 @@ import {
 } from 'react-native';
 
 interface FloatButtonProps {
+  /* ボタンのタイトル */
   title: string;
+  /* ボタンの背景色 */
   backgroundColor?: 'green' | 'blue';
+  /* ボタンのサイズ */
   size?: 'small' | 'medium' | 'large';
+  /* trueでボタン使用不可 */
   disabled?: boolean;
+  /* ボタンを押した時に実行される関数 */
   onPress?: (event: GestureResponderEvent) => void;
 }
 
