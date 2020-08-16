@@ -9,10 +9,9 @@ import Button from '../../src/components-ad/atoms/button/button.stories';
 import FormInput from '../../src/components-ad/molecules/form-input/form-input.stories';
 // ----------[ORGANISMS]--------------
 import LoginForm from '../../src/components-ad/organisms/login-form/login-form.stories';
-// ----------[TEMPLATES]--------------
-
+import SocialLogin from '../../src/components-ad/organisms/social-login/social-login.stories';
 // ----------[SCREENS]--------------
-
+import Login from '../../src/components-ad/screens/login/login.stories';
 /***************** tutorial *****************
  import { storiesOf } from '@storybook/react-native';
  import { action } from '@storybook/addon-actions';

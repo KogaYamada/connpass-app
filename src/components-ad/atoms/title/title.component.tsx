@@ -1,26 +1,19 @@
 import React, { FC } from 'react';
 import { StyleSheet, Text, GestureResponderEvent, View } from 'react-native';
 
+/* サイドバーの色 */
 type SideBarColor = '#A82402' | '#000';
+/* サイドバーを指定するためのprops */
 type SideBarColorProps = 'red' | undefined;
+
 interface TitleProps {
-  /**
-   * `true`の時、タイトル文字に`bold`を追加
-   */
+  /* `true`の時、タイトル文字に`bold`を追加 */
   bold?: boolean;
-  /**
-   * タイトル横のバーの色、指定無しで非表示。
-   * `red`,の中から選択。
-   */
+  /* タイトル横のバーの色、指定無しで非表示 */
   sideBarColor?: SideBarColorProps;
-  /**
-   * 文字のサイズ。
-   * `small`, `middle`, `large`から選択。デフォルトは`middle`
-   */
+  /* 文字のサイズ */
   size?: 'small' | 'middle' | 'large';
-  /**
-   * タイトルを押した時の関数
-   */
+  /* タイトルを押した時の関数 */
   onPress?: (event: GestureResponderEvent) => void;
 }
 
@@ -49,7 +42,9 @@ const Title: FC<TitleProps> = ({
           ? { borderLeftWidth: 4, borderLeftColor: _sideBarColor }
           : null
       }>
-      <Text style={{ ...styles[size], ...styles[_bold] }} onPress={onPress}>
+      <Text
+        style={[styles.text, styles[size], styles[_bold]]}
+        onPress={onPress}>
         {children}
       </Text>
     </View>
@@ -57,15 +52,19 @@ const Title: FC<TitleProps> = ({
 };
 
 const styles = StyleSheet.create({
+  /* テキストのベーススタイル */
+  text: {
+    marginLeft: 8,
+  },
   // size
   small: {
     fontSize: 24,
   },
   middle: {
-    fontSize: 36,
+    fontSize: 28,
   },
   large: {
-    fontSize: 48,
+    fontSize: 32,
   },
   // bold
   bold: {
