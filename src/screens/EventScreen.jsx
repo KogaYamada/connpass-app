@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   FlatList,
   Text,
   View,
   StyleSheet,
   HorizontalScrollView,
+  Alert,
 } from 'react-native';
 import EventComponent from '../components/EventComponent';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -14,6 +15,8 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import { signup } from '../stores/user';
+import { useDispatch } from 'react-redux';
 
 import {
   addDummyJoinedEvent,
@@ -22,12 +25,16 @@ import {
   addDummyEvent,
 } from '../utils/firebase.data';
 import { Button } from 'react-native';
+import FloatButton from '../components-ad/atoms/float-button/float-button.component';
+import { Context as AuthContext } from '../context/AuthContext';
 
 const EventScreen = ({ navigation }) => {
   const [joinEvents, setJoinEvents] = useState(null);
   const [hostEvents, setHostEvent] = useState(null);
   const [standbyEvents, setStandbyEvent] = useState(null);
-
+  const { signout } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  console.log(signout);
   useEffect(() => {
     firestore
       .collection('version/1/users/MJpyUalJPCO2zIJ6J6fd3mOzwTo2/joinEvent')
@@ -69,7 +76,7 @@ const EventScreen = ({ navigation }) => {
       {/* <Button onPress={addDummyHostEvent} title="add dummy host data" /> */}
       {/* <Button onPress={addDummystandbyEvent} title="add dummy standby data" /> */}
       {/* <Button onPress={addDummyEvent} title="add dummy event data" /> */}
-      
+
       <Text style={styles.mainText}>参加イベント</Text>
       <View style={styles.border__1}></View>
 
@@ -124,14 +131,16 @@ const EventScreen = ({ navigation }) => {
           />
         )}
       </ScrollView>
+      <FloatButton title="TEST" onPress={() => dispatch(signup('hello'))} />
 
       {/* コンポーネントのサンプルページへ遷移！！！ */}
-      <Text
+      <FloatButton
+        title="story book"
         onPress={() => {
           navigation.navigate('Test');
-        }}>
-        テストページへ
-      </Text>
+        }}
+      />
+      <FloatButton backgroundColor="blue" onPress={signout} title="sign uot" />
       {/* ------------------------------------ */}
     </ScrollView>
   );

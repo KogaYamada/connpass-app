@@ -1,7 +1,14 @@
 import { useState } from 'react';
 
-export default () => {
-  const [errorMessage, setErrorMessage] = useState('');
+interface UseInputError {
+  errorMessage: string;
+  addErrorMessage: (errorMessage: string) => void;
+  borderColor: () => string;
+  textColor: () => string;
+}
+
+export default (): UseInputError => {
+  const [errorMessage, setErrorMessage] = useState<string>('');
   return {
     errorMessage,
     addErrorMessage: (errorMessage) => {
