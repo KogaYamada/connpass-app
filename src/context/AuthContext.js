@@ -110,7 +110,6 @@ const signin = (dispatch) => async ({ email, password }) => {
 
 const signout = (dispatch) => () => {
   auth.signOut();
-  /*TODO: navigate to signin */
   navigate('Signin');
   dispatch({ type: SIGN_OUT });
 };

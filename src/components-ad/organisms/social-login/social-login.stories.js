@@ -2,14 +2,12 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
-import Button from './button.component';
+import SocialLogin from './social-login.component';
 
 /*************************[ props ]*****************************
-  title: string;               ボタンのタイトル
-  color: string;               ボタンの色
-  onPress: (event) => void;    ボタンを押したときに実行される関数
+
 ****************************************************************/
 
-export default storiesOf('Button - atoms', module)
+export default storiesOf('SocialLogin - organisms', module)
   .addDecorator((story) => <View style={{ margin: 10 }}>{story()}</View>)
-  .add('default', () => <Button title="ログイン" />);
+  .add('default', () => <SocialLogin />);
