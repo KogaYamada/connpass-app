@@ -1,9 +1,11 @@
-import { useContext, useEffect } from 'react';
-import { Context as AuthContext } from '../context/AuthContext';
+import React, { useEffect } from 'react';
+import { Text } from 'react-native';
+import { tryLocalSignin } from '../stores/user';
+import { useDispatch } from 'react-redux';
 
 const ResolveAuthScreen = () => {
-  const { tryLocalSignin } = useContext(AuthContext);
-  tryLocalSignin();
+  const dispatch = useDispatch();
+  dispatch(tryLocalSignin());
   // 未検証
   // useEffect(() => {
   //   const unsubscribeFromAuth = tryLocalSignin();
@@ -11,7 +13,7 @@ const ResolveAuthScreen = () => {
   //     unsubscribeFromAuth();
   //   };
   // }, []);
-  return null;
+  return <Text>ロード中</Text>;
 };
 
 export default ResolveAuthScreen;

@@ -6,6 +6,8 @@ import {
   createBottomTabNavigator,
   createTabNavigator,
 } from 'react-navigation-tabs';
+import { Provider } from 'react-redux';
+import store from './src/stores';
 
 //screens
 import SignupScreen from './src/screens/SignupScreen';
@@ -28,6 +30,9 @@ import LinkAccountsScreen from './src/screens/MyPage/LinkAccountsScreen';
 import HelpCenterScreen from './src/screens/MyPage/HelpCenterScreen';
 import StoryScreen from './src/story-screen';
 import TestScreen from './src/test-screen';
+
+//
+// import SigninScreen from "./src/components-ad/screens/signin/signin.component"
 
 import { setNavigator } from './src/navigationRef';
 
@@ -157,10 +162,12 @@ const App = createAppContainer(navigator);
 
 export default () => (
   <AuthProvider>
-    <App
-      ref={(navigator) => {
-        setNavigator(navigator);
-      }}
-    />
+    <Provider store={store}>
+      <App
+        ref={(navigator) => {
+          setNavigator(navigator);
+        }}
+      />
+    </Provider>
   </AuthProvider>
 );
