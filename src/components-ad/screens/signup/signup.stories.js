@@ -2,12 +2,12 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
-import Signin from './signin.component';
+import Signup from './signup.component';
 
 /*************************[ props ]*****************************
 
 ****************************************************************/
 
-export default storiesOf('Signin - screens', module)
+export default storiesOf('Signup - screens', module)
   .addDecorator((story) => <View style={{}}>{story()}</View>)
-  .add('signin screen', () => <Signin />);
+  .add('signup screen', () => <Signup />);
