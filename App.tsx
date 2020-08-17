@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import store from './src/stores';
 
 //screens
-import SignupScreen from './src/screens/SignupScreen';
+import SignupScreen from './src/components-ad/screens/signup/signup.component';
 import SigninScreen from './src/components-ad/screens/signin/signin.component';
 import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';

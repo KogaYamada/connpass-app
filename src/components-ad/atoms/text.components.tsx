@@ -3,9 +3,9 @@ import { View, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 
 interface TextComponentProps {
-  size: 'large' | 'middle' | 'small';
-  textAlign: 'left' | 'center' | 'right';
-  styleProps: any //型わからなかった。
+  size?: 'large' | 'middle' | 'small';
+  textAlign?: 'left' | 'center' | 'right';
+  styleProps?: any; //型わからなかった。
 }
 
 const TextComponent: FC<TextComponentProps> = ({
@@ -16,7 +16,9 @@ const TextComponent: FC<TextComponentProps> = ({
 }) => {
   return (
     <View>
-      <Text style={[styles[size], styles[textAlign], styleProps]}>{children}</Text>
+      <Text style={[styles[size], styles[textAlign], styleProps]}>
+        {children}
+      </Text>
     </View>
   );
 };

@@ -41,8 +41,9 @@ const styles = StyleSheet.create({
   error: {
     marginHorizontal: 10,
     marginVertical: 5,
-    height: 12,
+    height: 15,
     color: 'red',
+    fontSize: 14,
   },
 });
 
