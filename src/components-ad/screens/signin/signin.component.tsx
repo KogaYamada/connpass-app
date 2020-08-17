@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import {} from 'react-native';
+import { NavigationStackProp } from 'react-navigation-stack';
 
 import Devider from '../../atoms/divider/divider.component';
 import LoginForm from '../../organisms/login-form/login-form.component';
@@ -7,11 +8,12 @@ import SocialLogin from '../../organisms/social-login/social-login.component';
 
 import FloatButton from '../../atoms/float-button/float-button.component';
 
-interface LoginProps {
-  navigation: any;
+type NavigateProps = {};
+interface SigninScreenProps {
+  navigation: NavigationStackProp<NavigateProps>;
 }
-
-const Login: FC<LoginProps> = ({ navigation }): JSX.Element => {
+const Signin: FC<SigninScreenProps> = ({ navigation }): JSX.Element => {
+  console.log(navigation);
   return (
     <>
       <LoginForm />
@@ -31,4 +33,4 @@ const Login: FC<LoginProps> = ({ navigation }): JSX.Element => {
   );
 };
 
-export default Login;
+export default Signin;

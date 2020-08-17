@@ -11,7 +11,7 @@ import store from './src/stores';
 
 //screens
 import SignupScreen from './src/screens/SignupScreen';
-import SigninScreen from './src/screens/SigninScreen';
+import SigninScreen from './src/components-ad/screens/signin/signin.component';
 import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
@@ -29,7 +29,6 @@ import RegistrationEmailScreen from './src/screens/MyPage/RegistrationEmailScree
 import LinkAccountsScreen from './src/screens/MyPage/LinkAccountsScreen';
 import HelpCenterScreen from './src/screens/MyPage/HelpCenterScreen';
 import StoryScreen from './src/story-screen';
-import TestScreen from './src/test-screen';
 
 //
 // import SigninScreen from "./src/components-ad/screens/signin/signin.component"
