@@ -7,10 +7,9 @@ import firebase, {
 } from '../../api/firebase/firebase';
 
 import { authValidation } from '../../utils/firebase.errors';
-
 import { navigate } from '../../navigationRef';
 
-import { UserState, SignupArguments, SigninArguments } from './types';
+import { UserState, TryLocalSignin, Signup, Signin, Signout } from './types';
 
 const initialState: UserState = {
   id: null,
@@ -34,25 +33,32 @@ const slice = createSlice({
 /*------------------   async actions   ------------------*/
 /*-------------------------------------------------------*/
 const { setUser } = slice.actions;
-
-export const tryLocalSignin = () => async (dispatch: any) => {
+/**
+ * ローカルログインを試みる関数。
+ * 以前にアプリにログインした形跡があればログインしてホームへ遷移する。
+ * なければサインインページへ遷移する。
+ */
+export const tryLocalSignin: TryLocalSignin = () => async (dispatch: any) => {
   auth.onAuthStateChanged(async (user: firebase.User | null) => {
     if (user) {
       const userRef = await createUserProfileDocument(user);
       userRef?.onSnapshot((snapshot) => {
         dispatch(setUser({ id: snapshot.id, ...snapshot.data() }));
       });
+      navigate('Home');
     }
     dispatch(setUser(initialState));
+    console.log('なんで');
     navigate('LoginFlow');
   });
 };
-
-export const signup = ({
-  username,
-  email,
-  password,
-}: SignupArguments) => async (dispatch: any) => {
+/**
+ * サインアップ時に実行される関数。firebase authenticationと通信して入力情報に問題がなければユーザーを作成。
+ * 何か問題があればエラーメッセージをセットする。
+ */
+export const signup: Signup = (username, email, password) => async (
+  dispatch: any
+) => {
   try {
     const { user } = await auth.createUserWithEmailAndPassword(
       email.value,
@@ -85,10 +91,11 @@ export const signup = ({
     console.log(error);
   }
 };
-
-export const signin = ({ email, password }: SigninArguments) => async (
-  dispatch: any
-) => {
+/**
+ * サインイン時に実行される関数firebase authenticationと通信して入力情報に問題がなければログイン。
+ * 何か問題があればエラーメッセージをセットする。
+ */
+export const signin: Signin = (email, password) => async (dispatch: any) => {
   try {
     const { user } = await auth.signInWithEmailAndPassword(
       email.value,
@@ -116,7 +123,7 @@ export const signin = ({ email, password }: SigninArguments) => async (
   }
 };
 
-export const signout = () => async (dispatch: any) => {
+export const signout: Signout = () => async (dispatch: any) => {
   auth.signOut();
   dispatch(setUser(initialState));
   navigate('LoginFlow');

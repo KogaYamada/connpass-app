@@ -131,7 +131,6 @@ const EventScreen = ({ navigation }) => {
           />
         )}
       </ScrollView>
-      <FloatButton title="TEST" onPress={() => dispatch(signup('hello'))} />
 
       {/* コンポーネントのサンプルページへ遷移！！！ */}
       <FloatButton

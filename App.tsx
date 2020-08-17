@@ -30,6 +30,9 @@ import LinkAccountsScreen from './src/screens/MyPage/LinkAccountsScreen';
 import HelpCenterScreen from './src/screens/MyPage/HelpCenterScreen';
 import TestScreen from './src/story-screen';
 
+//
+// import SigninScreen from "./src/components-ad/screens/signin/signin.component"
+
 import { setNavigator } from './src/navigationRef';
 
 //contexts
