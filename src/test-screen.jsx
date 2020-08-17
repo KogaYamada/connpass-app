@@ -5,7 +5,7 @@ const TestScreen = () => {
   return <View style={styles.screen}>
   </View>;
 
-
+}
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: '#fff',
