@@ -26,7 +26,8 @@ import ChangeEmailScreen from './src/screens/MyPage/ChangeEmailScreen';
 import RegistrationEmailScreen from './src/screens/MyPage/RegistrationEmailScreen';
 import LinkAccountsScreen from './src/screens/MyPage/LinkAccountsScreen';
 import HelpCenterScreen from './src/screens/MyPage/HelpCenterScreen';
-import TestScreen from './src/story-screen';
+import StoryScreen from './src/story-screen';
+import TestScreen from './src/test-screen';
 
 import { setNavigator } from './src/navigationRef';
 
@@ -129,7 +130,7 @@ const navigator = createSwitchNavigator({
         BottomTabNavigatorConfig
       ),
       // ここから下にページを追加していく
-      Test: TestScreen,
+      Test: StoryScreen,
       MessageDetail: MessageDetailScreen,
       // EventFrame: EventFrameScreen,
       EventCreate: EventCreateScreen,
