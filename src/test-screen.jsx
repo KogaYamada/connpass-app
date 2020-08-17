@@ -1,10 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import RadioGroup from './components-ad/molecules/radio-graoup/radio-group.components';
 
 const TestScreen = () => {
-  return <View style={styles.screen}>
-  </View>;
-
+  return (
+    <View style={styles.screen}>
+      <RadioGroup />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   screen: {
