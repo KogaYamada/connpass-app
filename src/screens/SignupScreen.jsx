@@ -11,17 +11,16 @@ import { SafeAreaView } from 'react-navigation';
 import { CheckBox, Button, Input } from 'react-native-elements';
 import { Context as AuthContext } from '../context/AuthContext';
 import useInput from '../hooks/useInput';
-import useInputError from '../hooks/useInputError';
 import SpacerTwenty from '../components/SpacerTwenty';
 
 const SignupScreen = ({ navigation }) => {
   // hooks
   const [isConsent, setIsConsent] = useState(false);
   const { state, signup } = useContext(AuthContext);
-  const username = { ...useInput(''), ...useInputError() };
-  const email = { ...useInput(''), ...useInputError() };
-  const password = { ...useInput(''), ...useInputError() };
-  const confirmPassword = { ...useInput(''), ...useInputError() };
+  const username = useInput('');
+  const email = useInput('');
+  const password = useInput('');
+  const confirmPassword = useInput('');
   /**
    * パスワードの入力内容を検証する。パスワードが5文字以下もしくは、
    * ２つの入力された値が一致しない場合にエラーブロックに入り、エラーメッセージを追加する。
@@ -108,15 +107,12 @@ const SignupScreen = ({ navigation }) => {
             <Text
               style={{
                 ...styles.label,
-                color: username.textColor(),
-              }}
-            >
+              }}>
               ユーザー名
             </Text>
             <Input
               inputStyle={{
                 ...styles.input,
-                borderBottomColor: username.borderColor(),
               }}
               autoCapitalize="none"
               autoCorrect={false}
@@ -133,15 +129,12 @@ const SignupScreen = ({ navigation }) => {
             <Text
               style={{
                 ...styles.label,
-                color: email.textColor(),
-              }}
-            >
+              }}>
               メールアドレス
             </Text>
             <Input
               inputStyle={{
                 ...styles.input,
-                borderBottomColor: email.borderColor(),
               }}
               autoCapitalize="none"
               autoCorrect={false}
@@ -153,16 +146,13 @@ const SignupScreen = ({ navigation }) => {
             <Text
               style={{
                 ...styles.label,
-                color: password.textColor(),
-              }}
-            >
+              }}>
               パスワード
             </Text>
             <Input
               secureTextEntry
               inputStyle={{
                 ...styles.input,
-                borderBottomColor: password.borderColor(),
               }}
               autoCapitalize="none"
               autoCorrect={false}
@@ -174,16 +164,13 @@ const SignupScreen = ({ navigation }) => {
             <Text
               style={{
                 ...styles.label,
-                color: confirmPassword.textColor(),
-              }}
-            >
+              }}>
               パスワード(確認)
             </Text>
             <Input
               secureTextEntry
               inputStyle={{
                 ...styles.input,
-                borderBottomColor: confirmPassword.borderColor(),
               }}
               autoCapitalize="none"
               autoCorrect={false}

@@ -4,14 +4,16 @@ import Input from '../../src/components-ad/atoms/input/input.stories';
 import Divider from '../../src/components-ad/atoms/divider/divider.stories';
 import FloatButton from '../../src/components-ad/atoms/float-button/float-button.stories';
 import Button from '../../src/components-ad/atoms/button/button.stories';
-
+import Label from '../../src/components-ad/atoms/label/label.stories';
 // ----------[MOLECULES]--------------
 import FormInput from '../../src/components-ad/molecules/form-input/form-input.stories';
 // ----------[ORGANISMS]--------------
 import LoginForm from '../../src/components-ad/organisms/login-form/login-form.stories';
+import SignupForm from '../../src/components-ad/organisms/signup-form/signup-form.stories';
 import SocialLogin from '../../src/components-ad/organisms/social-login/social-login.stories';
 // ----------[SCREENS]--------------
-import Login from '../../src/components-ad/screens/login/login.stories';
+import Signin from '../../src/components-ad/screens/signin/signin.stories';
+import Signup from '../../src/components-ad/screens/signup/signup.stories';
 /***************** tutorial *****************
  import { storiesOf } from '@storybook/react-native';
  import { action } from '@storybook/addon-actions';

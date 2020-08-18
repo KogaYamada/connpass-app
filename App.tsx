@@ -6,10 +6,12 @@ import {
   createBottomTabNavigator,
   createTabNavigator,
 } from 'react-navigation-tabs';
+import { Provider } from 'react-redux';
+import store from './src/stores';
 
 //screens
-import SignupScreen from './src/screens/SignupScreen';
-import SigninScreen from './src/screens/SigninScreen';
+import SignupScreen from './src/components-ad/screens/signup/signup.component';
+import SigninScreen from './src/components-ad/screens/signin/signin.component';
 import MessageListScreen from './src/screens/MessageListScreen';
 import MessageDetailScreen from './src/screens/MessageDetailScreen';
 import EventScreen from './src/screens/EventScreen';
@@ -26,7 +28,10 @@ import ChangeEmailScreen from './src/screens/MyPage/ChangeEmailScreen';
 import RegistrationEmailScreen from './src/screens/MyPage/RegistrationEmailScreen';
 import LinkAccountsScreen from './src/screens/MyPage/LinkAccountsScreen';
 import HelpCenterScreen from './src/screens/MyPage/HelpCenterScreen';
-import TestScreen from './src/story-screen';
+import StoryScreen from './src/story-screen';
+
+//
+// import SigninScreen from "./src/components-ad/screens/signin/signin.component"
 
 import { setNavigator } from './src/navigationRef';
 
@@ -129,7 +134,7 @@ const navigator = createSwitchNavigator({
         BottomTabNavigatorConfig
       ),
       // ここから下にページを追加していく
-      Test: TestScreen,
+      Test: StoryScreen,
       MessageDetail: MessageDetailScreen,
       // EventFrame: EventFrameScreen,
       EventCreate: EventCreateScreen,
@@ -156,10 +161,12 @@ const App = createAppContainer(navigator);
 
 export default () => (
   <AuthProvider>
-    <App
-      ref={(navigator) => {
-        setNavigator(navigator);
-      }}
-    />
+    <Provider store={store}>
+      <App
+        ref={(navigator) => {
+          setNavigator(navigator);
+        }}
+      />
+    </Provider>
   </AuthProvider>
 );

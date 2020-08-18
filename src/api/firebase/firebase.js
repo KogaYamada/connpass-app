@@ -33,6 +33,7 @@ export const createUserProfileDocument = async (userAuth, addtionaldata) => {
         email,
         createdAt,
         description: '',
+        photoURL,
         ...addtionaldata,
       });
     } catch (error) {
