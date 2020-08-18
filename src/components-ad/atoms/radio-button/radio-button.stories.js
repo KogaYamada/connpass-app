@@ -11,5 +11,5 @@ import { View } from 'native-base';
 
 export default storiesOf('RadioButton - atoms', module)
   .addDecorator((story) => <View style={{ margin: 10 }}>{story()}</View>)
-  .add('banana', () => <RadioButton label="banana" />)
-  .add('apple', () => <RadioButton label="apple" value='apple' />);
+  .add('checked', () => <RadioButton defaultValue='apple' />)
+  .add('unchecked', () => <RadioButton defaultValue='grape'/>)

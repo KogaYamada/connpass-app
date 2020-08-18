@@ -1,27 +1,45 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-interface RadioButtonProps {
+interface IRadioChoice {
   value: string;
-  setValue: (value: string) => void
   label: string;
 }
 
-const RadioButton: FC<RadioButtonProps> = ({value, setValue, label}: any) => {
-  console.log(value);
+interface RadioButtonProps {
+  radioChoices: IRadioChoice[];
+  defaultValue: string;
+}
+
+const RadioButton: FC<RadioButtonProps> = ({
+  radioChoices = [
+    { value: 'apple', label: 'apple' },
+    { value: 'banana', label: 'banana' },
+  ],
+  defaultValue,
+}) => {
+  const [selectedValue, setSelectedValue] = useState(defaultValue);
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.radioCircle}
-        onPress={() => {
-          setValue(label);
-        }}>
-        {value === label && <View style={styles.selectedRb} />}
-      </TouchableOpacity>
-      <Text style={styles.radioText}>{label}</Text>
+    <View>
+      {radioChoices.map((choice) => {
+        return (
+          <View key={choice.value} style={styles.container}>
+            <TouchableOpacity
+              style={styles.radioCircle}
+              onPress={() => {
+                setSelectedValue(choice.value);
+              }}>
+              {selectedValue === choice.value && (
+                <View style={styles.selectedRb} />
+              )}
+            </TouchableOpacity>
+            <Text style={styles.radioText}>{choice.label}</Text>
+          </View>
+        );
+      })}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

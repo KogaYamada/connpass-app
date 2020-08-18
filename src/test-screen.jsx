@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import RadioGroup from './components-ad/molecules/radio-graoup/radio-group.components';
+import RadioButton from './components-ad/atoms/radio-button/radio-button.components';
 
 const TestScreen = () => {
   return (
     <View style={styles.screen}>
-      <RadioGroup />
+      <RadioButton />
     </View>
   );
 };
