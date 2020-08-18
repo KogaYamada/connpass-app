@@ -5,6 +5,7 @@ import Divider from '../../src/components-ad/atoms/divider/divider.stories';
 import FloatButton from '../../src/components-ad/atoms/float-button/float-button.stories';
 import Button from '../../src/components-ad/atoms/button/button.stories';
 import Label from '../../src/components-ad/atoms/label/label.stories';
+import EventDate from '../../src/components-ad/atoms/event-date/event-date.stories';
 // ----------[MOLECULES]--------------
 import FormInput from '../../src/components-ad/molecules/form-input/form-input.stories';
 // ----------[ORGANISMS]--------------
