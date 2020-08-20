@@ -9,5 +9,5 @@ import { View } from 'native-base';
 
 export default storiesOf('Checkbox - atoms', module)
   .addDecorator((story) => <View style={{ margin: 10 }}>{story()}</View>)
-  .add('checked', () => <Checkbox defaultValue="apple" />)
-  .add('unchecked', () => <Checkbox defaultValue="grape" />);
+  .add('checked', () => <Checkbox />)
+  .add('unchecked', () => <Checkbox />);
