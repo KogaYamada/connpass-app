@@ -8,11 +8,11 @@ import {
 
 interface ButtonProps {
   /* ボタンのタイトル */
-  title?: string;
+  title: string;
   /* ボタンのサイズ */
   size?: 'small' | 'middle' | 'large';
   /* ボタンの色 */
-  color?: string;
+  color?: 'green' | 'none';
   /* ボタンを押したときに実行される関数 */
   onPress?: (event: GestureResponderEvent) => void;
 }
@@ -20,12 +20,12 @@ interface ButtonProps {
 const Button: FC<ButtonProps> = ({
   title,
   size = 'middle',
-  color,
+  color = 'none',
   onPress,
 }) => {
   return (
-    <TouchableOpacity style={[styles.button, styles[size]]} onPress={onPress}>
-      <Text style={[styles.text]}>{title}</Text>
+    <TouchableOpacity style={[styles.button, styles[size], styles[color]]} onPress={onPress}>
+      <Text style={[styles.text, styles[color]]}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -58,6 +58,11 @@ const styles = StyleSheet.create({
     minWidth: 250,
     paddingVertical: 17,
   },
+  green: {
+    backgroundColor: '#4DC188',
+    color: '#fff',
+  },
+  none: {}
 });
 
 export default Button;
