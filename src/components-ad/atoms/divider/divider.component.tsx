@@ -1,50 +1,33 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-/* 要素の高さ */
-type Height = 'small' | 'middle' | 'large';
-
 interface DividerProps {
-  height?: Height;
+  /* 要素の高さ */
+  height?: 'small' | 'middle' | 'large';
 }
 
-const Divider = ({ height }: DividerProps) => {
-  const dividerHeight = (height: Height) => {
-    switch (height) {
-      case 'small':
-        return styles.containerHeightSmall;
-      case 'middle':
-        return styles.containerHeightMiddle;
-      case 'large':
-        return styles.containerHeightLarge;
-      default:
-        return null;
-    }
-  };
-
-  return (
+const Divider = ({ height }: DividerProps) => (
     <View
-      style={[styles.containerHeightDefault, height && dividerHeight(height)]}>
+      style={[styles.container, height && styles[height]]}>
       <Text style={styles.divider} />
     </View>
-  );
-};
+);
 
 const styles = StyleSheet.create({
-  containerHeightDefault: {
+  container: {
     width: '100%',
     paddingHorizontal: 10,
     display: 'flex',
     textAlign: 'center',
     justifyContent: 'center',
   },
-  containerHeightSmall: {
+  small: {
     height: 20,
   },
-  containerHeightMiddle: {
+  middle: {
     height: 50,
   },
-  containerHeightLarge: {
+  large: {
     height: 100,
   },
   divider: {

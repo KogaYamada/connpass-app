@@ -1,40 +1,46 @@
 import React from 'react';
 import Title from './title.component';
+import { shallow,configure, ShallowWrapper } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-import renderer from 'react-test-renderer';
+configure({ adapter: new Adapter() });
+
+
+
+
 
 describe('title snapshot tests', () => {
-  test('<Title>タイトル</Title> :propsなしのタイトル', () => {
-    const tree = renderer.create(<Title>タイトル</Title>).toJSON();
-    expect(tree).toMatchSnapshot();
+  let wrapper: ShallowWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
+  beforeEach(() => {
+    wrapper=shallow(<Title>タイトル</Title>);
+  })
+
+  it('<Title>タイトル</Title> :propsなしのタイトル', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('<Title bold>タイトル</Title> :タイトルが太字', () => {
-    const tree = renderer.create(<Title bold>タイトル</Title>).toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Title bold>タイトル</Title> :タイトルが太字', () => {
+    wrapper.setProps({ bold: true });
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('<Title sideBarColor="red">タイトル</Title> :タイトル横に赤いバー表示', () => {
-    const tree = renderer
-      .create(<Title sideBarColor="red">タイトル</Title>)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Title sideBarColor="red">タイトル</Title> :タイトル横に赤いバー表示', () => {
+    wrapper.setProps({ sideBarColor: 'red' });
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('<Title size="large">タイトル</Title> :サイズlarge', () => {
-    const tree = renderer.create(<Title size="large">タイトル</Title>).toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Title size="large">タイトル</Title> :サイズlarge', () => {
+    wrapper.setProps({ size: 'large' });
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('<Title size="middle">タイトル</Title> :サイズmiddle', () => {
-    const tree = renderer
-      .create(<Title size="middle">タイトル</Title>)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Title size="middle">タイトル</Title> :サイズmiddle', () => {
+    wrapper.setProps({ size: 'middle' });
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('<Title size="small">タイトル</Title> :サイズsmall', () => {
-    const tree = renderer.create(<Title size="small">タイトル</Title>).toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Title size="small">タイトル</Title> :サイズsmall', () => {
+    wrapper.setProps({ size: 'small' });
+    expect(wrapper).toMatchSnapshot();
   });
 });

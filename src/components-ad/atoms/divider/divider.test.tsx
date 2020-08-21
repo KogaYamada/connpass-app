@@ -1,26 +1,32 @@
 import React from 'react';
 import Divider from './divider.component';
+import { shallow, configure, ShallowWrapper } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-import renderer from 'react-test-renderer';
+configure({ adapter: new Adapter() });
 
 describe('divider snapshot tests', () => {
-  test('Divider />: propsなし', () => {
-    const tree = renderer.create(<Divider />).toJSON();
-    expect(tree).toMatchSnapshot();
+  let wrapper: ShallowWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
+  beforeEach(() => {
+    wrapper = shallow(<Divider />);
   });
 
-  test('Divider height="large"/>: サイズlarge', () => {
-    const tree = renderer.create(<Divider height="large" />).toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Divider />: propsなし', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('Divider height="middle"/>: サイズmiddle', () => {
-    const tree = renderer.create(<Divider height="middle" />).toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Divider height="large"/>: サイズlarge', () => {
+    wrapper.setProps({ height: 'large' })
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('Divider height="small"/>: サイズsmall', () => {
-    const tree = renderer.create(<Divider height="small" />).toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Divider height="middle"/>: サイズmiddle', () => {
+    wrapper.setProps({ height: 'middle' })
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('<Divider height="small"/>: サイズsmall', () => {
+    wrapper.setProps({ height: 'small' })
+    expect(wrapper).toMatchSnapshot();
   });
 });

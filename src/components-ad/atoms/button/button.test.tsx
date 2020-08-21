@@ -1,32 +1,32 @@
 import React from 'react';
 import Button from './button.component';
+import { shallow,configure, ShallowWrapper } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-import renderer from 'react-test-renderer';
+configure({ adapter: new Adapter() });
 
 describe('button snapshot tests', () => {
-  test('<Button title={"タイトル"}/>: title以外のpropsなし', () => {
-    const tree = renderer.create(<Button title={'タイトル'} />).toJSON();
-    expect(tree).toMatchSnapshot();
+  let wrapper: ShallowWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
+  beforeEach(() => {
+    wrapper=shallow(<Button title={'ボタン'} />);
+  })
+
+  it('<Button title={"ボタン"}/>: title以外のpropsなし', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('<Button title={"タイトル"} size="large"/>: サイズlarge', () => {
-    const tree = renderer
-      .create(<Button title={'タイトル'} size="large" />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Button title={"ボタン"} size="large"/>: サイズlarge', () => {
+    wrapper.setProps({size: 'large'})
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('<Button title={"タイトル"} size="middle"/>: サイズmiddle', () => {
-    const tree = renderer
-      .create(<Button title={'タイトル'} size="middle" />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Button title={"ボタン"} size="middle"/>: サイズmiddle', () => {
+    wrapper.setProps({size: 'middle'})
+    expect(wrapper).toMatchSnapshot();
   });
 
-  test('<Button title={"タイトル"} size="small"/>: サイズsmall', () => {
-    const tree = renderer
-      .create(<Button title={'タイトル'} size="small" />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+  it('<Button title={"ボタン"} size="small"/>: サイズsmall', () => {
+    wrapper.setProps({size: 'small'})
+    expect(wrapper).toMatchSnapshot();
   });
 });

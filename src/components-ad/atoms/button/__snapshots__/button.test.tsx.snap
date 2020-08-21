@@ -1,27 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`button snapshot tests <Button title={"タイトル"} size="large"/>: サイズlarge 1`] = `
-<View
-  accessible={true}
-  focusable={false}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
+exports[`button snapshot tests <Button title={"ボタン"} size="large"/>: サイズlarge 1`] = `
+<ForwardRef
   style={
-    Object {
-      "backgroundColor": "#F2F2F2",
-      "borderColor": "#DBDBDB",
-      "borderRadius": 10,
-      "borderWidth": 1,
-      "minWidth": 250,
-      "opacity": 1,
-      "paddingHorizontal": 10,
-      "paddingVertical": 17,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "borderColor": "#DBDBDB",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "paddingHorizontal": 10,
+      },
+      Object {
+        "minWidth": 250,
+        "paddingVertical": 17,
+      },
+    ]
   }
 >
   <Text
@@ -34,34 +28,28 @@ exports[`button snapshot tests <Button title={"タイトル"} size="large"/>: �
       ]
     }
   >
-    タイトル
+    ボタン
   </Text>
-</View>
+</ForwardRef>
 `;
 
-exports[`button snapshot tests <Button title={"タイトル"} size="middle"/>: サイズmiddle 1`] = `
-<View
-  accessible={true}
-  focusable={false}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
+exports[`button snapshot tests <Button title={"ボタン"} size="middle"/>: サイズmiddle 1`] = `
+<ForwardRef
   style={
-    Object {
-      "backgroundColor": "#F2F2F2",
-      "borderColor": "#DBDBDB",
-      "borderRadius": 10,
-      "borderWidth": 1,
-      "maxWidth": 250,
-      "minWidth": 150,
-      "opacity": 1,
-      "paddingHorizontal": 10,
-      "paddingVertical": 13,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "borderColor": "#DBDBDB",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "paddingHorizontal": 10,
+      },
+      Object {
+        "maxWidth": 250,
+        "minWidth": 150,
+        "paddingVertical": 13,
+      },
+    ]
   }
 >
   <Text
@@ -74,33 +62,27 @@ exports[`button snapshot tests <Button title={"タイトル"} size="middle"/>: �
       ]
     }
   >
-    タイトル
+    ボタン
   </Text>
-</View>
+</ForwardRef>
 `;
 
-exports[`button snapshot tests <Button title={"タイトル"} size="small"/>: サイズsmall 1`] = `
-<View
-  accessible={true}
-  focusable={false}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
+exports[`button snapshot tests <Button title={"ボタン"} size="small"/>: サイズsmall 1`] = `
+<ForwardRef
   style={
-    Object {
-      "backgroundColor": "#F2F2F2",
-      "borderColor": "#DBDBDB",
-      "borderRadius": 10,
-      "borderWidth": 1,
-      "maxWidth": 150,
-      "opacity": 1,
-      "paddingHorizontal": 10,
-      "paddingVertical": 10,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "borderColor": "#DBDBDB",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "paddingHorizontal": 10,
+      },
+      Object {
+        "maxWidth": 150,
+        "paddingVertical": 10,
+      },
+    ]
   }
 >
   <Text
@@ -113,34 +95,24 @@ exports[`button snapshot tests <Button title={"タイトル"} size="small"/>: �
       ]
     }
   >
-    タイトル
+    ボタン
   </Text>
-</View>
+</ForwardRef>
 `;
 
-exports[`button snapshot tests <Button title={"タイトル"}/>: title以外のpropsなし 1`] = `
-<View
-  accessible={true}
-  focusable={false}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
+exports[`button snapshot tests <Button title={"ボタン"}/>: title以外のpropsなし 1`] = `
+<ForwardRef
   style={
-    Object {
-      "backgroundColor": "#F2F2F2",
-      "borderColor": "#DBDBDB",
-      "borderRadius": 10,
-      "borderWidth": 1,
-      "maxWidth": 250,
-      "minWidth": 150,
-      "opacity": 1,
-      "paddingHorizontal": 10,
-      "paddingVertical": 13,
-    }
+    Array [
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "borderColor": "#DBDBDB",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "paddingHorizontal": 10,
+      },
+      undefined,
+    ]
   }
 >
   <Text
@@ -153,7 +125,7 @@ exports[`button snapshot tests <Button title={"タイトル"}/>: title以外のp
       ]
     }
   >
-    タイトル
+    ボタン
   </Text>
-</View>
+</ForwardRef>
 `;
