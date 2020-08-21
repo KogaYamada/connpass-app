@@ -13,6 +13,7 @@ interface TitleProps {
   sideBarColor?: SideBarColorProps;
   /* 文字のサイズ */
   size?: 'small' | 'middle' | 'large';
+  textAlign?: 'left' | 'center' | 'right';
   /* タイトルを押した時の関数 */
   onPress?: (event: GestureResponderEvent) => void;
 }
@@ -21,6 +22,7 @@ const Title: FC<TitleProps> = ({
   bold,
   sideBarColor,
   size = 'middle',
+  textAlign = 'left',
   onPress,
   children,
 }) => {
@@ -43,8 +45,9 @@ const Title: FC<TitleProps> = ({
           : null
       }>
       <Text
-        style={[styles.text, styles[size], styles[_bold]]}
-        onPress={onPress}>
+        style={[styles.text, styles[size], styles[_bold], styles[textAlign]]}
+        onPress={onPress}
+      >
         {children}
       </Text>
     </View>
@@ -69,6 +72,15 @@ const styles = StyleSheet.create({
   // bold
   bold: {
     fontWeight: 'bold',
+  },
+  left: {
+    textAlign: 'left',
+  },
+  center: {
+    textAlign: 'center',
+  },
+  right: {
+    textAlign: 'right',
   },
   // none
   none: {},

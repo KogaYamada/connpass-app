@@ -16,6 +16,7 @@ import SocialLogin from '../../src/components-ad/organisms/social-login/social-l
 // ----------[SCREENS]--------------
 import Signin from '../../src/components-ad/screens/signin/signin.stories';
 import Signup from '../../src/components-ad/screens/signup/signup.stories';
+import SingupDone from '../../src/components-ad/screens/signup-done/singup-done.stories';
 /***************** tutorial *****************
  import { storiesOf } from '@storybook/react-native';
  import { action } from '@storybook/addon-actions';
