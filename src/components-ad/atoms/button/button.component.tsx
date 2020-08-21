@@ -8,7 +8,7 @@ import {
 
 interface ButtonProps {
   /* ボタンのタイトル */
-  title?: string;
+  title: string;
   /* ボタンのサイズ */
   size?: 'small' | 'middle' | 'large';
   /* ボタンの色 */

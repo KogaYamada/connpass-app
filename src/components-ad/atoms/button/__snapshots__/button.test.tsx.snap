@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button snapshot tests <Button title={"タイトル"} size="large"/>: サイズlarge 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#F2F2F2",
+      "borderColor": "#DBDBDB",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "minWidth": 250,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 17,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 18,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
+
+exports[`button snapshot tests <Button title={"タイトル"} size="middle"/>: サイズmiddle 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#F2F2F2",
+      "borderColor": "#DBDBDB",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "maxWidth": 250,
+      "minWidth": 150,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 13,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 18,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
+
+exports[`button snapshot tests <Button title={"タイトル"} size="small"/>: サイズsmall 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#F2F2F2",
+      "borderColor": "#DBDBDB",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "maxWidth": 150,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 10,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 18,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
+
+exports[`button snapshot tests <Button title={"タイトル"}/>: title以外のpropsなし 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#F2F2F2",
+      "borderColor": "#DBDBDB",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "maxWidth": 250,
+      "minWidth": 150,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 13,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 18,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    タイトル
+  </Text>
+</View>
+`;
