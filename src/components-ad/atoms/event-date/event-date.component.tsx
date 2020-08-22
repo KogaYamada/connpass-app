@@ -22,11 +22,14 @@ const EventDate: FC<EventDateProps> = ({
   );
 };
 
-const styles= StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     borderRightWidth: 1,
     borderColor: '#707070',
-    padding: '0 9px 0 11px',
+    paddingTop: 0,
+    paddingRight: 9,
+    paddingBottom: 0,
+    paddingLeft: 11,
     width: 75,
     height: 60,
   },
@@ -40,7 +43,7 @@ const styles= StyleSheet.create({
   },
   week: {
     textAlign: 'center',
-  }
-})
+  },
+});
 
 export default EventDate;
