@@ -5,10 +5,6 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-
-
-
-
 describe('title snapshot tests', () => {
   let wrapper: ShallowWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
   beforeEach(() => {
@@ -44,3 +40,10 @@ describe('title snapshot tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
+
+it('title onPress',()=>{
+  const onPress = jest.fn();
+  const wrapper=shallow(<Title onPress={onPress}>タイトル</Title>);
+  wrapper.dive().find('Text').simulate('press');
+  expect(onPress).toHaveBeenCalled();
+})

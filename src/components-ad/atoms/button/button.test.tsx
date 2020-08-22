@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './button.component';
 import { shallow,configure, ShallowWrapper } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { exp } from 'react-native-reanimated';
 
 configure({ adapter: new Adapter() });
 
@@ -30,3 +31,10 @@ describe('button snapshot tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
+
+it('button onPress',() => {
+  const onPress = jest.fn();
+  const wrapper = shallow(<Button title={'ボタン'} onPress={onPress} />);
+  wrapper.dive().find('TouchableOpacity').simulate('press');
+  expect(onPress).toHaveBeenCalled();
+})
