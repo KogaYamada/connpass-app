@@ -6,7 +6,7 @@ import FloatButton from '../../src/components-ad/atoms/float-button/float-button
 import Button from '../../src/components-ad/atoms/button/button.stories';
 import Label from '../../src/components-ad/atoms/label/label.stories';
 import RadioButton from '../../src/components-ad/atoms/radio-button/radio-button.stories';
-import Opacity from '../../src/components-ad/atoms/opacity/capacity.stories';
+import Capacity from '../../src/components-ad/atoms/opacity/capacity.stories';
 // ----------[MOLECULES]--------------
 import FormInput from '../../src/components-ad/molecules/form-input/form-input.stories';
 // ----------[ORGANISMS]--------------
