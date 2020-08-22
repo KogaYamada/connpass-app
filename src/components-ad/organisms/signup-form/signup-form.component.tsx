@@ -39,13 +39,13 @@ const SigninForm: FC<SigninFormProps> = () => {
         placeholder="メールアドレス"
         errorMessage={email.errorMessage}
         onChangeText={email.onChangeText}
-        secureTextEntry
       />
       <FormInput
         value={password.value}
         placeholder="パスワード"
         errorMessage={password.errorMessage}
         onChangeText={password.onChangeText}
+        secureTextEntry
       />
       <FormInput
         value={confirmPassword.value}

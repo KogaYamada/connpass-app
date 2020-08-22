@@ -12,7 +12,7 @@ interface ButtonProps {
   /* ボタンのサイズ */
   size?: 'small' | 'middle' | 'large';
   /* ボタンの色 */
-  color?: string;
+  color?: 'green' | 'none';
   /* ボタンを押したときに実行される関数 */
   onPress?: (event: GestureResponderEvent) => void;
 }
@@ -55,6 +55,11 @@ const styles = StyleSheet.create({
     minWidth: 250,
     paddingVertical: 17,
   },
+  green: {
+    backgroundColor: '#4DC188',
+    color: '#fff',
+  },
+  none: {}
 });
 
 export default Button;
