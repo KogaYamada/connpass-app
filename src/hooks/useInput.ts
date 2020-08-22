@@ -1,11 +1,11 @@
 import { useState, Dispatch, SetStateAction } from 'react';
 
 export interface InputState {
-  value?: string;
+  value: string;
   errorMessage?: string;
   setValue?: Dispatch<SetStateAction<string>>;
   onChangeText?: (newValue: string) => void;
-  addErrorMessage?: (errorMessage: string) => void;
+  addErrorMessage: (errorMessage: string) => void;
 }
 
 export default (initialValue: string): InputState => {
