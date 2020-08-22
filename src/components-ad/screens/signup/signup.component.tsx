@@ -11,7 +11,7 @@ const Signup = () => {
   return (
     <View>
       <Title>新規会員登録</Title>
-      <Progress complete={false} />
+      {/* <Progress  complete={false} /> */}
       <Text size="middle" textAlign="center">
         このアプリを始めるための最低限の情報を入力してください
       </Text>
