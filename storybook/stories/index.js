@@ -5,6 +5,7 @@ import Divider from '../../src/components-ad/atoms/divider/divider.stories';
 import FloatButton from '../../src/components-ad/atoms/float-button/float-button.stories';
 import Button from '../../src/components-ad/atoms/button/button.stories';
 import Label from '../../src/components-ad/atoms/label/label.stories';
+import EventDate from '../../src/components-ad/atoms/event-date/event-date.stories';
 import RadioButton from '../../src/components-ad/atoms/radio-button/radio-button.stories';
 import Checkbox from '../../src/components-ad/atoms/checkbox/checkbox.stories'
 
