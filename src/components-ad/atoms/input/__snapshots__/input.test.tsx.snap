@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`input snapshot tests <Input />: propsなし 1`] = `
+<Component
+  onChangeText={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "borderColor": "#DBDBDB",
+        "borderRadius": 7,
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "fontSize": 18,
+        "height": 48,
+        "padding": 10,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`input snapshot tests <Input error />: error->true 1`] = `
+<Component
+  onChangeText={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "borderColor": "#DBDBDB",
+        "borderRadius": 7,
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "fontSize": 18,
+        "height": 48,
+        "padding": 10,
+      },
+      Object {
+        "borderColor": "red",
+      },
+    ]
+  }
+/>
+`;
+
+exports[`input snapshot tests <Input placeholder={"インプット"} />: placeholder->インプット 1`] = `
+<Component
+  onChangeText={[Function]}
+  placeholder="インプット"
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "borderColor": "#DBDBDB",
+        "borderRadius": 7,
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "fontSize": 18,
+        "height": 48,
+        "padding": 10,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`input snapshot tests <Input secureTextEntry />: secureTextEntry->true 1`] = `
+<Component
+  onChangeText={[Function]}
+  secureTextEntry={true}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "borderColor": "#DBDBDB",
+        "borderRadius": 7,
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "fontSize": 18,
+        "height": 48,
+        "padding": 10,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`input snapshot tests <Input value={"インプット"} />: value->インプット 1`] = `
+<Component
+  onChangeText={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "borderColor": "#DBDBDB",
+        "borderRadius": 7,
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "fontSize": 18,
+        "height": 48,
+        "padding": 10,
+      },
+      undefined,
+    ]
+  }
+  value="インプット"
+/>
+`;

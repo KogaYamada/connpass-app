@@ -2,7 +2,6 @@ import React from 'react';
 import Button from './button.component';
 import { shallow,configure, ShallowWrapper } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { exp } from 'react-native-reanimated';
 
 configure({ adapter: new Adapter() });
 

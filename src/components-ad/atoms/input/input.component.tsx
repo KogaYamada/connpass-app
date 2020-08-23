@@ -1,5 +1,4 @@
-import React, { useState, FC } from 'react';
-import { Text, View } from 'native-base';
+import React, { FC } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 
