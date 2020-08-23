@@ -6,62 +6,29 @@ interface DividerProps {
   height?: 'small' | 'middle' | 'large';
 }
 
-const dividerHeight = (height: any) => {
-  switch (height) {
-    case 'small':
-      return styles.containerHeightSmall;
-      break;
-    case 'middle':
-      return styles.containerHeightMiddle;
-      break;
-    case 'large':
-      return styles.containerHeightLarge;
-      break;
-    default:
-      return styles.containerHeightNone;
-      break;
-  }
-};
-
-const Divider = ({ height }: DividerProps) => {
-  return (
-    <View style={dividerHeight(height)}>
+const Divider = ({ height }: DividerProps) => (
+    <View
+      style={[styles.container, height && styles[height]]}>
       <Text style={styles.divider} />
     </View>
-  );
-};
+);
 
 const styles = StyleSheet.create({
-  containerHeightNone: {
+  container: {
     width: '100%',
     paddingHorizontal: 10,
     display: 'flex',
     textAlign: 'center',
     justifyContent: 'center',
   },
-  containerHeightSmall: {
-    width: '100%',
+  small: {
     height: 20,
-    paddingHorizontal: 10,
-    display: 'flex',
-    textAlign: 'center',
-    justifyContent: 'center',
   },
-  containerHeightMiddle: {
-    width: '100%',
+  middle: {
     height: 50,
-    paddingHorizontal: 10,
-    display: 'flex',
-    textAlign: 'center',
-    justifyContent: 'center',
   },
-  containerHeightLarge: {
-    width: '100%',
+  large: {
     height: 100,
-    paddingHorizontal: 10,
-    display: 'flex',
-    textAlign: 'center',
-    justifyContent: 'center',
   },
   divider: {
     width: '100%',

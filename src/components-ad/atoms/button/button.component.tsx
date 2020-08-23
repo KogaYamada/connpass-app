@@ -17,15 +17,12 @@ interface ButtonProps {
   onPress?: (event: GestureResponderEvent) => void;
 }
 
-const Button: FC<ButtonProps> = ({
-  title,
-  size = 'middle',
-  color = 'none',
-  onPress,
-}) => {
+const Button: FC<ButtonProps> = ({ title, size, color, onPress }) => {
   return (
-    <TouchableOpacity style={[styles.button, styles[size], styles[color]]} onPress={onPress}>
-      <Text style={[styles.text, styles[color]]}>{title}</Text>
+    <TouchableOpacity
+      style={[styles.button, size && styles[size]]}
+      onPress={onPress}>
+      <Text style={[styles.text]}>{title}</Text>
     </TouchableOpacity>
   );
 };
